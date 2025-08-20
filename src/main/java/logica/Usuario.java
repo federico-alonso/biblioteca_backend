@@ -9,8 +9,8 @@ import jakarta.persistence.InheritanceType;
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Usuario{
     @Id
-    private String nombre;
     private String email;
+    private String nombre;
 
     public void setNombre(String nombre){
         this.nombre = nombre;
