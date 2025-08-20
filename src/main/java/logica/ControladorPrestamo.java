@@ -1,15 +1,13 @@
 package logica;
 
-import interfaces.IControlador;
+import interfaces.IControladorPrestamo;
 
 import datatypes.DtLibro;
 import datatypes.DtPrestamo;
 
-import java.util.Date;
+public class ControladorPrestamo implements IControladorPrestamo {
 
-public class Controlador implements IControlador{
-
-    public Controlador() {
+    public ControladorPrestamo() {
         super();
     }
 

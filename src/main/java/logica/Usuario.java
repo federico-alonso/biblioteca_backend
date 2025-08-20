@@ -4,28 +4,39 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
+import jakarta.persistence.Column;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Usuario{
+public abstract class Usuario {
+
     @Id
-    private String email;
-    private String nombre;
+    @Column(nullable = false, unique = true)
+    protected String nombre;
 
-    public void setNombre(String nombre){
+    @Column(nullable = false)
+    protected String email;
+
+    public Usuario() {}
+
+    public Usuario(String nombre, String email) {
         this.nombre = nombre;
-    }
-
-    public void setEmail(String email){
         this.email = email;
     }
 
-    public String getNombre(){
+    public String getNombre() {
         return nombre;
     }
 
-    public String getEmail(){
+    public String getEmail() {
         return email;
     }
 
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }
