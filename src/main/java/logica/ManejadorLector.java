@@ -1,6 +1,6 @@
 package logica;
 
-import javax.persistence.EntityManager;
+import jakarta.persistence.EntityManager;
 import persistencia.Conexion;
 
 public class ManejadorLector {

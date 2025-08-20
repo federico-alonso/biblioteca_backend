@@ -1,10 +1,11 @@
 package presentacion;
 
-import logica.ControladorPrestamo;
-import logica.Lector;
 
-import interfaces.IControladorPrestamo;
+import interfaces.IControladorAltaLector;
+import interfaces.IControladorMaterial;
 import datatypes.DtLibro;
+import logica.ControladorMaterial;
+import interfaces.Fabrica;
 
 import java.util.Date;
 
@@ -12,8 +13,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-        IControladorPrestamo controlador = new ControladorPrestamo();
-
+        Fabrica fabrica = Fabrica.getInstancia();
+        IControladorMaterial controlador = fabrica.getIControladorMaterial();
 
         DtLibro  dtLibro = new DtLibro();
 
