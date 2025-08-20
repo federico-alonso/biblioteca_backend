@@ -1,6 +1,5 @@
 package logica;
 
-
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -8,7 +7,6 @@ import jakarta.persistence.EntityManager;
 
 import excepciones.LectorRepetidoExcepcion;
 import interfaces.IControladorAltaLector;
-
 
 public class ControladorAltaLector implements IControladorAltaLector {
 
