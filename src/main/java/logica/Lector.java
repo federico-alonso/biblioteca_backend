@@ -1,9 +1,13 @@
 package logica;
 
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
+import javax.persistence.EnumType;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import java.util.Date;
+
+import datatypes.EstadoLector;
 
 @Entity
 public class Lector extends Usuario {
@@ -13,6 +17,9 @@ public class Lector extends Usuario {
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaRegistro;
 
+    @Enumerated(EnumType.STRING)
+    private EstadoLector estado;
+
     public Lector() {
         super();
     }
@@ -21,6 +28,7 @@ public class Lector extends Usuario {
         super(nombre, email);
         this.fechaRegistro = fechaRegistro;
         this.direccion = direccion;
+        this.estado = EstadoLector.ACTIVO; // default state on creation
     }
 
     public String getDireccion() {
@@ -37,5 +45,13 @@ public class Lector extends Usuario {
 
     public void setFechaRegistro(Date fechaRegistro) {
         this.fechaRegistro = fechaRegistro;
+    }
+
+    public EstadoLector getEstado() {
+        return estado;
+    }
+
+    public void setEstado(EstadoLector estado) {
+        this.estado = estado;
     }
 }
