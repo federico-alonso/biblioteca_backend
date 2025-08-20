@@ -4,34 +4,26 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import interfaces.Fabrica;
-import interfaces.IControladorAltaLector;
-import logica.ControladorAltaLector;
-
 public class Conexion {
     private static Conexion instancia = null;
     private static EntityManagerFactory emf;
-    private static EntityManager em;
 
-    private Conexion(){}
+    private Conexion() {
+        emf = Persistence.createEntityManagerFactory("bdpapPU"); // Match your persistence.xml
+    }
 
     public static Conexion getInstancia() {
         if (instancia == null) {
             instancia = new Conexion();
-            emf = Persistence.createEntityManagerFactory("gymhibernate");
-            em=emf.createEntityManager();
         }
         return instancia;
     }
 
     public EntityManager getEntityManager() {
-        return this.em;
+        return emf.createEntityManager(); // Always return a fresh one
     }
 
     public void close() {
-        this.em.close();
-        this.emf.close();
+        emf.close();
     }
-
-
 }

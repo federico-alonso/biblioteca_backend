@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.util.Calendar;
 import java.util.Date;
 
+import excepciones.LectorRepetidoExcepcion;
 import interfaces.IControladorAltaLector;
 
 public class AltaLector extends JInternalFrame {
@@ -20,11 +21,12 @@ public class AltaLector extends JInternalFrame {
 
     public AltaLector(IControladorAltaLector icon) {
         this.icon = icon;
+
         setResizable(true);
         setIconifiable(true);
         setMaximizable(true);
         setClosable(true);
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(JInternalFrame.DISPOSE_ON_CLOSE);
         setTitle("AltaLector");
         setBounds(100, 100, 450, 300);
         getContentPane().setLayout(null);
@@ -83,21 +85,46 @@ public class AltaLector extends JInternalFrame {
         getContentPane().add(btnCancelar);
     }
 
-    // Placeholder methods — you can wire these up to your controller logic
-    protected void agregarLectorAceptarActionPerformed(ActionEvent arg0) {
-        String nombre = this.textFieldNombre.getText();
-        String email = this.textFieldEmail.getText();
-        String direccion = this.textFieldDireccion.getText();
-        Date fechaRegistro = (Date) spinnerFechaRegistro.getValue();
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(fechaRegistro);
-
-        icon.altaLector(nombre, email, direccion, fechaRegistro);
-
+    protected void agregarLectorCancelarActionPerformed(ActionEvent arg0) {
+        limpiarFormulario();
         setVisible(false);
     }
 
-    private void agregarLectorCancelarActionPerformed(ActionEvent e) {
-        dispose();
+    protected void agregarLectorAceptarActionPerformed(ActionEvent arg0) {
+        String nombre = textFieldNombre.getText();
+        String email = textFieldEmail.getText();
+        String direccion = textFieldDireccion.getText();
+        Date fechaRegistro = (Date) spinnerFechaRegistro.getValue();
+
+        if (checkFormulario()) {
+            try {
+                icon.altaLector(nombre, email, direccion, fechaRegistro);
+                JOptionPane.showMessageDialog(this, "Lector Aceptado");
+            } catch (LectorRepetidoExcepcion e) {
+                JOptionPane.showMessageDialog(this, "Lector Repetido");
+            }
+            limpiarFormulario();
+            setVisible(false);
+        }
+    }
+
+    protected void limpiarFormulario() {
+        textFieldNombre.setText("");
+        textFieldEmail.setText("");
+        textFieldDireccion.setText("");
+        spinnerFechaRegistro.setValue(new Date());
+    }
+
+    private boolean checkFormulario() {
+        String nombre = textFieldNombre.getText();
+        String email = textFieldEmail.getText();
+        String direccion = textFieldDireccion.getText();
+        Date fechaRegistro = (Date) spinnerFechaRegistro.getValue();
+
+        if (nombre.isEmpty() || email.isEmpty() || direccion.isEmpty() || fechaRegistro == null) {
+            JOptionPane.showMessageDialog(this, "Hay parámetros en blanco");
+            return false;
+        }
+        return true;
     }
 }
