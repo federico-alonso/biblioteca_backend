@@ -23,6 +23,21 @@ public class ManejadorMaterial {
          em.getTransaction().begin();
          em.persist(material);
          em.getTransaction().commit();
+         conexion.close();
+    }
+
+    public Material buscarMaterial(int id){
+        Material material;
+
+        Conexion conexion = Conexion.getInstancia();
+        EntityManager em = conexion.getEntityManager();
+
+        em.getTransaction().begin();
+        material = em.find(Material.class, id);
+        em.getTransaction().commit();
+        em.close();
+
+        return material;
     }
 
 }

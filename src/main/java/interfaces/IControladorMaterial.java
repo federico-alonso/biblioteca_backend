@@ -2,7 +2,7 @@ package interfaces;
 
 import datatypes.DtLibro;
 
-public interface IControlador{
+public interface IControladorMaterial {
 
     public void altaDonacionLibro(DtLibro libro);
 

@@ -1,19 +1,28 @@
 package logica;
 
-import javax.persistence.Entity;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import java.util.Date;
+import java.util.List;
+import java.util.ArrayList;
+
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.TemporalType;
+import jakarta.persistence.Temporal;
 
 @Entity
 public class Lector extends Usuario {
-
     private String direccion;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaRegistro;
+   // private EstadoUsuario estado;
+    //private Zona zona;
 
-    public Lector() {
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "lector")
+    private List<Prestamo> prestamos = new ArrayList<>();
+
+    public Lector(){
         super();
     }
 

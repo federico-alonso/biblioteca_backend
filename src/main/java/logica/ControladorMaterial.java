@@ -1,14 +1,12 @@
 package logica;
 
-import interfaces.IControlador;
-
 import datatypes.DtLibro;
 
-import java.util.Date;
+import interfaces.IControladorMaterial;
 
-public class Controlador implements IControlador{
+public class ControladorMaterial implements IControladorMaterial {
 
-    public Controlador() {
+    public ControladorMaterial() {
         super();
     }
 
@@ -18,7 +16,6 @@ public class Controlador implements IControlador{
         Libro libro = new Libro(dtLibro.getTitulo(), dtLibro.getCantidadPag(), dtLibro.getFechaIngreso());
         mm.agregarMaterial(libro);
     }
-
 
 
 }

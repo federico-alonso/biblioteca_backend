@@ -1,14 +1,11 @@
 package presentacion;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
-import logica.Controlador;
-import logica.Lector;
-import logica.Libro;
 
-import interfaces.IControlador;
+import interfaces.IControladorAltaLector;
+import interfaces.IControladorMaterial;
 import datatypes.DtLibro;
+import logica.ControladorMaterial;
+import interfaces.Fabrica;
 
 import java.util.Date;
 
@@ -16,8 +13,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-        IControlador controlador = new Controlador();
-
+        Fabrica fabrica = Fabrica.getInstancia();
+        IControladorMaterial controlador = fabrica.getIControladorMaterial();
 
         DtLibro  dtLibro = new DtLibro();
 

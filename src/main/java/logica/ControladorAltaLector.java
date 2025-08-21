@@ -1,12 +1,10 @@
 package logica;
 
 
-
-
 import java.util.ArrayList;
 import java.util.Date;
 
-import javax.persistence.EntityManager;
+import jakarta.persistence.EntityManager;
 
 import excepciones.LectorRepetidoExcepcion;
 import interfaces.IControladorAltaLector;
