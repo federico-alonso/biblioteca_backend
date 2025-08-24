@@ -1,5 +1,6 @@
 package interfaces;
 
+import logica.ControladorAltaBibliotecario;
 import logica.ControladorAltaLector;
 import logica.ControladorMaterial;
 
@@ -16,6 +17,10 @@ public class Fabrica {
     public IControladorAltaLector getIControladorAltaLector() {
         return new ControladorAltaLector();
     }
+    public IControladorAltaBibliotecario getIControladorAltaBibliotecario(){
+        return new ControladorAltaBibliotecario();
+    }
+
     public IControladorMaterial getIControladorMaterial(){
         return new ControladorMaterial();
     }

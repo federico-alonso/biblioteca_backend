@@ -4,19 +4,19 @@ import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
-
 import interfaces.Fabrica;
 import interfaces.IControladorAltaLector;
+import interfaces.IControladorAltaBibliotecario;
 
 public class Principal {
     private JFrame frame;
 
     private AltaLector agregarLectorInternalFrame;
+    private AltaBibliotecario agregarBibliotecarioInternalFrame;
 
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
@@ -36,6 +36,7 @@ public class Principal {
 
         Fabrica fabrica = Fabrica.getInstancia();
         IControladorAltaLector icon = fabrica.getIControladorAltaLector();
+        IControladorAltaBibliotecario iconBibliotecario = fabrica.getIControladorAltaBibliotecario();
 
         Dimension desktopSize = frame.getSize();
         Dimension jInternalFrameSize;
@@ -46,6 +47,15 @@ public class Principal {
                 (desktopSize.height- jInternalFrameSize.height)/2);
         agregarLectorInternalFrame.setVisible(false);
         frame.getContentPane().add(agregarLectorInternalFrame);
+
+        agregarBibliotecarioInternalFrame = new AltaBibliotecario(iconBibliotecario);
+        jInternalFrameSize = agregarBibliotecarioInternalFrame.getSize();
+        agregarBibliotecarioInternalFrame.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
+                (desktopSize.height- jInternalFrameSize.height)/2);
+        agregarBibliotecarioInternalFrame.setVisible(false);
+        frame.getContentPane().add(agregarBibliotecarioInternalFrame);
+
+
 
 
     }
@@ -70,5 +80,12 @@ public class Principal {
         });
         mnAltas.add(mntmLector);
 
+        JMenuItem mntmBibliotecario = new JMenuItem("Bibliotecario");
+        mntmBibliotecario.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                agregarBibliotecarioInternalFrame.setVisible(true);
+            }
+        });
+        mnAltas.add(mntmBibliotecario);
     }
 }
