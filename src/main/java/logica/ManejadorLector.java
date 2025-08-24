@@ -39,4 +39,20 @@ public class ManejadorLector {
             em.close();
         }
     }
+
+    public void actualizarLector(Lector lector) {
+        EntityManager em = Conexion.getInstancia().getEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.merge(lector); // merge ensures the entity is updated
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            throw e;
+        } finally {
+            em.close();
+        }
+    }
 }

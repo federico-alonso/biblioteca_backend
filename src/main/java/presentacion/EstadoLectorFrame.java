@@ -4,16 +4,18 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 
 import datatypes.EstadoLector;
-import interfaces.IControladorAltaLector;
+import interfaces.IControladorModificarEstadoLector;
+import excepciones.LectorNoExisteExcepcion;
 
 public class EstadoLectorFrame extends JInternalFrame {
 
-    private IControladorAltaLector icon;
+    private IControladorModificarEstadoLector icon;
+
 
     private JTextField textFieldNombre;
     private JComboBox<EstadoLector> comboBoxEstado;
 
-    public EstadoLectorFrame(IControladorAltaLector icon) {
+    public EstadoLectorFrame(IControladorModificarEstadoLector icon) {
         this.icon = icon;
 
         setTitle("Cambiar Estado del Lector");
@@ -64,7 +66,12 @@ public class EstadoLectorFrame extends JInternalFrame {
             return;
         }
 
-        // TODO: Call controller logic to update lector's estado
+        try {
+            icon.modificarEstadoLector(nombre, nuevoEstado);
+            JOptionPane.showMessageDialog(this, "Estado actualizado correctamente");
+        } catch (LectorNoExisteExcepcion ex) {
+            JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage());
+        }
         System.out.println("Cambiar estado de '" + nombre + "' a " + nuevoEstado);
         limpiarFormulario();
         setVisible(false);
