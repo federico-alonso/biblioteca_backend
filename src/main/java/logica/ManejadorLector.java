@@ -1,6 +1,6 @@
 package logica;
 
-import jakarta.persistence.EntityManager;
+import javax.persistence.EntityManager;
 import persistencia.Conexion;
 
 public class ManejadorLector {
@@ -25,7 +25,7 @@ public class ManejadorLector {
             if (em.getTransaction().isActive()) {
                 em.getTransaction().rollback();
             }
-            throw e; // or log it if you prefer
+            throw e;
         } finally {
             em.close();
         }
@@ -44,7 +44,7 @@ public class ManejadorLector {
         EntityManager em = Conexion.getInstancia().getEntityManager();
         try {
             em.getTransaction().begin();
-            em.merge(lector); // merge ensures the entity is updated
+            em.merge(lector);
             em.getTransaction().commit();
         } catch (Exception e) {
             if (em.getTransaction().isActive()) {

@@ -4,13 +4,13 @@ import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
 
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.EnumType;
+import javax.persistence.OneToMany;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Enumerated;
+import javax.persistence.EnumType;
 
 import datatypes.EstadoLector;
 

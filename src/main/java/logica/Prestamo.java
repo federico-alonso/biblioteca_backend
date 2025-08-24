@@ -1,11 +1,11 @@
 package logica;
 
 import datatypes.EstadoPmo;
-import jakarta.persistence.*;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-        //@IdClass(PrestamoID.class)
+//@IdClass(PrestamoID.class)
 public class Prestamo {
 
     @Id
@@ -24,10 +24,10 @@ public class Prestamo {
     private Bibliotecario bibliotecario;
 
     private Date fechaSolicitud;
-    private Date fechaDevolucion;//private EstadoPmo estado;
+    private Date fechaDevolucion; // private EstadoPmo estado;
 
     // Constructor vacío
-    public Prestamo(){
+    public Prestamo() {
         this.fechaSolicitud = new Date();
     }
 
@@ -36,7 +36,6 @@ public class Prestamo {
                     Material material, Bibliotecario bibliotecario, Lector lector) {
         this.fechaSolicitud = fechaSolicitud;
         this.fechaDevolucion = fechaDevolucion;
-        //  this.estado = estado;
         this.material = material;
         this.bibliotecario = bibliotecario;
         this.lector = lector;
@@ -45,33 +44,40 @@ public class Prestamo {
     public void setMaterial(Material material) {
         this.material = material;
     }
-    public void setLector(Lector lector){
+
+    public void setLector(Lector lector) {
         this.lector = lector;
     }
-    public void setBibliotecario(Bibliotecario bibliotecario){
+
+    public void setBibliotecario(Bibliotecario bibliotecario) {
         this.bibliotecario = bibliotecario;
     }
-    public void setFechaSolicitud(Date fechaSolicitud){
+
+    public void setFechaSolicitud(Date fechaSolicitud) {
         this.fechaSolicitud = fechaSolicitud;
     }
-    public void setfechaDevolucion(Date fechaDevolucion){
+
+    public void setfechaDevolucion(Date fechaDevolucion) {
         this.fechaDevolucion = fechaDevolucion;
     }
 
-    public Material getMaterial(){
+    public Material getMaterial() {
         return material;
     }
-    public Lector getLector(){
+
+    public Lector getLector() {
         return lector;
     }
-    public Bibliotecario getBibliotecario(){
+
+    public Bibliotecario getBibliotecario() {
         return bibliotecario;
     }
-    public Date getFechaSolicitud(){
+
+    public Date getFechaSolicitud() {
         return fechaSolicitud;
     }
-    public Date getFechaDevolucion(){
+
+    public Date getFechaDevolucion() {
         return fechaDevolucion;
     }
-
 }
