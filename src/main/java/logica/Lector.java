@@ -61,4 +61,4 @@ public class Lector extends Usuario {
     public void setEstado(EstadoLector estado) {
         this.estado = estado;
     }
-
+}
