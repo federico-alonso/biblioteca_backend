@@ -5,33 +5,36 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-//@IdClass(PrestamoID.class)
+@IdClass(persistencia.PrestamoID.class)
 public class Prestamo {
 
     @Id
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name = "material_id", referencedColumnName = "id")
     private Material material;
 
     @Id
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name = "lector_nombre", referencedColumnName = "nombre")
     private Lector lector;
 
     @Id
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name = "bibliotecario_nombre", referencedColumnName = "nombre")
     private Bibliotecario bibliotecario;
 
+    @Temporal(TemporalType.TIMESTAMP)
     private Date fechaSolicitud;
-    private Date fechaDevolucion; // private EstadoPmo estado;
 
-    // Constructor vacío
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaDevolucion;
+
+    // Optional: private EstadoPmo estado;
+
     public Prestamo() {
         this.fechaSolicitud = new Date();
     }
 
-    // Constructor con todos los atributos (excepto id)
     public Prestamo(Date fechaSolicitud, Date fechaDevolucion,
                     Material material, Bibliotecario bibliotecario, Lector lector) {
         this.fechaSolicitud = fechaSolicitud;
@@ -57,7 +60,7 @@ public class Prestamo {
         this.fechaSolicitud = fechaSolicitud;
     }
 
-    public void setfechaDevolucion(Date fechaDevolucion) {
+    public void setFechaDevolucion(Date fechaDevolucion) {
         this.fechaDevolucion = fechaDevolucion;
     }
 
