@@ -2,6 +2,8 @@ package interfaces;
 
 import logica.ControladorAltaLector;
 import logica.ControladorModificarEstadoLector;
+import logica.ControladorMaterial;
+
 
 public class Fabrica {
     private static Fabrica instancia = null;
@@ -17,8 +19,11 @@ public class Fabrica {
     public IControladorAltaLector getIControladorAltaLector() {
         return new ControladorAltaLector();
     }
-
     public IControladorModificarEstadoLector getIControladorModificarEstadoLector() {
         return new ControladorModificarEstadoLector();
+
+    public IControladorMaterial getIControladorMaterial(){
+        return new ControladorMaterial();
+
     }
 }

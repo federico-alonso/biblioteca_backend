@@ -1,17 +1,21 @@
 package logica;
 
-import javax.persistence.Entity;
-import javax.persistence.Enumerated;
-import javax.persistence.EnumType;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import java.util.Date;
+import java.util.List;
+import java.util.ArrayList;
+
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.EnumType;
 
 import datatypes.EstadoLector;
 
 @Entity
 public class Lector extends Usuario {
-
     private String direccion;
 
     @Temporal(TemporalType.TIMESTAMP)
@@ -19,6 +23,9 @@ public class Lector extends Usuario {
 
     @Enumerated(EnumType.STRING)
     private EstadoLector estado;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "lector")
+    private List<Prestamo> prestamos = new ArrayList<>();
 
     public Lector() {
         super();
@@ -54,4 +61,4 @@ public class Lector extends Usuario {
     public void setEstado(EstadoLector estado) {
         this.estado = estado;
     }
-}
+

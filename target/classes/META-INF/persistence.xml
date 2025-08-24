@@ -3,8 +3,12 @@
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
                                  http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
              version="2.1">
+
+    <!-- Unidad para PostgreSQL en Render -->
     <persistence-unit name="bdpapPU" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <!-- Tus entidades -->
         <class>logica.Usuario</class>
         <class>logica.Material</class>
         <class>logica.ArticuloEspecial</class>
@@ -12,15 +16,20 @@
         <class>logica.Lector</class>
         <class>logica.Bibliotecario</class>
         <class>logica.Libro</class>
+
         <properties>
+            <!-- Driver y URL que te da Render -->
             <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
             <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://dpg-d2hsb9f5r7bs73ep5g20-a.oregon-postgres.render.com:5432/bdpap"/>
             <property name="jakarta.persistence.jdbc.user" value="bdpap_user"/>
             <property name="jakarta.persistence.jdbc.password" value="LwstmzCBSPaaKmUknErzbHZ0ZJRFfQIT"/>
+
+            <!-- Opciones Hibernate -->
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
         </properties>
     </persistence-unit>
+
 </persistence>
