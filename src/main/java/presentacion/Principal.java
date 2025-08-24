@@ -2,8 +2,6 @@ package presentacion;
 
 import java.awt.Dimension;
 import java.awt.EventQueue;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
@@ -12,6 +10,7 @@ import javax.swing.JMenuItem;
 
 import interfaces.Fabrica;
 import interfaces.IControladorAltaLector;
+import interfaces.IControladorModificarEstadoLector;
 
 public class Principal {
     private JFrame frame;
@@ -34,11 +33,12 @@ public class Principal {
         initialize();
 
         Fabrica fabrica = Fabrica.getInstancia();
-        IControladorAltaLector icon = fabrica.getIControladorAltaLector();
+        IControladorAltaLector controladorAlta = fabrica.getIControladorAltaLector();
+        IControladorModificarEstadoLector controladorModificar = fabrica.getIControladorModificarEstadoLector();
 
         Dimension desktopSize = frame.getSize();
 
-        agregarLectorInternalFrame = new AltaLector(icon);
+        agregarLectorInternalFrame = new AltaLector(controladorAlta);
         agregarLectorInternalFrame.setLocation(
                 (desktopSize.width - agregarLectorInternalFrame.getSize().width) / 2,
                 (desktopSize.height - agregarLectorInternalFrame.getSize().height) / 2
@@ -46,7 +46,7 @@ public class Principal {
         agregarLectorInternalFrame.setVisible(false);
         frame.getContentPane().add(agregarLectorInternalFrame);
 
-        estadoLectorInternalFrame = new EstadoLectorFrame(icon);
+        estadoLectorInternalFrame = new EstadoLectorFrame(controladorModificar);
         estadoLectorInternalFrame.setLocation(
                 (desktopSize.width - estadoLectorInternalFrame.getSize().width) / 2,
                 (desktopSize.height - estadoLectorInternalFrame.getSize().height) / 2
