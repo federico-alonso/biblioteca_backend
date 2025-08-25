@@ -8,6 +8,7 @@ public abstract class DtMaterial {
 
     protected DtMaterial(){
         this.fechaIngreso = new Date();
+        this.id = 0;
     }
     
     protected DtMaterial(Date fechaIngreso){

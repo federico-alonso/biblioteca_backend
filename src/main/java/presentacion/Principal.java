@@ -23,6 +23,8 @@ public class Principal {
     private EstadoLectorFrame estadoLectorInternalFrame;
     private AltaLibro altaLibroInternalFrame;
     private ModificarZonaLectorFrame modificarZonaInternalFrame;
+    private AltaDonacionEspecial altaDonacionEspecialInternalFrame;
+    private AltaDonacionLibro altaDonacionLibroInternalFrame;
 
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
@@ -86,6 +88,22 @@ public class Principal {
         );
         modificarZonaInternalFrame.setVisible(false);
         frame.getContentPane().add(modificarZonaInternalFrame);
+
+        altaDonacionEspecialInternalFrame = new AltaDonacionEspecial(controladorMaterial);
+        altaDonacionEspecialInternalFrame.setLocation(
+                (desktopSize.width - altaDonacionEspecialInternalFrame.getSize().width) / 2,
+                (desktopSize.height - altaDonacionEspecialInternalFrame.getSize().height) / 2
+        );
+        altaDonacionEspecialInternalFrame.setVisible(false);
+        frame.getContentPane().add(altaDonacionEspecialInternalFrame);
+
+        altaDonacionLibroInternalFrame = new AltaDonacionLibro(controladorMaterial);
+        altaDonacionLibroInternalFrame.setLocation(
+                (desktopSize.width - altaDonacionLibroInternalFrame.getSize().width) / 2,
+                (desktopSize.height - altaDonacionLibroInternalFrame.getSize().height) / 2
+        );
+        altaDonacionLibroInternalFrame.setVisible(false);
+        frame.getContentPane().add(altaDonacionLibroInternalFrame);
     }
 
     private void initialize() {
@@ -122,5 +140,16 @@ public class Principal {
         JMenuItem mntmAltaLibro = new JMenuItem("Registrar libro");
         mntmAltaLibro.addActionListener(e -> altaLibroInternalFrame.setVisible(true));
         mnDonaciones.add(mntmAltaLibro);
+
+        JMenu mnMateriales = new JMenu("Materiales");
+        menuBar.add(mnMateriales);
+
+        JMenuItem mntmAltaDonacionEspecial = new JMenuItem("Alta Donación Especial");
+        mntmAltaDonacionEspecial.addActionListener(e -> altaDonacionEspecialInternalFrame.setVisible(true));
+        mnMateriales.add(mntmAltaDonacionEspecial);
+
+        JMenuItem mntmAltaDonacionLibro = new JMenuItem("Alta Donación Libro");
+        mntmAltaDonacionLibro.addActionListener(e -> altaDonacionLibroInternalFrame.setVisible(true));
+        mnMateriales.add(mntmAltaDonacionLibro);
     }
 }

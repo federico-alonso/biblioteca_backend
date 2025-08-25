@@ -17,24 +17,27 @@ public class ManejadorMaterial {
     }
 
     public void agregarMaterial(Material material) {
-        Conexion conexion = Conexion.getInstancia();
-        EntityManager em = conexion.getEntityManager();
-
-        em.getTransaction().begin();
-        em.persist(material);
-        em.getTransaction().commit();
-        conexion.close();
+        EntityManager em = Conexion.getInstancia().getEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.persist(material);
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            throw e;
+        } finally {
+            em.close();
+        }
     }
 
     public Material buscarMaterial(int id) {
-        Conexion conexion = Conexion.getInstancia();
-        EntityManager em = conexion.getEntityManager();
-
-        em.getTransaction().begin();
-        Material material = em.find(Material.class, id);
-        em.getTransaction().commit();
-        em.close();
-
-        return material;
+        EntityManager em = Conexion.getInstancia().getEntityManager();
+        try {
+            return em.find(Material.class, id);
+        } finally {
+            em.close();
+        }
     }
 }

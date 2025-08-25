@@ -1,9 +1,10 @@
 package interfaces;
 
 import datatypes.DtLibro;
+import datatypes.DtArticulo;
 
 public interface IControladorMaterial {
 
-    public void altaDonacionLibro(DtLibro libro);
-
+    void altaDonacionLibro(DtLibro libro);
+    void altaDonacionEspecial(DtArticulo dtArticulo);
 }
