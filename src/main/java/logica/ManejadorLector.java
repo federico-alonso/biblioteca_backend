@@ -2,6 +2,7 @@ package logica;
 
 import jakarta.persistence.EntityManager;
 import persistencia.Conexion;
+import java.util.List;
 
 public class ManejadorLector {
     private static ManejadorLector instance = null;
@@ -51,6 +52,18 @@ public class ManejadorLector {
                 em.getTransaction().rollback();
             }
             throw e;
+        } finally {
+            em.close();
+        }
+    }
+
+    public List<String> listarNombresLectores() {
+        EntityManager em = Conexion.getInstancia().getEntityManager();
+        try {
+            List<Lector> lectores = em.createQuery("SELECT l FROM Lector l", Lector.class).getResultList();
+            return lectores.stream()
+                    .map(Lector::getNombre)
+                    .collect(java.util.stream.Collectors.toList());
         } finally {
             em.close();
         }

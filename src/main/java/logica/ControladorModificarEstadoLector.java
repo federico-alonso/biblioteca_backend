@@ -3,6 +3,7 @@ package logica;
 import datatypes.EstadoLector;
 import excepciones.LectorNoExisteExcepcion;
 import interfaces.IControladorModificarEstadoLector;
+import java.util.List;
 
 public class ControladorModificarEstadoLector implements IControladorModificarEstadoLector {
 
@@ -21,5 +22,11 @@ public class ControladorModificarEstadoLector implements IControladorModificarEs
 
         lector.setEstado(nuevoEstado);
         manejadorLector.actualizarLector(lector);
+    }
+
+    @Override
+    public List<String> listarNombresLectores() {
+        ManejadorLector manejadorLector = ManejadorLector.getInstance();
+        return manejadorLector.listarNombresLectores();
     }
 }

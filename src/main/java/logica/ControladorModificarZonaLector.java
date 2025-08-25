@@ -3,6 +3,7 @@ package logica;
 import datatypes.Zona;
 import excepciones.LectorNoExisteExcepcion;
 import interfaces.IControladorModificarZonaLector;
+import java.util.List;
 
 public class ControladorModificarZonaLector implements IControladorModificarZonaLector {
 
@@ -21,5 +22,11 @@ public class ControladorModificarZonaLector implements IControladorModificarZona
 
         lector.setZona(nuevaZona);
         manejadorLector.actualizarLector(lector);
+    }
+
+    @Override
+    public List<String> listarNombresLectores() {
+        ManejadorLector manejadorLector = ManejadorLector.getInstance();
+        return manejadorLector.listarNombresLectores();
     }
 }

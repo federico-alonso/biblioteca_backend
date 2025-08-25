@@ -2,6 +2,7 @@ package presentacion;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.util.List;
 
 import datatypes.Zona;
 import interfaces.IControladorModificarZonaLector;
@@ -11,7 +12,7 @@ public class ModificarZonaLectorFrame extends JInternalFrame {
 
     private IControladorModificarZonaLector icon;
 
-    private JTextField textFieldNombre;
+    private JComboBox<String> comboBoxNombre;
     private JComboBox<Zona> comboBoxZona;
 
     public ModificarZonaLectorFrame(IControladorModificarZonaLector icon) {
@@ -29,10 +30,10 @@ public class ModificarZonaLectorFrame extends JInternalFrame {
         lblNombre.setBounds(20, 20, 150, 20);
         getContentPane().add(lblNombre);
 
-        textFieldNombre = new JTextField();
-        textFieldNombre.setBounds(180, 20, 180, 20);
-        getContentPane().add(textFieldNombre);
-        textFieldNombre.setColumns(10);
+        comboBoxNombre = new JComboBox<>();
+        comboBoxNombre.setBounds(180, 20, 180, 20);
+        getContentPane().add(comboBoxNombre);
+        cargarNombresLectores();
 
         JLabel lblZona = new JLabel("Nueva zona:");
         lblZona.setBounds(20, 60, 150, 20);
@@ -57,11 +58,11 @@ public class ModificarZonaLectorFrame extends JInternalFrame {
     }
 
     private void cambiarZonaActionPerformed(ActionEvent e) {
-        String nombre = textFieldNombre.getText();
+        String nombre = (String) comboBoxNombre.getSelectedItem();
         Zona nuevaZona = (Zona) comboBoxZona.getSelectedItem();
 
-        if (nombre.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Debe ingresar el nombre del lector");
+        if (nombre == null || nombre.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un lector");
             return;
         }
 
@@ -77,7 +78,20 @@ public class ModificarZonaLectorFrame extends JInternalFrame {
     }
 
     private void limpiarFormulario() {
-        textFieldNombre.setText("");
+        comboBoxNombre.setSelectedIndex(0);
         comboBoxZona.setSelectedIndex(0);
+    }
+
+    private void cargarNombresLectores() {
+        try {
+            List<String> nombres = icon.listarNombresLectores();
+            comboBoxNombre.removeAllItems();
+            comboBoxNombre.addItem("Seleccione un lector");
+            for (String nombre : nombres) {
+                comboBoxNombre.addItem(nombre);
+            }
+        } catch (Exception e) {
+            System.err.println("Error al cargar nombres de lectores: " + e.getMessage());
+        }
     }
 }
