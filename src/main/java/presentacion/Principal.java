@@ -10,6 +10,7 @@ import javax.swing.JMenuItem;
 
 import interfaces.Fabrica;
 import interfaces.IControladorAltaLector;
+import interfaces.IControladorAltaBibliotecario;
 import interfaces.IControladorModificarEstadoLector;
 import interfaces.IControladorMaterial;
 
@@ -17,6 +18,7 @@ public class Principal {
     private JFrame frame;
 
     private AltaLector agregarLectorInternalFrame;
+    private AltaBibliotecario agregarBibliotecarioInternalFrame;
     private EstadoLectorFrame estadoLectorInternalFrame;
     private AltaLibro altaLibroInternalFrame;
 
@@ -36,6 +38,7 @@ public class Principal {
 
         Fabrica fabrica = Fabrica.getInstancia();
         IControladorAltaLector controladorAlta = fabrica.getIControladorAltaLector();
+        IControladorAltaBibliotecario controladorBibliotecario = fabrica.getIControladorAltaBibliotecario();
         IControladorModificarEstadoLector controladorModificar = fabrica.getIControladorModificarEstadoLector();
         IControladorMaterial controladorMaterial = fabrica.getIControladorMaterial();
 
@@ -48,6 +51,14 @@ public class Principal {
         );
         agregarLectorInternalFrame.setVisible(false);
         frame.getContentPane().add(agregarLectorInternalFrame);
+
+        agregarBibliotecarioInternalFrame = new AltaBibliotecario(controladorBibliotecario);
+        agregarBibliotecarioInternalFrame.setLocation(
+                (desktopSize.width - agregarBibliotecarioInternalFrame.getSize().width) / 2,
+                (desktopSize.height - agregarBibliotecarioInternalFrame.getSize().height) / 2
+        );
+        agregarBibliotecarioInternalFrame.setVisible(false);
+        frame.getContentPane().add(agregarBibliotecarioInternalFrame);
 
         estadoLectorInternalFrame = new EstadoLectorFrame(controladorModificar);
         estadoLectorInternalFrame.setLocation(
@@ -81,6 +92,10 @@ public class Principal {
         JMenuItem mntmAgregarLector = new JMenuItem("Agregar lector");
         mntmAgregarLector.addActionListener(e -> agregarLectorInternalFrame.setVisible(true));
         mnLectores.add(mntmAgregarLector);
+
+        JMenuItem mntmBibliotecario = new JMenuItem("Agregar bibliotecario");
+        mntmBibliotecario.addActionListener(e -> agregarBibliotecarioInternalFrame.setVisible(true));
+        mnLectores.add(mntmBibliotecario);
 
         JMenuItem mntmCambiarEstado = new JMenuItem("Cambiar estado de lector");
         mntmCambiarEstado.addActionListener(e -> estadoLectorInternalFrame.setVisible(true));
