@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.util.Calendar;
 import java.util.Date;
 
+import datatypes.Zona;
 import excepciones.LectorRepetidoExcepcion;
 import interfaces.IControladorAltaLector;
 
@@ -18,6 +19,7 @@ public class AltaLector extends JInternalFrame {
     private JTextField textFieldEmail;
     private JTextField textFieldDireccion;
     private JSpinner spinnerFechaRegistro;
+    private JComboBox<Zona> comboBoxZona;
 
     public AltaLector(IControladorAltaLector icon) {
         this.icon = icon;
@@ -66,8 +68,16 @@ public class AltaLector extends JInternalFrame {
         spinnerFechaRegistro.setBounds(140, 100, 180, 25);
         getContentPane().add(spinnerFechaRegistro);
 
+        JLabel lblZona = new JLabel("Zona:");
+        lblZona.setBounds(10, 130, 100, 20);
+        getContentPane().add(lblZona);
+
+        comboBoxZona = new JComboBox<>(Zona.values());
+        comboBoxZona.setBounds(120, 130, 200, 25);
+        getContentPane().add(comboBoxZona);
+
         JButton btnAceptar = new JButton("Aceptar");
-        btnAceptar.setBounds(120, 140, 100, 25);
+        btnAceptar.setBounds(120, 170, 100, 25);
         btnAceptar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 agregarLectorAceptarActionPerformed(e);
@@ -76,7 +86,7 @@ public class AltaLector extends JInternalFrame {
         getContentPane().add(btnAceptar);
 
         JButton btnCancelar = new JButton("Cancelar");
-        btnCancelar.setBounds(230, 140, 100, 25);
+        btnCancelar.setBounds(230, 170, 100, 25);
         btnCancelar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 agregarLectorCancelarActionPerformed(e);
@@ -95,10 +105,11 @@ public class AltaLector extends JInternalFrame {
         String email = textFieldEmail.getText();
         String direccion = textFieldDireccion.getText();
         Date fechaRegistro = (Date) spinnerFechaRegistro.getValue();
+        Zona zona = (Zona) comboBoxZona.getSelectedItem();
 
         if (checkFormulario()) {
             try {
-                icon.altaLector(nombre, email, direccion, fechaRegistro);
+                icon.altaLector(nombre, email, direccion, fechaRegistro, zona);
                 JOptionPane.showMessageDialog(this, "Lector Aceptado");
             } catch (LectorRepetidoExcepcion e) {
                 JOptionPane.showMessageDialog(this, "Lector Repetido");
@@ -113,6 +124,7 @@ public class AltaLector extends JInternalFrame {
         textFieldEmail.setText("");
         textFieldDireccion.setText("");
         spinnerFechaRegistro.setValue(new Date());
+        comboBoxZona.setSelectedIndex(0);
     }
 
     private boolean checkFormulario() {
@@ -120,8 +132,9 @@ public class AltaLector extends JInternalFrame {
         String email = textFieldEmail.getText();
         String direccion = textFieldDireccion.getText();
         Date fechaRegistro = (Date) spinnerFechaRegistro.getValue();
+        Zona zona = (Zona) comboBoxZona.getSelectedItem();
 
-        if (nombre.isEmpty() || email.isEmpty() || direccion.isEmpty() || fechaRegistro == null) {
+        if (nombre.isEmpty() || email.isEmpty() || direccion.isEmpty() || fechaRegistro == null || zona == null) {
             JOptionPane.showMessageDialog(this, "Hay parámetros en blanco");
             return false;
         }

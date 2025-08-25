@@ -1,78 +1,64 @@
 package persistencia;
 
 import java.io.Serializable;
+import jakarta.persistence.Embeddable;
 
+@Embeddable
 public class PrestamoID implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private int material;
-    private String bibliotecario;
-    private String lector;
+    private Long materialId;
+    private String bibliotecarioNombre;
+    private String lectorNombre;
 
     public PrestamoID() {}
 
-    public PrestamoID(int material, String bibliotecario, String lector) {
-        this.material = material;
-        this.bibliotecario = bibliotecario;
-        this.lector = lector;
+    public PrestamoID(Long materialId, String bibliotecarioNombre, String lectorNombre) {
+        this.materialId = materialId;
+        this.bibliotecarioNombre = bibliotecarioNombre;
+        this.lectorNombre = lectorNombre;
     }
 
-    public int getMaterial() {
-        return material;
+    public Long getMaterialId() {
+        return materialId;
     }
 
-    public void setMaterial(int material) {
-        this.material = material;
+    public void setMaterialId(Long materialId) {
+        this.materialId = materialId;
     }
 
-    public String getBibliotecario() {
-        return bibliotecario;
+    public String getBibliotecarioNombre() {
+        return bibliotecarioNombre;
     }
 
-    public void setBibliotecario(String bibliotecario) {
-        this.bibliotecario = bibliotecario;
+    public void setBibliotecarioNombre(String bibliotecarioNombre) {
+        this.bibliotecarioNombre = bibliotecarioNombre;
     }
 
-    public String getLector() {
-        return lector;
+    public String getLectorNombre() {
+        return lectorNombre;
     }
 
-    public void setLector(String lector) {
-        this.lector = lector;
+    public void setLectorNombre(String lectorNombre) {
+        this.lectorNombre = lectorNombre;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof PrestamoID)) return false;
+        PrestamoID that = (PrestamoID) o;
+        return materialId.equals(that.materialId)
+                && bibliotecarioNombre.equals(that.bibliotecarioNombre)
+                && lectorNombre.equals(that.lectorNombre);
     }
 
     @Override
     public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + material;
-        result = prime * result + ((bibliotecario == null) ? 0 : bibliotecario.hashCode());
-        result = prime * result + ((lector == null) ? 0 : lector.hashCode());
+        int result = materialId.hashCode();
+        result = 31 * result + bibliotecarioNombre.hashCode();
+        result = 31 * result + lectorNombre.hashCode();
         return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        PrestamoID other = (PrestamoID) obj;
-        if (material != other.material)
-            return false;
-        if (bibliotecario == null) {
-            if (other.bibliotecario != null)
-                return false;
-        } else if (!bibliotecario.equals(other.bibliotecario))
-            return false;
-        if (lector == null) {
-            if (other.lector != null)
-                return false;
-        } else if (!lector.equals(other.lector))
-            return false;
-        return true;
     }
 }

@@ -13,6 +13,7 @@ import interfaces.IControladorAltaLector;
 import interfaces.IControladorAltaBibliotecario;
 import interfaces.IControladorModificarEstadoLector;
 import interfaces.IControladorMaterial;
+import interfaces.IControladorModificarZonaLector;
 
 public class Principal {
     private JFrame frame;
@@ -21,6 +22,7 @@ public class Principal {
     private AltaBibliotecario agregarBibliotecarioInternalFrame;
     private EstadoLectorFrame estadoLectorInternalFrame;
     private AltaLibro altaLibroInternalFrame;
+    private ModificarZonaLectorFrame modificarZonaInternalFrame;
 
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
@@ -39,8 +41,9 @@ public class Principal {
         Fabrica fabrica = Fabrica.getInstancia();
         IControladorAltaLector controladorAlta = fabrica.getIControladorAltaLector();
         IControladorAltaBibliotecario controladorBibliotecario = fabrica.getIControladorAltaBibliotecario();
-        IControladorModificarEstadoLector controladorModificar = fabrica.getIControladorModificarEstadoLector();
+        IControladorModificarEstadoLector controladorModificarEstado = fabrica.getIControladorModificarEstadoLector();
         IControladorMaterial controladorMaterial = fabrica.getIControladorMaterial();
+        IControladorModificarZonaLector controladorModificarZona = fabrica.getIControladorModificarZonaLector();
 
         Dimension desktopSize = frame.getSize();
 
@@ -60,7 +63,7 @@ public class Principal {
         agregarBibliotecarioInternalFrame.setVisible(false);
         frame.getContentPane().add(agregarBibliotecarioInternalFrame);
 
-        estadoLectorInternalFrame = new EstadoLectorFrame(controladorModificar);
+        estadoLectorInternalFrame = new EstadoLectorFrame(controladorModificarEstado);
         estadoLectorInternalFrame.setLocation(
                 (desktopSize.width - estadoLectorInternalFrame.getSize().width) / 2,
                 (desktopSize.height - estadoLectorInternalFrame.getSize().height) / 2
@@ -75,6 +78,14 @@ public class Principal {
         );
         altaLibroInternalFrame.setVisible(false);
         frame.getContentPane().add(altaLibroInternalFrame);
+
+        modificarZonaInternalFrame = new ModificarZonaLectorFrame(controladorModificarZona);
+        modificarZonaInternalFrame.setLocation(
+                (desktopSize.width - modificarZonaInternalFrame.getSize().width) / 2,
+                (desktopSize.height - modificarZonaInternalFrame.getSize().height) / 2
+        );
+        modificarZonaInternalFrame.setVisible(false);
+        frame.getContentPane().add(modificarZonaInternalFrame);
     }
 
     private void initialize() {
@@ -101,16 +112,15 @@ public class Principal {
         mntmCambiarEstado.addActionListener(e -> estadoLectorInternalFrame.setVisible(true));
         mnLectores.add(mntmCambiarEstado);
 
+        JMenuItem mntmCambiarZona = new JMenuItem("Cambiar zona de lector");
+        mntmCambiarZona.addActionListener(e -> modificarZonaInternalFrame.setVisible(true));
+        mnLectores.add(mntmCambiarZona);
+
         JMenu mnDonaciones = new JMenu("Donaciones");
         menuBar.add(mnDonaciones);
 
         JMenuItem mntmAltaLibro = new JMenuItem("Registrar libro");
         mntmAltaLibro.addActionListener(e -> altaLibroInternalFrame.setVisible(true));
         mnDonaciones.add(mntmAltaLibro);
-
-        JMenuItem mntmAgregarEspecial = new JMenuItem("Registrar articulo especial");
-        mntmCambiarEstado.addActionListener(e -> estadoLectorInternalFrame.setVisible(true));
-        mnLectores.add(mntmCambiarEstado);
-
     }
 }

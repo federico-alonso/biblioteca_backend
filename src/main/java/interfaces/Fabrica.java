@@ -4,6 +4,7 @@ import logica.ControladorAltaBibliotecario;
 import logica.ControladorAltaLector;
 import logica.ControladorMaterial;
 import logica.ControladorModificarEstadoLector;
+import logica.ControladorModificarZonaLector;
 
 public class Fabrica {
     private static Fabrica instancia = null;
@@ -30,5 +31,9 @@ public class Fabrica {
 
     public IControladorModificarEstadoLector getIControladorModificarEstadoLector() {
         return new ControladorModificarEstadoLector();
+    }
+
+    public IControladorModificarZonaLector getIControladorModificarZonaLector() {
+        return new ControladorModificarZonaLector();
     }
 }

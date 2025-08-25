@@ -1,24 +1,26 @@
 package logica;
 
-import datatypes.EstadoPmo;
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.Date;
+import persistencia.PrestamoID;
 
 @Entity
-@IdClass(persistencia.PrestamoID.class)
 public class Prestamo {
 
-    @Id
+    @EmbeddedId
+    private PrestamoID id;
+
+    @MapsId("materialId")
     @ManyToOne
     @JoinColumn(name = "material_id", referencedColumnName = "id")
     private Material material;
 
-    @Id
+    @MapsId("lectorNombre")
     @ManyToOne
     @JoinColumn(name = "lector_nombre", referencedColumnName = "nombre")
     private Lector lector;
 
-    @Id
+    @MapsId("bibliotecarioNombre")
     @ManyToOne
     @JoinColumn(name = "bibliotecario_nombre", referencedColumnName = "nombre")
     private Bibliotecario bibliotecario;
@@ -29,7 +31,10 @@ public class Prestamo {
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaDevolucion;
 
-    // Optional: private EstadoPmo estado;
+    // Optional: EstadoPmo estado;
+    // If you want to include it, use:
+    // @Enumerated(EnumType.STRING)
+    // private EstadoPmo estado;
 
     public Prestamo() {
         this.fechaSolicitud = new Date();
@@ -42,45 +47,54 @@ public class Prestamo {
         this.material = material;
         this.bibliotecario = bibliotecario;
         this.lector = lector;
+        this.id = new PrestamoID(material.getId(), bibliotecario.getNombre(), lector.getNombre());
     }
 
-    public void setMaterial(Material material) {
-        this.material = material;
+    public PrestamoID getId() {
+        return id;
     }
 
-    public void setLector(Lector lector) {
-        this.lector = lector;
-    }
-
-    public void setBibliotecario(Bibliotecario bibliotecario) {
-        this.bibliotecario = bibliotecario;
-    }
-
-    public void setFechaSolicitud(Date fechaSolicitud) {
-        this.fechaSolicitud = fechaSolicitud;
-    }
-
-    public void setFechaDevolucion(Date fechaDevolucion) {
-        this.fechaDevolucion = fechaDevolucion;
+    public void setId(PrestamoID id) {
+        this.id = id;
     }
 
     public Material getMaterial() {
         return material;
     }
 
+    public void setMaterial(Material material) {
+        this.material = material;
+    }
+
     public Lector getLector() {
         return lector;
+    }
+
+    public void setLector(Lector lector) {
+        this.lector = lector;
     }
 
     public Bibliotecario getBibliotecario() {
         return bibliotecario;
     }
 
+    public void setBibliotecario(Bibliotecario bibliotecario) {
+        this.bibliotecario = bibliotecario;
+    }
+
     public Date getFechaSolicitud() {
         return fechaSolicitud;
     }
 
+    public void setFechaSolicitud(Date fechaSolicitud) {
+        this.fechaSolicitud = fechaSolicitud;
+    }
+
     public Date getFechaDevolucion() {
         return fechaDevolucion;
+    }
+
+    public void setFechaDevolucion(Date fechaDevolucion) {
+        this.fechaDevolucion = fechaDevolucion;
     }
 }

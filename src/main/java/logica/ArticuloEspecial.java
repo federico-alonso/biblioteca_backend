@@ -1,7 +1,7 @@
 package logica;
 
 import java.util.Date;
-import javax.persistence.Entity;
+import jakarta.persistence.Entity;
 
 @Entity
 public class ArticuloEspecial extends Material {
@@ -27,7 +27,6 @@ public class ArticuloEspecial extends Material {
         // this.dimensiones = dimensiones;
     }
 
-    // Getters and setters (optional, depending on usage)
     public String getDescripcion() {
         return descripcion;
     }
