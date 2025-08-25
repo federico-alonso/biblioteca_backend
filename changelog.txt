@@ -3,3 +3,18 @@
 
 -24/08/2025 - Se agrego la posibilidad de cambiar el estado del lector. 
             - Se incluye una nueva columna en el estado del lector
+
+-25/08/2025 - Se realizó una migración completa de dependencias a Jakarta EE.         
+            - Se reemplazaron todas las referencias a javax.persistence por jakarta.persistence.         
+            - Se actualizaron las dependencias en pom.xml a Hibernate 6.2.5 y Jakarta Persistence 3.1.         
+            - Se eliminó el ruido del repositorio: .idea/, target/, archivos .iml, y otros artefactos de compilación.         
+            - Se actualizó .gitignore para evitar futuras contaminaciones.         
+            - Se reconstruyó el proyecto desde pom.xml para asegurar compatibilidad con IntelliJ y Maven.
+            - Se incorporó la funcionalidad para modificar la zona de un lector.         
+            - Se agregó la clase ModificarZonaLectorFrame en la capa de presentación.         
+            - Se creó el controlador ControladorModificarZonaLector y su interfaz correspondiente.         
+            - Se actualizó el menú principal para incluir la opción "Cambiar zona de lector".         
+            - Se modificó la entidad Lector para incluir la zona como atributo editable.
+            - Se consolidaron todos los cambios en la rama main mediante rebase y merge controlado.         
+            - Se verificó cada archivo manualmente para evitar conflictos y preservar la arquitectura.         
+            - Se corrigió un remanente de javax.persistence en la clase Libro.java
