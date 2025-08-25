@@ -5,38 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a4b6bc97-07f4-4cea-8ed9-618243d9be57" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/datatypes/DtBibliotecario.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/datatypes/DtLector.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/datatypes/DtPrestamo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/datatypes/DtUsuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pap.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/datatypes/.gitkeep" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/interfaces/Fabrica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interfaces/Fabrica.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/interfaces/IControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interfaces/IControladorMaterial.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logica/Controlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/ControladorMaterial.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logica/ControladorAltaLector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/ControladorAltaLector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logica/Lector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/Lector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logica/ManejadorLector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/ManejadorLector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logica/ManejadorMaterial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/ManejadorMaterial.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logica/Prestamo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/Prestamo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logica/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/Usuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/persistencia/Conexion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/persistencia/Conexion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentacion/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentacion/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/persistence.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/interfaces/Fabrica.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/interfaces/Fabrica.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/logica/Lector.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/logica/Lector.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/logica/ManejadorMaterial.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/logica/ManejadorMaterial.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/logica/Prestamo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/logica/Prestamo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/logica/Usuario.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/logica/Usuario.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/persistencia/Conexion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/persistencia/Conexion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentacion/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentacion/Main.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +22,12 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/RTowari/biblioteca",
+    "accountId": "40f87ef3-afae-47dc-a322-b37eb8815d40"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
@@ -66,7 +41,7 @@
     "Application.Main.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "altaBibliotecario",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
