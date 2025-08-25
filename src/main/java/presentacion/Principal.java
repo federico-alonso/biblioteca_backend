@@ -12,6 +12,7 @@ import interfaces.Fabrica;
 import interfaces.IControladorAltaLector;
 import interfaces.IControladorAltaBibliotecario;
 import interfaces.IControladorModificarEstadoLector;
+import interfaces.IControladorMaterial;
 
 public class Principal {
     private JFrame frame;
@@ -19,6 +20,7 @@ public class Principal {
     private AltaLector agregarLectorInternalFrame;
     private AltaBibliotecario agregarBibliotecarioInternalFrame;
     private EstadoLectorFrame estadoLectorInternalFrame;
+    private AltaLibro altaLibroInternalFrame;
 
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
@@ -38,6 +40,7 @@ public class Principal {
         IControladorAltaLector controladorAlta = fabrica.getIControladorAltaLector();
         IControladorAltaBibliotecario controladorBibliotecario = fabrica.getIControladorAltaBibliotecario();
         IControladorModificarEstadoLector controladorModificar = fabrica.getIControladorModificarEstadoLector();
+        IControladorMaterial controladorMaterial = fabrica.getIControladorMaterial();
 
         Dimension desktopSize = frame.getSize();
 
@@ -64,6 +67,14 @@ public class Principal {
         );
         estadoLectorInternalFrame.setVisible(false);
         frame.getContentPane().add(estadoLectorInternalFrame);
+
+        altaLibroInternalFrame = new AltaLibro(controladorMaterial);
+        altaLibroInternalFrame.setLocation(
+                (desktopSize.width - altaLibroInternalFrame.getSize().width) / 2,
+                (desktopSize.height - altaLibroInternalFrame.getSize().height) / 2
+        );
+        altaLibroInternalFrame.setVisible(false);
+        frame.getContentPane().add(altaLibroInternalFrame);
     }
 
     private void initialize() {
@@ -89,5 +100,17 @@ public class Principal {
         JMenuItem mntmCambiarEstado = new JMenuItem("Cambiar estado de lector");
         mntmCambiarEstado.addActionListener(e -> estadoLectorInternalFrame.setVisible(true));
         mnLectores.add(mntmCambiarEstado);
+
+        JMenu mnDonaciones = new JMenu("Donaciones");
+        menuBar.add(mnDonaciones);
+
+        JMenuItem mntmAltaLibro = new JMenuItem("Registrar libro");
+        mntmAltaLibro.addActionListener(e -> altaLibroInternalFrame.setVisible(true));
+        mnDonaciones.add(mntmAltaLibro);
+
+        JMenuItem mntmAgregarEspecial = new JMenuItem("Registrar articulo especial");
+        mntmCambiarEstado.addActionListener(e -> estadoLectorInternalFrame.setVisible(true));
+        mnLectores.add(mntmCambiarEstado);
+
     }
 }
