@@ -1,2 +1,5 @@
 -20/08/2025 - Se agrego la posibilidad de registrar un usuario en la base de datos y el menu para ello
             - El nombre del usuaro es la key.
+
+-24/08/2025 - Se agrego la posibilidad de cambiar el estado del lector. 
+            - Se incluye una nueva columna en el estado del lector

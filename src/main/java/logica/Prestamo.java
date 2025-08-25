@@ -1,42 +1,44 @@
 package logica;
 
 import datatypes.EstadoPmo;
-import jakarta.persistence.*;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-        //@IdClass(PrestamoID.class)
+@IdClass(persistencia.PrestamoID.class)
 public class Prestamo {
 
     @Id
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name = "material_id", referencedColumnName = "id")
     private Material material;
 
     @Id
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name = "lector_nombre", referencedColumnName = "nombre")
     private Lector lector;
 
     @Id
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name = "bibliotecario_nombre", referencedColumnName = "nombre")
     private Bibliotecario bibliotecario;
 
+    @Temporal(TemporalType.TIMESTAMP)
     private Date fechaSolicitud;
-    private Date fechaDevolucion;//private EstadoPmo estado;
 
-    // Constructor vacío
-    public Prestamo(){
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaDevolucion;
+
+    // Optional: private EstadoPmo estado;
+
+    public Prestamo() {
         this.fechaSolicitud = new Date();
     }
 
-    // Constructor con todos los atributos (excepto id)
     public Prestamo(Date fechaSolicitud, Date fechaDevolucion,
                     Material material, Bibliotecario bibliotecario, Lector lector) {
         this.fechaSolicitud = fechaSolicitud;
         this.fechaDevolucion = fechaDevolucion;
-        //  this.estado = estado;
         this.material = material;
         this.bibliotecario = bibliotecario;
         this.lector = lector;
@@ -45,33 +47,40 @@ public class Prestamo {
     public void setMaterial(Material material) {
         this.material = material;
     }
-    public void setLector(Lector lector){
+
+    public void setLector(Lector lector) {
         this.lector = lector;
     }
-    public void setBibliotecario(Bibliotecario bibliotecario){
+
+    public void setBibliotecario(Bibliotecario bibliotecario) {
         this.bibliotecario = bibliotecario;
     }
-    public void setFechaSolicitud(Date fechaSolicitud){
+
+    public void setFechaSolicitud(Date fechaSolicitud) {
         this.fechaSolicitud = fechaSolicitud;
     }
-    public void setfechaDevolucion(Date fechaDevolucion){
+
+    public void setFechaDevolucion(Date fechaDevolucion) {
         this.fechaDevolucion = fechaDevolucion;
     }
 
-    public Material getMaterial(){
+    public Material getMaterial() {
         return material;
     }
-    public Lector getLector(){
+
+    public Lector getLector() {
         return lector;
     }
-    public Bibliotecario getBibliotecario(){
+
+    public Bibliotecario getBibliotecario() {
         return bibliotecario;
     }
-    public Date getFechaSolicitud(){
+
+    public Date getFechaSolicitud() {
         return fechaSolicitud;
     }
-    public Date getFechaDevolucion(){
+
+    public Date getFechaDevolucion() {
         return fechaDevolucion;
     }
-
 }

@@ -2,31 +2,31 @@ package presentacion;
 
 import java.awt.Dimension;
 import java.awt.EventQueue;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+
 import interfaces.Fabrica;
 import interfaces.IControladorAltaLector;
 import interfaces.IControladorAltaBibliotecario;
+import interfaces.IControladorModificarEstadoLector;
 
 public class Principal {
     private JFrame frame;
 
     private AltaLector agregarLectorInternalFrame;
     private AltaBibliotecario agregarBibliotecarioInternalFrame;
+    private EstadoLectorFrame estadoLectorInternalFrame;
 
     public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    Principal window = new Principal();
-                    window.frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+        EventQueue.invokeLater(() -> {
+            try {
+                Principal window = new Principal();
+                window.frame.setVisible(true);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         });
     }
@@ -35,29 +35,35 @@ public class Principal {
         initialize();
 
         Fabrica fabrica = Fabrica.getInstancia();
-        IControladorAltaLector icon = fabrica.getIControladorAltaLector();
-        IControladorAltaBibliotecario iconBibliotecario = fabrica.getIControladorAltaBibliotecario();
+        IControladorAltaLector controladorAlta = fabrica.getIControladorAltaLector();
+        IControladorAltaBibliotecario controladorBibliotecario = fabrica.getIControladorAltaBibliotecario();
+        IControladorModificarEstadoLector controladorModificar = fabrica.getIControladorModificarEstadoLector();
 
         Dimension desktopSize = frame.getSize();
-        Dimension jInternalFrameSize;
 
-        agregarLectorInternalFrame = new AltaLector(icon);
-        jInternalFrameSize = agregarLectorInternalFrame.getSize();
-        agregarLectorInternalFrame.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
-                (desktopSize.height- jInternalFrameSize.height)/2);
+        agregarLectorInternalFrame = new AltaLector(controladorAlta);
+        agregarLectorInternalFrame.setLocation(
+                (desktopSize.width - agregarLectorInternalFrame.getSize().width) / 2,
+                (desktopSize.height - agregarLectorInternalFrame.getSize().height) / 2
+        );
         agregarLectorInternalFrame.setVisible(false);
         frame.getContentPane().add(agregarLectorInternalFrame);
 
-        agregarBibliotecarioInternalFrame = new AltaBibliotecario(iconBibliotecario);
-        jInternalFrameSize = agregarBibliotecarioInternalFrame.getSize();
-        agregarBibliotecarioInternalFrame.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
-                (desktopSize.height- jInternalFrameSize.height)/2);
+        agregarBibliotecarioInternalFrame = new AltaBibliotecario(controladorBibliotecario);
+        agregarBibliotecarioInternalFrame.setLocation(
+                (desktopSize.width - agregarBibliotecarioInternalFrame.getSize().width) / 2,
+                (desktopSize.height - agregarBibliotecarioInternalFrame.getSize().height) / 2
+        );
         agregarBibliotecarioInternalFrame.setVisible(false);
         frame.getContentPane().add(agregarBibliotecarioInternalFrame);
 
-
-
-
+        estadoLectorInternalFrame = new EstadoLectorFrame(controladorModificar);
+        estadoLectorInternalFrame.setLocation(
+                (desktopSize.width - estadoLectorInternalFrame.getSize().width) / 2,
+                (desktopSize.height - estadoLectorInternalFrame.getSize().height) / 2
+        );
+        estadoLectorInternalFrame.setVisible(false);
+        frame.getContentPane().add(estadoLectorInternalFrame);
     }
 
     private void initialize() {
@@ -69,23 +75,19 @@ public class Principal {
         JMenuBar menuBar = new JMenuBar();
         frame.setJMenuBar(menuBar);
 
-        JMenu mnAltas = new JMenu("Altas");
-        menuBar.add(mnAltas);
+        JMenu mnLectores = new JMenu("Lectores");
+        menuBar.add(mnLectores);
 
-        JMenuItem mntmLector = new JMenuItem("Lector");
-        mntmLector.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0) {
-                agregarLectorInternalFrame.setVisible(true);
-            }
-        });
-        mnAltas.add(mntmLector);
+        JMenuItem mntmAgregarLector = new JMenuItem("Agregar lector");
+        mntmAgregarLector.addActionListener(e -> agregarLectorInternalFrame.setVisible(true));
+        mnLectores.add(mntmAgregarLector);
 
-        JMenuItem mntmBibliotecario = new JMenuItem("Bibliotecario");
-        mntmBibliotecario.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0) {
-                agregarBibliotecarioInternalFrame.setVisible(true);
-            }
-        });
-        mnAltas.add(mntmBibliotecario);
+        JMenuItem mntmBibliotecario = new JMenuItem("Agregar bibliotecario");
+        mntmBibliotecario.addActionListener(e -> agregarBibliotecarioInternalFrame.setVisible(true));
+        mnLectores.add(mntmBibliotecario);
+
+        JMenuItem mntmCambiarEstado = new JMenuItem("Cambiar estado de lector");
+        mntmCambiarEstado.addActionListener(e -> estadoLectorInternalFrame.setVisible(true));
+        mnLectores.add(mntmCambiarEstado);
     }
 }
