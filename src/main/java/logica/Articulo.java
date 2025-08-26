@@ -1,12 +1,11 @@
 package logica;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import jakarta.persistence.Column;
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 
-@Entity(name = "articuloespecial")
+@Entity
+@Table(name = "Articulo")
 public class Articulo extends Material {
     @Column(name = "descripcion", length = 255)
     private String descripcion;
@@ -14,7 +13,7 @@ public class Articulo extends Material {
     @Column(name = "peso")
     private float pesoKg;
 
-    @Column(name="dimensiones")
+    @Column(name = "dimensiones")
     private String dimensiones;
 
     public Articulo() {
@@ -54,5 +53,4 @@ public class Articulo extends Material {
     public void setDimensiones(String dimensiones) {
         this.dimensiones = dimensiones;
     }
-
 }
