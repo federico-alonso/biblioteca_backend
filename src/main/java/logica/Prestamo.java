@@ -5,20 +5,21 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@IdClass(persistencia.PrestamoID.class)
 public class Prestamo {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "prestamo_seq")
+    @SequenceGenerator(name = "prestamo_seq", sequenceName = "prestamo_seq", allocationSize = 1)
+    private long id;
+
     @ManyToOne
     @JoinColumn(name = "material_id", referencedColumnName = "id")
     private Material material;
 
-    @Id
     @ManyToOne
     @JoinColumn(name = "lector_nombre", referencedColumnName = "nombre")
     private Lector lector;
 
-    @Id
     @ManyToOne
     @JoinColumn(name = "bibliotecario_nombre", referencedColumnName = "nombre")
     private Bibliotecario bibliotecario;
@@ -29,20 +30,22 @@ public class Prestamo {
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaDevolucion;
 
-    // Optional: private EstadoPmo estado;
+    @Enumerated(EnumType.STRING)
+    private EstadoPmo estado;
 
-    public Prestamo() {
-        this.fechaSolicitud = new Date();
-    }
+    public Prestamo() {}
 
     public Prestamo(Date fechaSolicitud, Date fechaDevolucion,
-                    Material material, Bibliotecario bibliotecario, Lector lector) {
+                    Material material, Bibliotecario bibliotecario, Lector lector, EstadoPmo estado) {
         this.fechaSolicitud = fechaSolicitud;
         this.fechaDevolucion = fechaDevolucion;
         this.material = material;
         this.bibliotecario = bibliotecario;
         this.lector = lector;
+        this.estado = estado;
     }
+
+    public void setId(long id) {this.id = id;}
 
     public void setMaterial(Material material) {
         this.material = material;
@@ -64,6 +67,8 @@ public class Prestamo {
         this.fechaDevolucion = fechaDevolucion;
     }
 
+    public void setEstado(EstadoPmo estado){ this.estado = estado; }
+
     public Material getMaterial() {
         return material;
     }
@@ -83,4 +88,11 @@ public class Prestamo {
     public Date getFechaDevolucion() {
         return fechaDevolucion;
     }
+
+    public EstadoPmo getEstado(){ return estado;}
+
+    public long getId() {
+        return id;
+    }
+
 }

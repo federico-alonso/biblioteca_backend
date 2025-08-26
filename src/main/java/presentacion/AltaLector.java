@@ -12,6 +12,7 @@ import interfaces.IControladorAltaLector;
 public class AltaLector extends JInternalFrame {
     private static final long serialVersionUID = 1L;
 
+    private Principal principal;
     private IControladorAltaLector icon;
 
     private JTextField textFieldNombre;
@@ -19,8 +20,9 @@ public class AltaLector extends JInternalFrame {
     private JTextField textFieldDireccion;
     private JSpinner spinnerFechaRegistro;
 
-    public AltaLector(IControladorAltaLector icon) {
+    public AltaLector(IControladorAltaLector icon, Principal principal) {
         this.icon = icon;
+        this.principal = principal;
 
         setResizable(true);
         setIconifiable(true);
@@ -105,6 +107,7 @@ public class AltaLector extends JInternalFrame {
             }
             limpiarFormulario();
             setVisible(false);
+            principal.actualizarInternalFrames();
         }
     }
 

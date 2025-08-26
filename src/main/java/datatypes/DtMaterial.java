@@ -2,28 +2,29 @@ package datatypes;
 
 import java.util.Date;
 
-public abstract class DtMaterial {
-    private int id;
+public class DtMaterial {
+    private long id;
     private Date fechaIngreso;
 
     protected DtMaterial(){
         this.fechaIngreso = new Date();
     }
     
-    protected DtMaterial(Date fechaIngreso){
-        this.fechaIngreso = fechaIngreso;
+    public DtMaterial(long id, Date fechaIngreso){
+        this.id = id; this.fechaIngreso = fechaIngreso;
     }
 
-    public void setId(int id){
+    public void setId(long id){
         this.id = id;
     }
     public void setFechaIngreso(Date fechaIngreso){
         this.fechaIngreso = fechaIngreso;
     }
-    public int getId(){
+    public long getId(){
         return this.id;
     }
     public Date getFechaIngreso(){
         return this.fechaIngreso;
     }
+
 }

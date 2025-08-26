@@ -5,7 +5,7 @@ public abstract class DtUsuario {
     private String nombre;
 
     DtUsuario(){}
-    DtUsuario(String email, String nombre){
+    DtUsuario(String nombre, String email){
         this.email = email;
         this.nombre = nombre;
     }

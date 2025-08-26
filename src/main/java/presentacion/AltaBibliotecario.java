@@ -13,12 +13,16 @@ import java.awt.event.ActionEvent;
 public class AltaBibliotecario extends JInternalFrame {
 
     private static final long serialVersionUID = 1L;
+
+    private Principal principal;
     private IControladorAltaBibliotecario iconBibliotecario;
     private JTextField textFieldNombre;
     private JTextField textFieldEmail;
 
-    public AltaBibliotecario(IControladorAltaBibliotecario iconBibliotecario) {
+    public AltaBibliotecario(IControladorAltaBibliotecario iconBibliotecario, Principal principal) {
         this.iconBibliotecario = iconBibliotecario;
+        this.principal = principal;
+
         setTitle("Alta Bibliotecario");
         setBounds(100, 100, 450, 190);
         setResizable(true);
@@ -77,6 +81,7 @@ public class AltaBibliotecario extends JInternalFrame {
             }
             limpiarFormulario();
             setVisible(false);
+            principal.actualizarInternalFrames();
         }
     }
 

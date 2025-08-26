@@ -13,14 +13,16 @@ import interfaces.IControladorMaterial;
 public class AltaLibro extends JInternalFrame {
     private static final long serialVersionUID = 1L;
 
+    private Principal principal;
     private IControladorMaterial icon;
 
     private JTextField textFieldTitulo;
     private JTextField textFieldCantPag;
     private JSpinner spinnerFechaRegistro;
 
-    public AltaLibro(IControladorMaterial icon) {
+    public AltaLibro(IControladorMaterial icon, Principal principal) {
         this.icon = icon;
+        this.principal = principal;
 
         setResizable(true);
         setIconifiable(true);
@@ -87,11 +89,12 @@ public class AltaLibro extends JInternalFrame {
         Date fechaRegistro = (Date) spinnerFechaRegistro.getValue();
 
         if (checkFormulario()) {
-            icon.altaDonacionLibro(new DtLibro(titulo,cantPag,fechaRegistro));
+            icon.altaDonacionLibro(new DtLibro(0,titulo,cantPag,fechaRegistro));
             JOptionPane.showMessageDialog(this, "Libro agregado al sistema.");
 
             limpiarFormulario();
             setVisible(false);
+            principal.actualizarInternalFrames();
         }
     }
 

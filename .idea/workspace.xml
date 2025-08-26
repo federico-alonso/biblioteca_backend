@@ -4,7 +4,33 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a4b6bc97-07f4-4cea-8ed9-618243d9be57" name="Changes" comment="" />
+    <list default="true" id="a4b6bc97-07f4-4cea-8ed9-618243d9be57" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/logica/ControladorPrestamo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/datatypes/DtBibliotecario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datatypes/DtBibliotecario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/datatypes/DtLector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datatypes/DtLector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/datatypes/DtLibro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datatypes/DtLibro.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/datatypes/DtMaterial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datatypes/DtMaterial.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/datatypes/DtPrestamo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datatypes/DtPrestamo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/datatypes/DtUsuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datatypes/DtUsuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/datatypes/EstadoPmo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datatypes/EstadoPmo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/interfaces/Fabrica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interfaces/Fabrica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/logica/ArticuloEspecial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/ArticuloEspecial.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/logica/Lector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/Lector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/logica/Libro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/Libro.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/logica/ManejadorBibliotecario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/ManejadorBibliotecario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/logica/ManejadorLector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/ManejadorLector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/logica/ManejadorMaterial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/ManejadorMaterial.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/logica/Material.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/Material.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/logica/Prestamo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/Prestamo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentacion/AltaBibliotecario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentacion/AltaBibliotecario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentacion/AltaLector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentacion/AltaLector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentacion/AltaLibro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentacion/AltaLibro.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentacion/EstadoLectorFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentacion/EstadoLectorFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentacion/Principal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentacion/Principal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,6 +39,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -20,18 +47,21 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "RTowari"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;RTowari&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/RTowari/biblioteca&quot;,
     &quot;accountId&quot;: &quot;40f87ef3-afae-47dc-a322-b37eb8815d40&quot;
   }
 }</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
@@ -46,9 +76,12 @@
     "Application.Principal.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Camila/IdeaProjects/pap2",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -70,6 +103,22 @@
       <recent name="C:\Users\Camila\IdeaProjects\pap\src\main\java\META-INF" />
       <recent name="C:\Users\Camila\IdeaProjects\pap\src\main\java\persistencia" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="excepciones" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="pap2" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="pap2" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -89,6 +138,7 @@
       <workItem from="1755564041727" duration="293000" />
       <workItem from="1755564385909" duration="35454000" />
       <workItem from="1755731627102" duration="2473000" />
+      <workItem from="1756086947627" duration="40370000" />
     </task>
     <servers />
   </component>

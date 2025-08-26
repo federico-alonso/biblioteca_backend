@@ -1,9 +1,12 @@
 package logica;
 
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
+import javax.persistence.*;
 
 import persistencia.Conexion;
+import datatypes.*;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class ManejadorMaterial {
 
@@ -17,24 +20,38 @@ public class ManejadorMaterial {
     }
 
     public void agregarMaterial(Material material) {
-        Conexion conexion = Conexion.getInstancia();
-        EntityManager em = conexion.getEntityManager();
+        EntityManager em = Conexion.getInstancia().getEntityManager();
 
         em.getTransaction().begin();
         em.persist(material);
         em.getTransaction().commit();
-        conexion.close();
+
+        em.close();
     }
 
-    public Material buscarMaterial(int id) {
-        Conexion conexion = Conexion.getInstancia();
-        EntityManager em = conexion.getEntityManager();
+    public Material buscarMaterial(long id) {
+        EntityManager em = Conexion.getInstancia().getEntityManager();
 
-        em.getTransaction().begin();
         Material material = em.find(Material.class, id);
-        em.getTransaction().commit();
-        em.close();
 
+        em.close();
         return material;
     }
+
+    public List<DtMaterial> getMateriales() {
+        EntityManager em = Conexion.getInstancia().getEntityManager();
+        try {
+            TypedQuery<Material> query = em.createQuery("SELECT m FROM Material m", Material.class);
+            List<Material> materiales = query.getResultList();
+            List<DtMaterial> dtMateriales = new ArrayList<>();
+
+            for (Material m : materiales) {
+                dtMateriales.add(m.obtenerDt());
+            }
+            return dtMateriales;
+        } finally {
+            em.close();
+        }
+    }
+
 }

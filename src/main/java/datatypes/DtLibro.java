@@ -9,13 +9,9 @@ public class DtLibro extends DtMaterial {
     public DtLibro(){
         super();
     }
-    public DtLibro(String titulo, int cantidadPag){
-        super();
-        this.titulo = titulo;
-        this.cantidadPag = cantidadPag;
-    }
-    public DtLibro(String titulo, int cantidadPag, Date fechaIngreso){
-        super(fechaIngreso);
+
+    public DtLibro(long id, String titulo, int cantidadPag, Date fechaIngreso){
+        super(id, fechaIngreso);
         this.titulo = titulo;
         this.cantidadPag = cantidadPag;
     }

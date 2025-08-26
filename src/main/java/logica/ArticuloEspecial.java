@@ -1,5 +1,7 @@
 package logica;
 
+import datatypes.DtArticuloEspecial;
+
 import java.util.Date;
 import javax.persistence.Entity;
 
@@ -42,5 +44,14 @@ public class ArticuloEspecial extends Material {
 
     public void setPeso(float peso) {
         this.peso = peso;
+    }
+
+    public DtArticuloEspecial getDtArticuloEspecial(){
+        return new DtArticuloEspecial(this.getId(), this.getfechaIngreso(), this.descripcion, this.peso);
+    }
+
+    @Override
+    public DtArticuloEspecial obtenerDt(){
+        return new DtArticuloEspecial(this.getId(), this.getfechaIngreso(), this.descripcion, this.peso);
     }
 }

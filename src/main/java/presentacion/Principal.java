@@ -8,11 +8,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
-import interfaces.Fabrica;
-import interfaces.IControladorAltaLector;
-import interfaces.IControladorAltaBibliotecario;
-import interfaces.IControladorModificarEstadoLector;
-import interfaces.IControladorMaterial;
+import interfaces.*;
 
 public class Principal {
     private JFrame frame;
@@ -21,6 +17,7 @@ public class Principal {
     private AltaBibliotecario agregarBibliotecarioInternalFrame;
     private EstadoLectorFrame estadoLectorInternalFrame;
     private AltaLibro altaLibroInternalFrame;
+    private AltaPrestamo altaPrestamoInternalFrame;
 
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
@@ -33,7 +30,7 @@ public class Principal {
         });
     }
 
-    public Principal() {
+    public  Principal() {
         initialize();
 
         Fabrica fabrica = Fabrica.getInstancia();
@@ -41,10 +38,11 @@ public class Principal {
         IControladorAltaBibliotecario controladorBibliotecario = fabrica.getIControladorAltaBibliotecario();
         IControladorModificarEstadoLector controladorModificar = fabrica.getIControladorModificarEstadoLector();
         IControladorMaterial controladorMaterial = fabrica.getIControladorMaterial();
+        IControladorPrestamo controladorPrestamo = fabrica.getIControladorPrestamo();
 
         Dimension desktopSize = frame.getSize();
 
-        agregarLectorInternalFrame = new AltaLector(controladorAlta);
+        agregarLectorInternalFrame = new AltaLector(controladorAlta, this);
         agregarLectorInternalFrame.setLocation(
                 (desktopSize.width - agregarLectorInternalFrame.getSize().width) / 2,
                 (desktopSize.height - agregarLectorInternalFrame.getSize().height) / 2
@@ -52,7 +50,7 @@ public class Principal {
         agregarLectorInternalFrame.setVisible(false);
         frame.getContentPane().add(agregarLectorInternalFrame);
 
-        agregarBibliotecarioInternalFrame = new AltaBibliotecario(controladorBibliotecario);
+        agregarBibliotecarioInternalFrame = new AltaBibliotecario(controladorBibliotecario, this);
         agregarBibliotecarioInternalFrame.setLocation(
                 (desktopSize.width - agregarBibliotecarioInternalFrame.getSize().width) / 2,
                 (desktopSize.height - agregarBibliotecarioInternalFrame.getSize().height) / 2
@@ -60,7 +58,7 @@ public class Principal {
         agregarBibliotecarioInternalFrame.setVisible(false);
         frame.getContentPane().add(agregarBibliotecarioInternalFrame);
 
-        estadoLectorInternalFrame = new EstadoLectorFrame(controladorModificar);
+        estadoLectorInternalFrame = new EstadoLectorFrame(controladorModificar, this);
         estadoLectorInternalFrame.setLocation(
                 (desktopSize.width - estadoLectorInternalFrame.getSize().width) / 2,
                 (desktopSize.height - estadoLectorInternalFrame.getSize().height) / 2
@@ -68,13 +66,22 @@ public class Principal {
         estadoLectorInternalFrame.setVisible(false);
         frame.getContentPane().add(estadoLectorInternalFrame);
 
-        altaLibroInternalFrame = new AltaLibro(controladorMaterial);
+        altaLibroInternalFrame = new AltaLibro(controladorMaterial, this);
         altaLibroInternalFrame.setLocation(
                 (desktopSize.width - altaLibroInternalFrame.getSize().width) / 2,
                 (desktopSize.height - altaLibroInternalFrame.getSize().height) / 2
         );
         altaLibroInternalFrame.setVisible(false);
         frame.getContentPane().add(altaLibroInternalFrame);
+
+        altaPrestamoInternalFrame = new AltaPrestamo(controladorPrestamo);
+        altaLibroInternalFrame.setLocation(
+                (desktopSize.width - altaLibroInternalFrame.getSize().width) / 2,
+                (desktopSize.height - altaLibroInternalFrame.getSize().height) / 2
+        );
+        altaPrestamoInternalFrame.setVisible(false);
+        frame.getContentPane().add(altaPrestamoInternalFrame);
+
     }
 
     private void initialize() {
@@ -112,5 +119,16 @@ public class Principal {
         mntmCambiarEstado.addActionListener(e -> estadoLectorInternalFrame.setVisible(true));
         mnLectores.add(mntmCambiarEstado);
 
+        JMenu mnPrestamos = new JMenu("Prestamos");
+        menuBar.add(mnPrestamos);
+
+        JMenuItem mntmAltaPrestamo = new JMenuItem("Registrar prestamo");
+        mntmAltaPrestamo.addActionListener(e -> altaPrestamoInternalFrame.setVisible(true));
+        mnPrestamos.add(mntmAltaPrestamo);
     }
+
+    public void actualizarInternalFrames(){
+        altaPrestamoInternalFrame.cargarDatos();
+    }
+
 }

@@ -1,5 +1,7 @@
 package datatypes;
 
-public class EstadoPmo{
-    
+public enum EstadoPmo{
+    PENDIENTE,
+    ACTIVO,
+    DEVUELTO
 }
