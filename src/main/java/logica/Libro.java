@@ -1,5 +1,7 @@
 package logica;
 
+import datatypes.DtLibro;
+
 import java.util.Date;
 import jakarta.persistence.Entity;
 
@@ -38,5 +40,14 @@ public class Libro extends Material {
 
     public void setCantidadPag(int cantidadPag) {
         this.cantidadPag = cantidadPag;
+    }
+
+    public DtLibro getDtLibro(){
+        return new DtLibro(this.getId(), titulo, cantidadPag, this.getfechaIngreso());
+    }
+
+    @Override
+    public DtLibro obtenerDt() {
+        return new DtLibro(this.getId(), titulo, cantidadPag, this.getfechaIngreso());
     }
 }

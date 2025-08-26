@@ -5,6 +5,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
 
 import interfaces.IControladorMaterial;
 import datatypes.DtLibro;
@@ -17,10 +18,12 @@ public class AltaDonacionLibro extends JInternalFrame {
     private JButton btnRegistrar;
     private JButton btnLimpiar;
 
+    private Principal principal;
     private IControladorMaterial controlador;
 
-    public AltaDonacionLibro(IControladorMaterial controlador) {
+    public AltaDonacionLibro(IControladorMaterial controlador, Principal principal) {
         this.controlador = controlador;
+        this.principal = principal;
         initialize();
     }
 
@@ -117,9 +120,10 @@ public class AltaDonacionLibro extends JInternalFrame {
                 return;
             }
 
-            DtLibro dtLibro = new DtLibro(
+            DtLibro dtLibro = new DtLibro(0,
                 txtTitulo.getText().trim(),
-                paginas
+                paginas,
+                    new Date()
             );
 
             controlador.altaDonacionLibro(dtLibro);
@@ -128,7 +132,7 @@ public class AltaDonacionLibro extends JInternalFrame {
                 "Donación de libro registrada exitosamente",
                 "Éxito",
                 JOptionPane.INFORMATION_MESSAGE);
-
+                principal.actualizarInternalFrames();
             limpiarCampos();
 
         } catch (NumberFormatException e) {

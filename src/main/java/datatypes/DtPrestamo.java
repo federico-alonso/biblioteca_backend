@@ -8,16 +8,19 @@ public class DtPrestamo {
     private DtBibliotecario bibliotecario;
     private Date fechaSolicitud;
     private Date fechaDevolucion;
+    private EstadoPmo estado;
 
     DtPrestamo(){
         this.fechaSolicitud = new Date();
     }
-    DtPrestamo(DtMaterial material, DtLector lector, DtBibliotecario bibliotecario,  Date fechaSolicitud, Date fechaDevolucion){
+   public DtPrestamo(DtMaterial material, DtLector lector, DtBibliotecario bibliotecario,
+                     Date fechaSolicitud, Date fechaDevolucion, EstadoPmo estado){
         this.material = material;
         this.lector = lector;
         this.bibliotecario = bibliotecario;
         this.fechaSolicitud = fechaSolicitud;
         this.fechaDevolucion = fechaDevolucion;
+        this.estado = estado;
     }
 
     public DtMaterial getMaterial() {
@@ -35,6 +38,7 @@ public class DtPrestamo {
     public Date getFechaDevolucion(){
         return fechaDevolucion;
     }
+    public EstadoPmo getEstado(){return estado;}
     public void setMaterial(DtMaterial material) {
         this.material = material;
     }
@@ -50,4 +54,5 @@ public class DtPrestamo {
     public void setFechaDevolucion(Date fechaDevolucion){
         this.fechaDevolucion = fechaDevolucion;
     }
+    public void setEstado(EstadoPmo estado){ this.estado = estado;}
 }

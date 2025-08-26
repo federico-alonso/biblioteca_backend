@@ -85,4 +85,6 @@ public class Lector extends Usuario {
     public void setPrestamos(List<Prestamo> prestamos) {
         this.prestamos = prestamos;
     }
+
+
 }

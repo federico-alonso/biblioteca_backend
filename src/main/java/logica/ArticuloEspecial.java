@@ -2,12 +2,11 @@ package logica;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Column;
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+import datatypes.DtArticuloEspecial;
+
 
 @Entity(name = "articuloespecial")
-public class Articulo extends Material {
+public class ArticuloEspecial extends Material {
     @Column(name = "descripcion", length = 255)
     private String descripcion;
 
@@ -17,14 +16,14 @@ public class Articulo extends Material {
     @Column(name = "dimensiones")
     private String dimensiones;
 
-    public Articulo() {
+    public ArticuloEspecial() {
         super();
         this.descripcion = "";
         this.pesoKg = 0.0f;
         this.dimensiones = "";
     }
 
-    public Articulo(String descripcion, float peso, String dimensiones) {
+    public ArticuloEspecial(String descripcion, float peso, String dimensiones) {
         super();
         this.descripcion = descripcion;
         this.pesoKg = peso;
@@ -53,5 +52,10 @@ public class Articulo extends Material {
 
     public void setDimensiones(String dimensiones) {
         this.dimensiones = dimensiones;
+    }
+
+    @Override
+    public DtArticuloEspecial obtenerDt(){
+        return new DtArticuloEspecial(this.getId(), this.getfechaIngreso(), this.descripcion,this.pesoKg,this.dimensiones);
     }
 }

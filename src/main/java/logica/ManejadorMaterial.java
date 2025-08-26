@@ -1,9 +1,12 @@
 package logica;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.Query;
+import jakarta.persistence.*;
 
 import persistencia.Conexion;
+import datatypes.*;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class ManejadorMaterial {
 
@@ -18,6 +21,7 @@ public class ManejadorMaterial {
 
     public void agregarMaterial(Material material) {
         EntityManager em = Conexion.getInstancia().getEntityManager();
+
         try {
             em.getTransaction().begin();
             em.persist(material);
@@ -32,7 +36,7 @@ public class ManejadorMaterial {
         }
     }
 
-    public Material buscarMaterial(int id) {
+    public Material buscarMaterial(long id) {
         EntityManager em = Conexion.getInstancia().getEntityManager();
         try {
             return em.find(Material.class, id);
@@ -40,4 +44,21 @@ public class ManejadorMaterial {
             em.close();
         }
     }
+
+    public List<DtMaterial> getMateriales() {
+        EntityManager em = Conexion.getInstancia().getEntityManager();
+        try {
+            TypedQuery<Material> query = em.createQuery("SELECT m FROM Material m", Material.class);
+            List<Material> materiales = query.getResultList();
+            List<DtMaterial> dtMateriales = new ArrayList<>();
+
+            for (Material m : materiales) {
+                dtMateriales.add(m.obtenerDt());
+            }
+            return dtMateriales;
+        } finally {
+            em.close();
+        }
+    }
+
 }

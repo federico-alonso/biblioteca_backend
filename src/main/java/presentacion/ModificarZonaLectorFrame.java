@@ -12,11 +12,13 @@ public class ModificarZonaLectorFrame extends JInternalFrame {
 
     private IControladorModificarZonaLector icon;
 
+    private Principal principal;
     private JComboBox<String> comboBoxNombre;
     private JComboBox<Zona> comboBoxZona;
 
-    public ModificarZonaLectorFrame(IControladorModificarZonaLector icon) {
+    public ModificarZonaLectorFrame(IControladorModificarZonaLector icon, Principal principal) {
         this.icon = icon;
+        this.principal = principal;
 
         setTitle("Cambiar Zona del Lector");
         setBounds(100, 100, 400, 200);
@@ -69,6 +71,7 @@ public class ModificarZonaLectorFrame extends JInternalFrame {
         try {
             icon.modificarZonaLector(nombre, nuevaZona);
             JOptionPane.showMessageDialog(this, "Zona actualizada correctamente");
+            principal.actualizarInternalFrames();
         } catch (LectorNoExisteExcepcion ex) {
             JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage());
         }
@@ -82,7 +85,7 @@ public class ModificarZonaLectorFrame extends JInternalFrame {
         comboBoxZona.setSelectedIndex(0);
     }
 
-    private void cargarNombresLectores() {
+    public void cargarNombresLectores() {
         try {
             List<String> nombres = icon.listarNombresLectores();
             comboBoxNombre.removeAllItems();

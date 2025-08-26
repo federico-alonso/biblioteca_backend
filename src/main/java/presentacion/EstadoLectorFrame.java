@@ -11,13 +11,14 @@ import excepciones.LectorNoExisteExcepcion;
 public class EstadoLectorFrame extends JInternalFrame {
 
     private IControladorModificarEstadoLector icon;
-
+    private Principal principal;
 
     private JComboBox<String> comboBoxNombre;
     private JComboBox<EstadoLector> comboBoxEstado;
 
-    public EstadoLectorFrame(IControladorModificarEstadoLector icon) {
+    public EstadoLectorFrame(IControladorModificarEstadoLector icon, Principal principal) {
         this.icon = icon;
+        this.principal = principal;
 
         setTitle("Cambiar Estado del Lector");
         setBounds(100, 100, 400, 200);
@@ -76,6 +77,7 @@ public class EstadoLectorFrame extends JInternalFrame {
         System.out.println("Cambiar estado de '" + nombre + "' a " + nuevoEstado);
         limpiarFormulario();
         setVisible(false);
+        principal.actualizarInternalFrames();
     }
 
     private void limpiarFormulario() {

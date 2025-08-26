@@ -3,24 +3,24 @@ package logica;
 import jakarta.persistence.*;
 import java.util.Date;
 import persistencia.PrestamoID;
+import datatypes.EstadoPmo;
 
 @Entity
 public class Prestamo {
 
-    @EmbeddedId
-    private PrestamoID id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "prestamo_seq")
+    @SequenceGenerator(name = "prestamo_seq", sequenceName = "prestamo_seq", allocationSize = 1)
+    private long id;
 
-    @MapsId("materialId")
     @ManyToOne
     @JoinColumn(name = "material_id", referencedColumnName = "id")
     private Material material;
 
-    @MapsId("lectorNombre")
     @ManyToOne
     @JoinColumn(name = "lector_nombre", referencedColumnName = "nombre")
     private Lector lector;
 
-    @MapsId("bibliotecarioNombre")
     @ManyToOne
     @JoinColumn(name = "bibliotecario_nombre", referencedColumnName = "nombre")
     private Bibliotecario bibliotecario;
@@ -31,32 +31,24 @@ public class Prestamo {
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaDevolucion;
 
-    // Optional: EstadoPmo estado;
-    // If you want to include it, use:
-    // @Enumerated(EnumType.STRING)
-    // private EstadoPmo estado;
+    @Enumerated(EnumType.STRING)
+    private EstadoPmo estado;
 
-    public Prestamo() {
-        this.fechaSolicitud = new Date();
-    }
+    public Prestamo() {}
 
     public Prestamo(Date fechaSolicitud, Date fechaDevolucion,
-                    Material material, Bibliotecario bibliotecario, Lector lector) {
+                    Material material, Bibliotecario bibliotecario, Lector lector, EstadoPmo estado) {
         this.fechaSolicitud = fechaSolicitud;
         this.fechaDevolucion = fechaDevolucion;
         this.material = material;
         this.bibliotecario = bibliotecario;
         this.lector = lector;
-        this.id = new PrestamoID(material.getId(), bibliotecario.getNombre(), lector.getNombre());
+        this.estado = estado;
     }
 
-    public PrestamoID getId() {
-        return id;
-    }
+    public void setId(long id) {this.id = id;}
 
-    public void setId(PrestamoID id) {
-        this.id = id;
-    }
+    public void setEstado(EstadoPmo estado){ this.estado = estado; }
 
     public Material getMaterial() {
         return material;
@@ -97,4 +89,11 @@ public class Prestamo {
     public void setFechaDevolucion(Date fechaDevolucion) {
         this.fechaDevolucion = fechaDevolucion;
     }
+
+    public EstadoPmo getEstado(){ return estado;}
+
+    public long getId() {
+        return id;
+    }
+
 }

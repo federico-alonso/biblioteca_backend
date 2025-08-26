@@ -1,32 +1,28 @@
 package datatypes;
 
-import logica.ManejadorMaterial;
-
 import java.util.Date;
 
-public class DtArticulo extends DtMaterial {
+public class DtArticuloEspecial extends DtMaterial {
     private String descripcion;
     private float pesoKg;
     private String dimensiones;
 
-    public DtArticulo() {
+    public DtArticuloEspecial() {
         super();
         this.descripcion = "";
         this.pesoKg = 0.0f;
         this.dimensiones = "";
     }
-
-    public DtArticulo(String descripcion, float pesoKg, String dimensiones) {
+    public DtArticuloEspecial(String descripcion, float pesoKg) {
         super();
+        this.descripcion = descripcion;
+        this.pesoKg = pesoKg;
+    }
+    public DtArticuloEspecial(long id,Date fechaIngreso,String descripcion, float pesoKg, String dimensiones) {
+        super(id, fechaIngreso);
         this.descripcion = descripcion;
         this.pesoKg = pesoKg;
         this.dimensiones = dimensiones;
-    }
-
-    public DtArticulo(String descripcion, float pesoKg) {
-        super();
-        this.descripcion = descripcion;
-        this.pesoKg = pesoKg;
     }
 
     public void setDescripcion(String descripcion) {

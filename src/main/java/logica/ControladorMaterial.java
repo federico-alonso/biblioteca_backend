@@ -1,8 +1,9 @@
 package logica;
 
+import datatypes.DtArticuloEspecial;
 import interfaces.IControladorMaterial;
 import datatypes.DtLibro;
-import datatypes.DtArticulo;
+import datatypes.DtArticuloEspecial;
 
 public class ControladorMaterial implements IControladorMaterial {
 
@@ -18,10 +19,10 @@ public class ControladorMaterial implements IControladorMaterial {
     }
 
     @Override
-    public void altaDonacionEspecial(DtArticulo dtArticulo) {
+    public void altaDonacionEspecial(DtArticuloEspecial dtArticulo) {
         ManejadorArticulo ma = ManejadorArticulo.getInstancia();
-        Articulo articulo = new Articulo(dtArticulo.getDescripcion(), dtArticulo.getPesoKg(),
+        ArticuloEspecial articuloEspecial = new ArticuloEspecial(dtArticulo.getDescripcion(), dtArticulo.getPesoKg(),
                 dtArticulo.getDimensiones());
-        ma.agregarArticulo(articulo);
+        ma.agregarArticulo(articuloEspecial);
     }
 }

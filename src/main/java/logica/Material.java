@@ -1,5 +1,7 @@
 package logica;
 
+import datatypes.DtMaterial;
+
 import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
@@ -38,9 +40,7 @@ public abstract class Material {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
+    public void setId(long id) {this.id = id;}
 
     public Date getfechaIngreso() {
         return fechaIngreso;
@@ -57,4 +57,6 @@ public abstract class Material {
     public void setPrestamos(List<Prestamo> prestamos) {
         this.prestamos = prestamos;
     }
+    public abstract DtMaterial obtenerDt();
+
 }

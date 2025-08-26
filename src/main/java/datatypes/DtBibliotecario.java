@@ -4,7 +4,8 @@ public class DtBibliotecario extends DtUsuario{
     private int numero;
 
     DtBibliotecario(){}
-    DtBibliotecario(int numero){
+    public DtBibliotecario(String nombre, String email, int numero){
+        super(nombre, email);
         this.numero = numero;
     }
 

@@ -16,11 +16,11 @@ public class ManejadorArticulo {
         return instancia;
     }
 
-    public void agregarArticulo(Articulo articulo) {
+    public void agregarArticulo(ArticuloEspecial articuloEspecial) {
         EntityManager em = Conexion.getInstancia().getEntityManager();
         try {
             em.getTransaction().begin();
-            em.persist(articulo);
+            em.persist(articuloEspecial);
             em.getTransaction().commit();
         } catch (Exception e) {
             if (em.getTransaction().isActive()) {
@@ -32,20 +32,20 @@ public class ManejadorArticulo {
         }
     }
 
-    public Articulo buscarArticulo(int id) {
+    public ArticuloEspecial buscarArticulo(int id) {
         EntityManager em = Conexion.getInstancia().getEntityManager();
         try {
-            return em.find(Articulo.class, id);
+            return em.find(ArticuloEspecial.class, id);
         } finally {
             em.close();
         }
     }
 
-    public void actualizarArticulo(Articulo articulo) {
+    public void actualizarArticulo(ArticuloEspecial articuloEspecial) {
         EntityManager em = Conexion.getInstancia().getEntityManager();
         try {
             em.getTransaction().begin();
-            em.merge(articulo);
+            em.merge(articuloEspecial);
             em.getTransaction().commit();
         } catch (Exception e) {
             if (em.getTransaction().isActive()) {

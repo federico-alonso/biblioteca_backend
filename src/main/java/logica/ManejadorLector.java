@@ -1,8 +1,14 @@
 package logica;
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
+
 import persistencia.Conexion;
 import java.util.List;
+
+import java.util.ArrayList;
+import java.util.List;
+import datatypes.DtLector;
 
 public class ManejadorLector {
     private static ManejadorLector instance = null;
@@ -66,6 +72,26 @@ public class ManejadorLector {
                     .collect(java.util.stream.Collectors.toList());
         } finally {
             em.close();
+        }
+    }
+
+    public List<DtLector> getLectores() {
+        EntityManager em = Conexion.getInstancia().getEntityManager();
+        List<DtLector> dtLectores = new ArrayList<>();
+
+        try {
+            // Query para traer todos los lectores
+            TypedQuery<Lector> query = em.createQuery("SELECT l FROM Lector l", Lector.class);
+            List<Lector> lectores = query.getResultList();
+
+            // Convertir a DTO y agregar a la lista
+            for (Lector l : lectores) {
+                dtLectores.add(new DtLector(l.getNombre(), l.getEmail(), l.getDireccion(), l.getFechaRegistro(), l.getEstado()));
+            }
+
+            return dtLectores;
+        } finally {
+        em.close();
         }
     }
 }

@@ -6,8 +6,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import datatypes.DtArticuloEspecial;
 import interfaces.IControladorMaterial;
-import datatypes.DtArticulo;
+import datatypes.DtArticuloEspecial;
 
 public class AltaDonacionEspecial extends JInternalFrame {
     private static final long serialVersionUID = 1L;
@@ -17,11 +18,12 @@ public class AltaDonacionEspecial extends JInternalFrame {
     private JTextField txtDimensiones;
     private JButton btnRegistrar;
     private JButton btnLimpiar;
-    
+    private Principal principal;
     private IControladorMaterial controlador;
 
-    public AltaDonacionEspecial(IControladorMaterial controlador) {
+    public AltaDonacionEspecial(IControladorMaterial controlador, Principal principal) {
         this.controlador = controlador;
+        this.principal = principal;
         initialize();
     }
 
@@ -145,7 +147,8 @@ public class AltaDonacionEspecial extends JInternalFrame {
             }
 
             // Crear objeto de datos (descripción, peso y dimensiones)
-            DtArticulo dtArticulo = new DtArticulo(
+            DtArticuloEspecial dtArticulo = new DtArticuloEspecial(0,
+                null,
                 txtDescripcion.getText().trim(),
                 peso,
                 txtDimensiones.getText().trim()
@@ -158,9 +161,9 @@ public class AltaDonacionEspecial extends JInternalFrame {
                 "Donación registrada exitosamente", 
                 "Éxito", 
                 JOptionPane.INFORMATION_MESSAGE);
-            
             limpiarCampos();
-            
+            principal.actualizarInternalFrames();
+
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, 
                 "Por favor, ingrese valores numéricos válidos para peso y dimensiones", 
