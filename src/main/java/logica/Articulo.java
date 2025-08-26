@@ -1,11 +1,12 @@
 package logica;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
 import jakarta.persistence.Column;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 
-@Entity
-@Table(name = "Articulo")
+@Entity(name = "articuloespecial")
 public class Articulo extends Material {
     @Column(name = "descripcion", length = 255)
     private String descripcion;
