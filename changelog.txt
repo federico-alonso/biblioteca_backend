@@ -18,3 +18,13 @@
             - Se consolidaron todos los cambios en la rama main mediante rebase y merge controlado.         
             - Se verificó cada archivo manualmente para evitar conflictos y preservar la arquitectura.         
             - Se corrigió un remanente de javax.persistence en la clase Libro.java
+
+-25/08/2025 - Se finalizó la integración de la rama AltaDonacionEspecial a main mediante rebase y merge controlado.
+            - Se incorporaron las interfaces gráficas AltaDonacionEspecial y AltaDonacionLibro en la capa de presentación.
+            - Se agregó la funcionalidad para registrar donaciones especiales y libros desde el menú principal.
+            - Se actualizaron los controladores y la lógica de persistencia para soportar estas nuevas entidades.
+            - Se eliminó la clase ArticuloEspecial por decisión arquitectónica; su funcionalidad fue absorbida por Articulo.
+            - Se corrigió un conflicto de mapeo en la jerarquía de Material que impedía la construcción del SessionFactory.
+            - Se revisaron manualmente las anotaciones @Entity y @Table para asegurar consistencia con la estrategia JOINED.
+            - Se validó la estructura de la base de datos contra el modelo de entidades actualizado.
+            - Se confirmó la compatibilidad con Jakarta EE y Hibernate 6.2.5 tras la migr
