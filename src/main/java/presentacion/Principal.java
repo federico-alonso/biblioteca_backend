@@ -30,6 +30,7 @@ public class Principal {
     private AltaDonacionLibro altaDonacionLibroInternalFrame;
     private AltaPrestamo altaPrestamoInternalFrame;
     private ConsultarDonacion consultarDonacionInternalFrame;
+    private ListarPrestamosFrame listarPrestamosInternalFrame;
 
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
@@ -122,6 +123,14 @@ public class Principal {
         altaPrestamoInternalFrame.setVisible(false);
         frame.getContentPane().add(altaPrestamoInternalFrame);
 
+        listarPrestamosInternalFrame = new ListarPrestamosFrame(controladorPrestamo);
+        listarPrestamosInternalFrame.setLocation(
+                (desktopSize.width - listarPrestamosInternalFrame.getSize().width) / 2,
+                (desktopSize.height - listarPrestamosInternalFrame.getSize().height) / 2
+        );
+        listarPrestamosInternalFrame.setVisible(false);
+        frame.getContentPane().add(listarPrestamosInternalFrame);
+
     }
 
     private void initialize() {
@@ -173,6 +182,11 @@ public class Principal {
         JMenuItem mntmAltaPrestamo = new JMenuItem("Registrar prestamo");
         mntmAltaPrestamo.addActionListener(e -> altaPrestamoInternalFrame.setVisible(true));
         mnPrestamos.add(mntmAltaPrestamo);
+
+        JMenuItem mntmListarPrestamos = new JMenuItem("Listar préstamos por lector");
+        mntmListarPrestamos.addActionListener(e -> listarPrestamosInternalFrame.setVisible(true));
+        mnPrestamos.add(mntmListarPrestamos);
+
     }
 
     public void actualizarInternalFrames(){

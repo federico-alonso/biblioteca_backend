@@ -2,10 +2,29 @@ package logica;
 
 import excepciones.PrestamoYaExisteExcepcion;
 import interfaces.IControladorPrestamo;
-import datatypes.*;
-import java.util.List;
 
-public class ControladorPrestamo implements IControladorPrestamo{
+import datatypes.DtPrestamo;
+import datatypes.DtPrestamoSimple;
+import datatypes.EstadoPmo;
+import datatypes.DtLector;
+import datatypes.DtBibliotecario;
+import datatypes.DtMaterial;
+
+import logica.ManejadorPrestamo;
+import logica.ManejadorBibliotecario;
+import logica.ManejadorLector;
+import logica.ManejadorMaterial;
+
+import logica.Prestamo;
+import logica.Material;
+import logica.Lector;
+import logica.Bibliotecario;
+
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Date;
+
+public class ControladorPrestamo implements IControladorPrestamo {
 
     public ControladorPrestamo() {
         super();
@@ -13,42 +32,70 @@ public class ControladorPrestamo implements IControladorPrestamo{
 
     @Override
     public void altaPrestamo(DtPrestamo dtPrestamo) throws PrestamoYaExisteExcepcion {
+        Bibliotecario b = ManejadorBibliotecario.getInstance()
+                .buscarBibliotecario(dtPrestamo.getBibliotecario().getNombre());
 
-        Bibliotecario b = ManejadorBibliotecario.getInstance().buscarBibliotecario(dtPrestamo.getBibliotecario().getNombre());
-        Lector l = ManejadorLector.getInstance().buscarLector(dtPrestamo.getLector().getNombre());
-        Material m = ManejadorMaterial.getInstancia().buscarMaterial(dtPrestamo.getMaterial().getId());
+        Lector l = ManejadorLector.getInstance()
+                .buscarLector(dtPrestamo.getLector().getNombre());
 
-        if(b != null && l != null && m != null){
-            Prestamo p = new Prestamo();
-            p.setBibliotecario(b);
-            p.setLector(l);
-            p.setMaterial(m);
-            p.setFechaSolicitud(dtPrestamo.getFechaSolicitud());
-            p.setFechaDevolucion(dtPrestamo.getFechaDevolucion());
-            p.setEstado(dtPrestamo.getEstado());
+        Material m = ManejadorMaterial.getInstancia()
+                .buscarMaterial(dtPrestamo.getMaterial().getId());
 
-            if (!ManejadorPrestamo.getInstancia().existePrestamoActivo(p) || p.getEstado() == EstadoPmo.PENDIENTE) {
+        if (b != null && l != null && m != null) {
+            Prestamo p = new Prestamo(
+                    dtPrestamo.getFechaSolicitud(),
+                    dtPrestamo.getFechaDevolucion(),
+                    m,
+                    b,
+                    l,
+                    dtPrestamo.getEstado()
+            );
+
+            boolean prestamoActivo = ManejadorPrestamo.getInstancia().existePrestamoActivo(p);
+            boolean estadoPendiente = p.getEstado() == EstadoPmo.PENDIENTE;
+
+            if (!prestamoActivo || estadoPendiente) {
                 ManejadorPrestamo.getInstancia().agregarPrestamo(p);
-            }else{
-                throw new PrestamoYaExisteExcepcion("Error: Este material esta en un prestamo en curso");
+            } else {
+                throw new PrestamoYaExisteExcepcion("Error: Este material está en un préstamo en curso");
             }
-        }else{
-            //tirar excepcion
+        } else {
+            // TODO: lanzar excepción por datos faltantes
+        }
+    }
+
+    @Override
+    public List<DtPrestamoSimple> getPrestamosActivosPorLector(String lectorNombre) {
+        List<Prestamo> prestamos = ManejadorPrestamo.getInstancia()
+                .obtenerPrestamosActivosPorLector(lectorNombre);
+
+        List<DtPrestamoSimple> resultado = new ArrayList<>();
+
+        for (Prestamo prestamo : prestamos) {
+            DtPrestamoSimple dto = new DtPrestamoSimple(
+                    prestamo.getLector().getNombre(),
+                    prestamo.getFechaSolicitud(),
+                    prestamo.getFechaDevolucion(),
+                    prestamo.getEstado()
+            );
+            resultado.add(dto);
         }
 
+        return resultado;
     }
 
     @Override
     public List<DtLector> getListadoLectores() {
         return ManejadorLector.getInstance().getLectores();
     }
+
     @Override
     public List<DtBibliotecario> getListadoBibliotecarios() {
         return ManejadorBibliotecario.getInstance().getBibliotecarios();
     }
+
     @Override
     public List<DtMaterial> getListadoMateriales() {
         return ManejadorMaterial.getInstancia().getMateriales();
     }
-
 }

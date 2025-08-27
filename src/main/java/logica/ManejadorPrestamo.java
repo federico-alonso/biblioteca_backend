@@ -3,6 +3,8 @@ package logica;
 import persistencia.Conexion;
 
 import datatypes.DtPrestamo;
+import datatypes.EstadoPmo;
+
 import jakarta.persistence.*;
 import java.util.List;
 
@@ -40,6 +42,21 @@ public class ManejadorPrestamo {
 
         em.close();
         return (!p.isEmpty());
+    }
+
+    public List<Prestamo> obtenerPrestamosActivosPorLector(String lectorNombre) {
+        EntityManager em = Conexion.getInstancia().getEntityManager();
+
+        TypedQuery<Prestamo> query = em.createQuery(
+                "SELECT p FROM Prestamo p WHERE p.lector.nombre = :nombre AND p.estado = :estado",
+                Prestamo.class
+        );
+        query.setParameter("nombre", lectorNombre);
+        query.setParameter("estado", EstadoPmo.ACTIVO);
+
+        List<Prestamo> prestamos = query.getResultList();
+        em.close();
+        return prestamos;
     }
 
 
