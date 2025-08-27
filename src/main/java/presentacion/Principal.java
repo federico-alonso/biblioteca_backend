@@ -14,6 +14,7 @@ import interfaces.IControladorAltaBibliotecario;
 import interfaces.IControladorModificarEstadoLector;
 import interfaces.IControladorMaterial;
 import interfaces.IControladorModificarZonaLector;
+import interfaces.IControladorConsultarDonacion;
 
 import interfaces.*;
 
@@ -28,6 +29,7 @@ public class Principal {
     private AltaDonacionEspecial altaDonacionEspecialInternalFrame;
     private AltaDonacionLibro altaDonacionLibroInternalFrame;
     private AltaPrestamo altaPrestamoInternalFrame;
+    private ConsultarDonacion consultarDonacionInternalFrame;
 
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
@@ -48,6 +50,7 @@ public class Principal {
         IControladorAltaBibliotecario controladorBibliotecario = fabrica.getIControladorAltaBibliotecario();
         IControladorModificarEstadoLector controladorModificarEstado = fabrica.getIControladorModificarEstadoLector();
         IControladorMaterial controladorMaterial = fabrica.getIControladorMaterial();
+        IControladorConsultarDonacion controladorConsultarDonacion = fabrica.getIControladorConsultarDonacion();
         IControladorModificarZonaLector controladorModificarZona = fabrica.getIControladorModificarZonaLector();
         IControladorPrestamo controladorPrestamo = fabrica.getIControladorPrestamo();
 
@@ -103,6 +106,14 @@ public class Principal {
         altaDonacionLibroInternalFrame.setVisible(false);
         frame.getContentPane().add(altaDonacionLibroInternalFrame);
 
+        consultarDonacionInternalFrame = new ConsultarDonacion(controladorConsultarDonacion, this);
+        consultarDonacionInternalFrame.setLocation(
+                (desktopSize.width - consultarDonacionInternalFrame.getSize().width) / 2,
+                (desktopSize.height - consultarDonacionInternalFrame.getSize().height) / 2
+        );
+        consultarDonacionInternalFrame.setVisible(false);
+        frame.getContentPane().add(consultarDonacionInternalFrame);
+
         altaPrestamoInternalFrame = new AltaPrestamo(controladorPrestamo);
         altaPrestamoInternalFrame.setLocation(
                 (desktopSize.width - altaPrestamoInternalFrame.getSize().width) / 2,
@@ -151,6 +162,10 @@ public class Principal {
         JMenuItem mntmAltaDonacionEspecial = new JMenuItem("Registrar Articulo Especial");
         mntmAltaDonacionEspecial.addActionListener(e -> altaDonacionEspecialInternalFrame.setVisible(true));
         mnDonaciones.add(mntmAltaDonacionEspecial);
+
+        JMenuItem mntmConsultarDonacion = new JMenuItem("Consultar donaciones");
+        mntmConsultarDonacion.addActionListener(e -> consultarDonacionInternalFrame.setVisible(true));
+        mnDonaciones.add(mntmConsultarDonacion);
 
         JMenu mnPrestamos = new JMenu("Prestamos");
         menuBar.add(mnPrestamos);
