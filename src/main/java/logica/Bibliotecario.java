@@ -3,18 +3,14 @@ package logica;
 import java.util.List;
 import java.util.ArrayList;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.OneToMany;
+import datatypes.DtBibliotecario;
+import jakarta.persistence.*;
 
 @Entity
 public class Bibliotecario extends Usuario {
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(unique = true, updatable = false)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "bibliotecario_seq")
+    @SequenceGenerator(name = "bibliotecario_seq", sequenceName = "bibliotecario_seq", allocationSize = 1)
     private int numero;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "bibliotecario")
@@ -42,5 +38,9 @@ public class Bibliotecario extends Usuario {
 
     public void setPrestamos(List<Prestamo> prestamos) {
         this.prestamos = prestamos;
+    }
+
+    public DtBibliotecario obtenerDt(){
+        return new DtBibliotecario(nombre, email, numero);
     }
 }

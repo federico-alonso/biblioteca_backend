@@ -3,6 +3,7 @@ package datatypes;
 import java.util.Date;
 
 public class DtPrestamo {
+    private long id;
     private DtMaterial material;
     private DtLector lector;
     private DtBibliotecario bibliotecario;
@@ -23,6 +24,18 @@ public class DtPrestamo {
         this.estado = estado;
     }
 
+    public DtPrestamo(long id, DtMaterial material, DtLector lector, DtBibliotecario bibliotecario,
+                      Date fechaSolicitud, Date fechaDevolucion, EstadoPmo estado){
+        this.id = id;
+        this.material = material;
+        this.lector = lector;
+        this.bibliotecario = bibliotecario;
+        this.fechaSolicitud = fechaSolicitud;
+        this.fechaDevolucion = fechaDevolucion;
+        this.estado = estado;
+    }
+
+    public long getId(){ return id;}
     public DtMaterial getMaterial() {
         return material;
     }

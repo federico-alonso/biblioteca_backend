@@ -1,8 +1,8 @@
 package logica;
 
+import datatypes.DtPrestamo;
 import jakarta.persistence.*;
 import java.util.Date;
-import persistencia.PrestamoID;
 import datatypes.EstadoPmo;
 
 @Entity
@@ -94,6 +94,11 @@ public class Prestamo {
 
     public long getId() {
         return id;
+    }
+
+    public DtPrestamo obtenerDt(){
+        return new DtPrestamo(id, material.obtenerDt(), lector.obtenerDt(), bibliotecario.obtenerDt(),
+                fechaSolicitud, fechaDevolucion, estado);
     }
 
 }

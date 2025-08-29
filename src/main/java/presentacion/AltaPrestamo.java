@@ -192,32 +192,32 @@ public class AltaPrestamo extends JInternalFrame {
 
     private void habilitarAutocompletado(JComboBox<String> combo, ArrayList<String> listaOpciones) {
         combo.setEditable(true);
-        combo.setMaximumRowCount(8);
+                         combo.setMaximumRowCount(8);
 
-        JTextField editor = (JTextField) combo.getEditor().getEditorComponent();
-        editor.setText("");
+                    JTextField editor = (JTextField) combo.getEditor().getEditorComponent();
+                    editor.setText("");
 
-        DefaultComboBoxModel<String> modeloOriginal = new DefaultComboBoxModel<>();
-        for (String item : listaOpciones) {
-            modeloOriginal.addElement(item);
-        }
-        combo.setModel(modeloOriginal);
-
-        combo.setSelectedItem(null);
-
-        editor.addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyReleased(KeyEvent e) {
-                String texto = editor.getText();
-                DefaultComboBoxModel<String> modeloFiltrado = new DefaultComboBoxModel<>();
-
-                if (texto.isEmpty()) {
-                    // Mostrar todos los items
+                    DefaultComboBoxModel<String> modeloOriginal = new DefaultComboBoxModel<>();
                     for (String item : listaOpciones) {
-                        modeloFiltrado.addElement(item);
+                        modeloOriginal.addElement(item);
                     }
-                } else {
-                    for (String item : listaOpciones) {
+                    combo.setModel(modeloOriginal);
+
+                    combo.setSelectedItem(null);
+
+                    editor.addKeyListener(new KeyAdapter() {
+                        @Override
+                        public void keyReleased(KeyEvent e) {
+                            String texto = editor.getText();
+                            DefaultComboBoxModel<String> modeloFiltrado = new DefaultComboBoxModel<>();
+
+                            if (texto.isEmpty()) {
+                                // Mostrar todos los items
+                                for (String item : listaOpciones) {
+                                    modeloFiltrado.addElement(item);
+                                }
+                            } else {
+                                for (String item : listaOpciones) {
                         if (item.toLowerCase().startsWith(texto.toLowerCase())) {
                             modeloFiltrado.addElement(item);
                         }

@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
 
+import datatypes.DtLector;
 import jakarta.persistence.Entity;
 import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.OneToMany;
@@ -86,5 +87,8 @@ public class Lector extends Usuario {
         this.prestamos = prestamos;
     }
 
+    public DtLector obtenerDt(){
+        return new DtLector(nombre, email, direccion, fechaRegistro, estado);
+    }
 
 }
