@@ -7,6 +7,7 @@ import logica.ControladorModificarEstadoLector;
 import logica.ControladorModificarZonaLector;
 import logica.ControladorPrestamo;
 import logica.ControladorConsultarDonacion;
+import logica.ControladorModificarTodoPrestamo;
 
 public class Fabrica {
     private static Fabrica instancia = null;
@@ -45,5 +46,9 @@ public class Fabrica {
 
     public IControladorConsultarDonacion getIControladorConsultarDonacion() {
         return new ControladorConsultarDonacion();
+    }
+
+    public IControladorModificarTodoPrestamo getIControladorModificarTodoPrestamo() {
+        return new ControladorModificarTodoPrestamo();
     }
 }
