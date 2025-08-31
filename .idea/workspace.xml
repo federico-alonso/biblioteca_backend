@@ -5,14 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c272a51f-009e-495a-9d53-7b45ce97aeda" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/datatypes/DtEstadoPorZona.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/interfaces/IControladorListarPrestamosZona.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/logica/ControladorListarPrestamosZona.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/presentacion/ConsultarZonaLectorFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/datatypes/DtPrestamo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datatypes/DtPrestamo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/interfaces/IControladorPrestamo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interfaces/IControladorPrestamo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logica/Bibliotecario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/Bibliotecario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logica/ControladorPrestamo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/ControladorPrestamo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logica/Lector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/Lector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logica/Prestamo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/Prestamo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentacion/AltaPrestamo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentacion/AltaPrestamo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/interfaces/Fabrica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interfaces/Fabrica.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/presentacion/Principal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentacion/Principal.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -24,12 +22,18 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="Exception" />
+        <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -52,21 +56,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Principal.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Principal.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "listarPrestamosZona2-Fede",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -92,5 +96,16 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/logica/ControladorConsultarDonacion.java</url>
+          <line>8</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

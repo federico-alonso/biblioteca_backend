@@ -33,6 +33,8 @@ public class Principal {
     private ListarPrestamosFrame listarPrestamosInternalFrame;
     private ConsultarPrestamosBibliotecario listarPrestamosBibliotecarioInternalFrame;
     private ModificarTodoPrestamo modificarTodoPrestamoInternalFrame;
+    private ConsultarZonaLectorFrame consultarZonaLectorInternalFrame;
+
 
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
@@ -57,6 +59,7 @@ public class Principal {
         IControladorModificarZonaLector controladorModificarZona = fabrica.getIControladorModificarZonaLector();
         IControladorPrestamo controladorPrestamo = fabrica.getIControladorPrestamo();
         IControladorModificarTodoPrestamo controladorModificarTodoPrestamo = fabrica.getIControladorModificarTodoPrestamo();
+        IControladorListarPrestamosZona controladorListarZona = fabrica.getIControladorListarPrestamosZona();
 
         Dimension desktopSize = frame.getSize();
 
@@ -150,6 +153,14 @@ public class Principal {
         modificarTodoPrestamoInternalFrame.setVisible(false);
         frame.getContentPane().add(modificarTodoPrestamoInternalFrame);
 
+        consultarZonaLectorInternalFrame = new ConsultarZonaLectorFrame(controladorListarZona);
+        consultarZonaLectorInternalFrame.setLocation(
+                (desktopSize.width - consultarZonaLectorInternalFrame.getSize().width) / 2,
+                (desktopSize.height - consultarZonaLectorInternalFrame.getSize().height) / 2
+        );
+        consultarZonaLectorInternalFrame.setVisible(false);
+        frame.getContentPane().add(consultarZonaLectorInternalFrame);
+
     }
 
     private void initialize() {
@@ -197,6 +208,10 @@ public class Principal {
 
         JMenu mnPrestamos = new JMenu("Prestamos");
         menuBar.add(mnPrestamos);
+
+        JMenuItem mntmResumenPorZona = new JMenuItem("Resumen por zona");
+        mntmResumenPorZona.addActionListener(e -> consultarZonaLectorInternalFrame.setVisible(true));
+        mnPrestamos.add(mntmResumenPorZona);
 
         JMenuItem mntmAltaPrestamo = new JMenuItem("Registrar prestamo");
         mntmAltaPrestamo.addActionListener(e -> altaPrestamoInternalFrame.setVisible(true));
