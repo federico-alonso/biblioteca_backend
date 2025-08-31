@@ -32,6 +32,7 @@ public class Principal {
     private ConsultarDonacion consultarDonacionInternalFrame;
     private ListarPrestamosFrame listarPrestamosInternalFrame;
     private ConsultarPrestamosBibliotecario listarPrestamosBibliotecarioInternalFrame;
+    private ModificarTodoPrestamo modificarTodoPrestamoInternalFrame;
 
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
@@ -55,6 +56,7 @@ public class Principal {
         IControladorConsultarDonacion controladorConsultarDonacion = fabrica.getIControladorConsultarDonacion();
         IControladorModificarZonaLector controladorModificarZona = fabrica.getIControladorModificarZonaLector();
         IControladorPrestamo controladorPrestamo = fabrica.getIControladorPrestamo();
+        IControladorModificarTodoPrestamo controladorModificarTodoPrestamo = fabrica.getIControladorModificarTodoPrestamo();
 
         Dimension desktopSize = frame.getSize();
 
@@ -140,6 +142,14 @@ public class Principal {
         listarPrestamosBibliotecarioInternalFrame.setVisible(false);
         frame.getContentPane().add(listarPrestamosBibliotecarioInternalFrame);
 
+        modificarTodoPrestamoInternalFrame = new ModificarTodoPrestamo(controladorModificarTodoPrestamo);
+        modificarTodoPrestamoInternalFrame.setLocation(
+                (desktopSize.width - modificarTodoPrestamoInternalFrame.getSize().width) / 2,
+                (desktopSize.height - modificarTodoPrestamoInternalFrame.getSize().height) / 2
+        );
+        modificarTodoPrestamoInternalFrame.setVisible(false);
+        frame.getContentPane().add(modificarTodoPrestamoInternalFrame);
+
     }
 
     private void initialize() {
@@ -200,12 +210,16 @@ public class Principal {
         mntmListarPrestamosBibliotecario.addActionListener(e -> listarPrestamosBibliotecarioInternalFrame.setVisible(true));
         mnPrestamos.add(mntmListarPrestamosBibliotecario);
 
+        JMenuItem mntmModificarPrestamo = new JMenuItem("Modificar préstamo");
+        mntmModificarPrestamo.addActionListener(e -> modificarTodoPrestamoInternalFrame.setVisible(true));
+        mnPrestamos.add(mntmModificarPrestamo);
     }
 
     public void actualizarInternalFrames(){
         altaPrestamoInternalFrame.cargarDatos();
         modificarZonaInternalFrame.cargarNombresLectores();
         listarPrestamosBibliotecarioInternalFrame.cargarDatos();
+        modificarTodoPrestamoInternalFrame.cargarDatos();
     }
 
 }

@@ -59,5 +59,26 @@ public class ManejadorPrestamo {
         return prestamos;
     }
 
+    public Prestamo buscarPrestamo(long id) {
+        EntityManager em = Conexion.getInstancia().getEntityManager();
+        Prestamo prestamo = em.find(Prestamo.class, id);
+        em.close();
+        return prestamo;
+    }
 
+    public void actualizarPrestamo(Prestamo prestamo) {
+        EntityManager em = Conexion.getInstancia().getEntityManager();
+        em.getTransaction().begin();
+        em.merge(prestamo);
+        em.getTransaction().commit();
+        em.close();
+    }
+
+    public List<Prestamo> listarPrestamos() {
+        EntityManager em = Conexion.getInstancia().getEntityManager();
+        TypedQuery<Prestamo> query = em.createQuery("SELECT p FROM Prestamo p ORDER BY p.id ASC", Prestamo.class);
+        List<Prestamo> prestamos = query.getResultList();
+        em.close();
+        return prestamos;
+    }
 }
