@@ -55,7 +55,7 @@ public class ModificarZonaLectorFrame extends JInternalFrame {
         JButton btnCancelar = new JButton("Cancelar");
         btnCancelar.setBounds(200, 110, 100, 25);
         btnCancelar.addActionListener(e -> {
-            limpiarFormulario();
+            limpiarFormularioCompleto();
             setVisible(false);
         });
         getContentPane().add(btnCancelar);
@@ -98,11 +98,11 @@ public class ModificarZonaLectorFrame extends JInternalFrame {
             JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
 
-        limpiarFormulario();
-        setVisible(false);
+        // Limpiamos solo la selección de zona, el lector queda seleccionado
+        comboBoxZona.setSelectedIndex(0);
     }
 
-    private void limpiarFormulario() {
+    private void limpiarFormularioCompleto() {
         comboBoxNombre.setSelectedIndex(0);
         comboBoxZona.setSelectedIndex(0);
     }
