@@ -29,4 +29,16 @@ public class ControladorModificarEstadoLector implements IControladorModificarEs
         ManejadorLector manejadorLector = ManejadorLector.getInstance();
         return manejadorLector.listarNombresLectores();
     }
+
+    @Override
+    public EstadoLector getEstadoLector(String nombre) throws LectorNoExisteExcepcion {
+        ManejadorLector manejadorLector = ManejadorLector.getInstance();
+        Lector lector = manejadorLector.buscarLector(nombre);
+
+        if (lector == null) {
+            throw new LectorNoExisteExcepcion("El lector '" + nombre + "' no existe");
+        }
+
+        return lector.getEstado();
+    }
 }

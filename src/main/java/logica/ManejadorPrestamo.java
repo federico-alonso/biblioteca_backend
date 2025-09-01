@@ -59,5 +59,38 @@ public class ManejadorPrestamo {
         return prestamos;
     }
 
+    // AGREGAR ESTOS DOS MÉTODOS NUEVOS:
+    public void modificarEstadoPrestamo(long idPrestamo, EstadoPmo nuevoEstado) {
+        EntityManager em = Conexion.getInstancia().getEntityManager();
+        try {
+            em.getTransaction().begin();
+            Prestamo prestamo = em.find(Prestamo.class, idPrestamo);
+            if (prestamo != null) {
+                prestamo.setEstado(nuevoEstado);
+                em.merge(prestamo);
+                System.out.println("Estado del préstamo " + idPrestamo + " cambiado a " + nuevoEstado);
+            }
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            throw e;
+        } finally {
+            em.close();
+        }
+    }
 
+    public List<Prestamo> listarTodosLosPrestamos() {
+        EntityManager em = Conexion.getInstancia().getEntityManager();
+        try {
+            TypedQuery<Prestamo> query = em.createQuery(
+                "SELECT p FROM Prestamo p", 
+                Prestamo.class
+            );
+            return query.getResultList();
+        } finally {
+            em.close();
+        }
+    }
 }

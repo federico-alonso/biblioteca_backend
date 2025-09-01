@@ -6,13 +6,18 @@
   <component name="ChangeListManager">
     <list default="true" id="c272a51f-009e-495a-9d53-7b45ce97aeda" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/datatypes/DtPrestamo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datatypes/DtPrestamo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/interfaces/Fabrica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interfaces/Fabrica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/interfaces/IControladorModificarEstadoLector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interfaces/IControladorModificarEstadoLector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/interfaces/IControladorPrestamo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interfaces/IControladorPrestamo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logica/Bibliotecario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/Bibliotecario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/logica/ControladorModificarEstadoLector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/ControladorModificarEstadoLector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/logica/ControladorPrestamo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/ControladorPrestamo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logica/Lector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/Lector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logica/Prestamo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/Prestamo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentacion/AltaPrestamo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentacion/AltaPrestamo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/logica/ManejadorMaterial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/ManejadorMaterial.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/logica/ManejadorPrestamo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/ManejadorPrestamo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentacion/EstadoLectorFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentacion/EstadoLectorFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentacion/ListarPrestamosFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentacion/ListarPrestamosFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentacion/ModificarZonaLectorFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentacion/ModificarZonaLectorFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/presentacion/Principal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentacion/Principal.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -23,13 +28,18 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
-        <option value="Class" />
         <option value="Exception" />
+        <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="ModificarEstadoPrestamo" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -52,21 +62,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Principal.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Principal.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "ConsultarDonacionYFecha",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/loreg/Desktop/bibliotecafinal",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -87,10 +99,23 @@
       <workItem from="1756237649754" duration="2804000" />
       <workItem from="1756246130952" duration="11238000" />
       <workItem from="1756420600707" duration="3980000" />
+      <workItem from="1756477116304" duration="1063000" />
+      <workItem from="1756478205877" duration="28476000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/logica/ControladorPrestamo.java</url>
+          <line>41</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

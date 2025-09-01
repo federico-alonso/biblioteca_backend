@@ -5,16 +5,18 @@ import java.awt.event.ActionEvent;
 import java.util.List;
 
 import datatypes.Zona;
-import interfaces.IControladorModificarZonaLector;
 import excepciones.LectorNoExisteExcepcion;
+import interfaces.IControladorModificarZonaLector;
+import logica.Lector;
+import logica.ManejadorLector;
 
 public class ModificarZonaLectorFrame extends JInternalFrame {
 
     private IControladorModificarZonaLector icon;
-
     private Principal principal;
     private JComboBox<String> comboBoxNombre;
     private JComboBox<Zona> comboBoxZona;
+    private JButton btnAceptar;
 
     public ModificarZonaLectorFrame(IControladorModificarZonaLector icon, Principal principal) {
         this.icon = icon;
@@ -45,7 +47,7 @@ public class ModificarZonaLectorFrame extends JInternalFrame {
         comboBoxZona.setBounds(180, 60, 180, 20);
         getContentPane().add(comboBoxZona);
 
-        JButton btnAceptar = new JButton("Aceptar");
+        btnAceptar = new JButton("Aceptar");
         btnAceptar.setBounds(80, 110, 100, 25);
         btnAceptar.addActionListener(this::cambiarZonaActionPerformed);
         getContentPane().add(btnAceptar);
@@ -63,19 +65,39 @@ public class ModificarZonaLectorFrame extends JInternalFrame {
         String nombre = (String) comboBoxNombre.getSelectedItem();
         Zona nuevaZona = (Zona) comboBoxZona.getSelectedItem();
 
-        if (nombre == null || nombre.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Debe seleccionar un lector");
+        if (nombre == null || nombre.isEmpty() || nombre.equals("Seleccione un lector")) {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un lector", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
         try {
+            ManejadorLector manejador = ManejadorLector.getInstance();
+            Lector lector = manejador.buscarLector(nombre);
+
+            if (lector == null) {
+                throw new LectorNoExisteExcepcion("El lector '" + nombre + "' no existe");
+            }
+
+            if (lector.getZona() == nuevaZona) {
+                JOptionPane.showMessageDialog(this,
+                        "El lector ya se encuentra en la zona: " + nuevaZona,
+                        "Información",
+                        JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
+
             icon.modificarZonaLector(nombre, nuevaZona);
-            JOptionPane.showMessageDialog(this, "Zona actualizada correctamente");
+            JOptionPane.showMessageDialog(this,
+                    "Zona del lector modificada exitosamente a: " + nuevaZona,
+                    "Éxito",
+                    JOptionPane.INFORMATION_MESSAGE);
+
             principal.actualizarInternalFrames();
+
         } catch (LectorNoExisteExcepcion ex) {
-            JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage());
+            JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
-        System.out.println("Cambiar zona de '" + nombre + "' a " + nuevaZona);
+
         limpiarFormulario();
         setVisible(false);
     }
