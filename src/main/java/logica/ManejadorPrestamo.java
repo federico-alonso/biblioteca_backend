@@ -1,9 +1,8 @@
 package logica;
 
 import persistencia.Conexion;
-
-import datatypes.DtPrestamo;
 import datatypes.EstadoPmo;
+import datatypes.DtPrestamo;
 
 import jakarta.persistence.*;
 import java.util.List;
@@ -19,26 +18,22 @@ public class ManejadorPrestamo {
         return instancia;
     }
 
-    public void agregarPrestamo(Prestamo prestamo){
+    public void agregarPrestamo(Prestamo prestamo) {
         EntityManager em = Conexion.getInstancia().getEntityManager();
-
         em.getTransaction().begin();
         em.persist(prestamo);
         em.getTransaction().commit();
-
         em.close();
     }
 
-    public boolean existePrestamoActivo(Prestamo prestamo){
-    //Busca un prestamo activo
-
+    public boolean existePrestamoActivo(Prestamo prestamo) {
         EntityManager em = Conexion.getInstancia().getEntityManager();
 
-        List<Prestamo> p = em.createQuery("SELECT p FROM Prestamo p " +
-                        "WHERE p.material.id = :idMaterial AND " +
-                        "p.estado = 'ACTIVO'", Prestamo.class)
-                .setParameter("idMaterial", prestamo.getMaterial().getId())
-                .getResultList();
+        List<Prestamo> p = em.createQuery(
+                "SELECT p FROM Prestamo p WHERE p.material.id = :idMaterial AND p.estado = 'ACTIVO'",
+                Prestamo.class
+        ).setParameter("idMaterial", prestamo.getMaterial().getId())
+         .getResultList();
 
         em.close();
         return (!p.isEmpty());
@@ -59,7 +54,6 @@ public class ManejadorPrestamo {
         return prestamos;
     }
 
-    // AGREGAR ESTOS DOS MÉTODOS NUEVOS:
     public void modificarEstadoPrestamo(long idPrestamo, EstadoPmo nuevoEstado) {
         EntityManager em = Conexion.getInstancia().getEntityManager();
         try {
@@ -81,16 +75,29 @@ public class ManejadorPrestamo {
         }
     }
 
-    public List<Prestamo> listarTodosLosPrestamos() {
+    public Prestamo buscarPrestamo(long id) {
         EntityManager em = Conexion.getInstancia().getEntityManager();
-        try {
-            TypedQuery<Prestamo> query = em.createQuery(
-                "SELECT p FROM Prestamo p", 
+        Prestamo prestamo = em.find(Prestamo.class, id);
+        em.close();
+        return prestamo;
+    }
+
+    public void actualizarPrestamo(Prestamo prestamo) {
+        EntityManager em = Conexion.getInstancia().getEntityManager();
+        em.getTransaction().begin();
+        em.merge(prestamo);
+        em.getTransaction().commit();
+        em.close();
+    }
+
+    public List<Prestamo> listarPrestamos() {
+        EntityManager em = Conexion.getInstancia().getEntityManager();
+        TypedQuery<Prestamo> query = em.createQuery(
+                "SELECT p FROM Prestamo p ORDER BY p.id ASC",
                 Prestamo.class
-            );
-            return query.getResultList();
-        } finally {
-            em.close();
-        }
+        );
+        List<Prestamo> prestamos = query.getResultList();
+        em.close();
+        return prestamos;
     }
 }

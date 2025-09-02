@@ -9,6 +9,9 @@ import logica.ControladorPrestamo;
 import logica.ControladorConsultarDonacion;
 import logica.ControladorModificarEstadoPrestamo;
 import logica.ControladorConsultaDonacionYFecha;
+import logica.ControladorModificarTodoPrestamo;
+import logica.ControladorListarPrestamosZona;
+
 
 public class Fabrica {
     private static Fabrica instancia = null;
@@ -56,4 +59,13 @@ public class Fabrica {
     public IControladorConsultaDonacionYFecha getIControladorConsultaDonacionYFecha() {
         return new ControladorConsultaDonacionYFecha();
     }
+
+    public IControladorModificarTodoPrestamo getIControladorModificarTodoPrestamo() {
+        return new ControladorModificarTodoPrestamo();
+    }
+
+    public IControladorListarPrestamosZona getIControladorListarPrestamosZona() {
+        return new ControladorListarPrestamosZona();
+    }
+
 }

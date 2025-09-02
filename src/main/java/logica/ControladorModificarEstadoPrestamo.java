@@ -14,8 +14,8 @@ public class ControladorModificarEstadoPrestamo implements IControladorModificar
     }
 
     @Override
-    public List<DtPrestamo> listarTodosLosPrestamos() {
-        List<Prestamo> prestamos = ManejadorPrestamo.getInstancia().listarTodosLosPrestamos();
+    public List<DtPrestamo> listarPrestamos() {
+        List<Prestamo> prestamos = ManejadorPrestamo.getInstancia().listarPrestamos();
         List<DtPrestamo> dtPrestamos = new ArrayList<>();
         for (Prestamo p : prestamos) {
             dtPrestamos.add(p.obtenerDt());

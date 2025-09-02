@@ -36,7 +36,8 @@ public class Principal {
     private ListarPrestamosFrame listarPrestamosInternalFrame;
     private ConsultarPrestamosBibliotecario listarPrestamosBibliotecarioInternalFrame;
     private ModificarEstadoPrestamoFrame modificarEstadoPrestamoInternalFrame;
-    // private ConsultaPrestamoYFechaFrame consultaPrestamoYFechaInternalFrame;
+    private ModificarTodoPrestamo modificarTodoPrestamoInternalFrame;
+    private ConsultarZonaLectorFrame consultarZonaLectorInternalFrame;
 
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
@@ -62,6 +63,9 @@ public class Principal {
         IControladorPrestamo controladorPrestamo = fabrica.getIControladorPrestamo();
         IControladorModificarEstadoPrestamo controladorModificarEstadoPrestamo = fabrica.getIControladorModificarEstadoPrestamo();
         IControladorConsultaDonacionYFecha controladorConsultaDonacionYFecha = fabrica.getIControladorConsultaDonacionYFecha();
+        IControladorModificarTodoPrestamo controladorModificarTodoPrestamo = fabrica.getIControladorModificarTodoPrestamo();
+        IControladorListarPrestamosZona controladorListarZona = fabrica.getIControladorListarPrestamosZona();
+
 
         Dimension desktopSize = frame.getSize();
 
@@ -163,15 +167,23 @@ public class Principal {
         consultaDonacionYFechaInternalFrame.setVisible(false);
         frame.getContentPane().add(consultaDonacionYFechaInternalFrame);
 
-        // consultaPrestamoYFechaInternalFrame = new ConsultaPrestamoYFechaFrame(controladorConsultaPrestamoYFecha);
-        // consultaPrestamoYFechaInternalFrame.setLocation(
-        //         (desktopSize.width - consultaPrestamoYFechaInternalFrame.getSize().width) / 2,
-        //         (desktopSize.height - consultaPrestamoYFechaInternalFrame.getSize().height) / 2
-        // );
-        // consultaPrestamoYFechaInternalFrame.setVisible(false);
-        // frame.getContentPane().add(consultaPrestamoYFechaInternalFrame);
+        modificarTodoPrestamoInternalFrame = new ModificarTodoPrestamo(controladorModificarTodoPrestamo);
+        modificarTodoPrestamoInternalFrame.setLocation(
+                (desktopSize.width - modificarTodoPrestamoInternalFrame.getSize().width) / 2,
+                (desktopSize.height - modificarTodoPrestamoInternalFrame.getSize().height) / 2
+        );
+        modificarTodoPrestamoInternalFrame.setVisible(false);
+        frame.getContentPane().add(modificarTodoPrestamoInternalFrame);
 
-}
+        consultarZonaLectorInternalFrame = new ConsultarZonaLectorFrame(controladorListarZona);
+        consultarZonaLectorInternalFrame.setLocation(
+                (desktopSize.width - consultarZonaLectorInternalFrame.getSize().width) / 2,
+                (desktopSize.height - consultarZonaLectorInternalFrame.getSize().height) / 2
+        );
+        consultarZonaLectorInternalFrame.setVisible(false);
+        frame.getContentPane().add(consultarZonaLectorInternalFrame);
+
+    }
 
     private void initialize() {
         frame = new JFrame();
@@ -227,6 +239,10 @@ public class Principal {
         JMenu mnPrestamos = new JMenu("Prestamos");
         menuBar.add(mnPrestamos);
 
+        JMenuItem mntmResumenPorZona = new JMenuItem("Resumen por zona");
+        mntmResumenPorZona.addActionListener(e -> consultarZonaLectorInternalFrame.setVisible(true));
+        mnPrestamos.add(mntmResumenPorZona);
+
         JMenuItem mntmAltaPrestamo = new JMenuItem("Registrar prestamo");
         mntmAltaPrestamo.addActionListener(e -> altaPrestamoInternalFrame.setVisible(true));
         mnPrestamos.add(mntmAltaPrestamo);
@@ -241,19 +257,23 @@ public class Principal {
 
         JMenuItem mntmModificarEstado = new JMenuItem("Modificar Estado de Préstamo");
         mntmModificarEstado.addActionListener(e -> {
-            //modificarEstadoPrestamoInternalFrame.cargarDatos();
             modificarEstadoPrestamoInternalFrame.setVisible(true);
         });
         mnPrestamos.add(mntmModificarEstado);
-}
+
+        JMenuItem mntmModificarPrestamo = new JMenuItem("Modificar préstamo");
+        mntmModificarPrestamo.addActionListener(e -> modificarTodoPrestamoInternalFrame.setVisible(true));
+        mnPrestamos.add(mntmModificarPrestamo);
+    }
+
 
     public void actualizarInternalFrames(){
         altaPrestamoInternalFrame.cargarDatos();
         modificarZonaInternalFrame.cargarNombresLectores();
         estadoLectorInternalFrame.cargarNombresLectores();
         listarPrestamosBibliotecarioInternalFrame.cargarDatos();
-        //modificarEstadoPrestamoInternalFrame.cargarDatos();
         consultaDonacionYFechaInternalFrame.limpiarFormulario();
+        modificarTodoPrestamoInternalFrame.cargarDatos();
     }
 
 }

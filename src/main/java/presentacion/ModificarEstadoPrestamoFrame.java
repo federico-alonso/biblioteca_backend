@@ -72,7 +72,7 @@ public class ModificarEstadoPrestamoFrame extends JInternalFrame {
 
         new Thread(() -> {
             try {
-                prestamos = controlador.listarTodosLosPrestamos();
+                prestamos = controlador.listarPrestamos();
 
                 // actualizar UI en el hilo de eventos
                 SwingUtilities.invokeLater(() -> {

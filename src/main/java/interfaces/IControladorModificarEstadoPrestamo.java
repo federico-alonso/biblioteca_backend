@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface IControladorModificarEstadoPrestamo {
     void modificarEstadoPrestamo(long idPrestamo, EstadoPmo nuevoEstado);
-    List<DtPrestamo> listarTodosLosPrestamos();
+    List<DtPrestamo> listarPrestamos();
 }
 
