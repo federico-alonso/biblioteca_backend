@@ -68,25 +68,38 @@ public class ControladorPrestamo implements IControladorPrestamo {
         }
     }
 
+
+
     @Override
-    public List<DtPrestamoSimple> getPrestamosActivosPorLector(String lectorNombre) {
+    public List<DtPrestamoSimple> getPrestamosActivosPorLector(DtLector lector) {
         List<Prestamo> prestamos = ManejadorPrestamo.getInstancia()
-                .obtenerPrestamosActivosPorLector(lectorNombre);
+                .obtenerPrestamosActivosPorLector(lector.getNombre());
 
         List<DtPrestamoSimple> resultado = new ArrayList<>();
 
-        for (Prestamo prestamo : prestamos) {
+        for (Prestamo p : prestamos) {
             DtPrestamoSimple dto = new DtPrestamoSimple(
-                    prestamo.getLector().getNombre(),
-                    prestamo.getFechaSolicitud(),
-                    prestamo.getFechaDevolucion(),
-                    prestamo.getEstado()
+                p.getLector().getNombre(),
+                p.getFechaSolicitud(),
+                p.getFechaDevolucion(),
+                p.getEstado()
             );
+
             resultado.add(dto);
         }
 
         return resultado;
     }
+
+    @Override
+    public List<String> getNombresLectores() {
+        List<String> nombres = new ArrayList<>();
+        for (DtLector lector : this.getListadoLectores()) { 
+            nombres.add(lector.getNombre());
+        }
+        return nombres;
+    }
+
 
     @Override
     public List<DtPrestamo> consultarPrestamosBibliotecario(DtBibliotecario bibliotecario) throws BibliotecarioNoTienePrestamos {

@@ -6,12 +6,13 @@ import java.awt.*;
 import java.util.List;
 
 import datatypes.DtPrestamoSimple;
+import datatypes.DtLector;
 import interfaces.IControladorPrestamo;
 
 public class ListarPrestamosFrame extends JInternalFrame {
 
     private IControladorPrestamo controlador;
-    private JTextField lectorField;
+    private JComboBox<String> comboBoxLector;
     private JTable tablaPrestamos;
     private DefaultTableModel modeloTabla;
 
@@ -23,15 +24,16 @@ public class ListarPrestamosFrame extends JInternalFrame {
         setLayout(new BorderLayout());
 
         initUI();
+        cargarLectores();
     }
 
     private void initUI() {
-        // Top panel for input
         JPanel inputPanel = new JPanel(new FlowLayout());
-        inputPanel.add(new JLabel("Nombre del lector:"));
+        inputPanel.add(new JLabel("Seleccione lector:"));
 
-        lectorField = new JTextField(20);
-        inputPanel.add(lectorField);
+        comboBoxLector = new JComboBox<>();
+        comboBoxLector.setPreferredSize(new Dimension(200, 25));
+        inputPanel.add(comboBoxLector);
 
         JButton buscarButton = new JButton("Buscar");
         buscarButton.addActionListener(e -> cargarPrestamos());
@@ -39,7 +41,6 @@ public class ListarPrestamosFrame extends JInternalFrame {
 
         add(inputPanel, BorderLayout.NORTH);
 
-        // Table setup
         modeloTabla = new DefaultTableModel();
         modeloTabla.addColumn("Fecha Solicitud");
         modeloTabla.addColumn("Fecha Devolución");
@@ -50,31 +51,61 @@ public class ListarPrestamosFrame extends JInternalFrame {
         add(scrollPane, BorderLayout.CENTER);
     }
 
-    private void cargarPrestamos() {
-        String nombreLector = lectorField.getText().trim();
-        modeloTabla.setRowCount(0); // Clear previous results
+    private void cargarLectores() {
+        comboBoxLector.removeAllItems();
+        try {
+            List<String> lectores = controlador.getNombresLectores();
 
-        if (nombreLector.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Ingrese el nombre del lector.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            for (String nombre : lectores) {
+                comboBoxLector.addItem(nombre);
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Error al cargar lectores: " + ex.getMessage(),
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void cargarPrestamos() {
+        String nombreSeleccionado = (String) comboBoxLector.getSelectedItem();
+        modeloTabla.setRowCount(0);
+
+        if (nombreSeleccionado == null || nombreSeleccionado.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Seleccione un lector.", "Advertencia", JOptionPane.WARNING_MESSAGE);
             return;
         }
 
         try {
-            List<DtPrestamoSimple> prestamos = controlador.getPrestamosActivosPorLector(nombreLector);
+            DtLector lector = null;
+            for (DtLector l : controlador.getListadoLectores()) {
+                if (l.getNombre().equals(nombreSeleccionado)) {
+                    lector = l;
+                    break;
+                }
+            }
+
+            if (lector == null) {
+                JOptionPane.showMessageDialog(this, "Lector no encontrado.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            List<DtPrestamoSimple> prestamos = controlador.getPrestamosActivosPorLector(lector);
+
             for (DtPrestamoSimple p : prestamos) {
                 modeloTabla.addRow(new Object[]{
-                        p.getFechaSolicitud(),
-                        p.getFechaDevolucion(),
-                        p.getEstado()
+                    p.getFechaSolicitud(),
+                    p.getFechaDevolucion(),
+                    p.getEstado()
                 });
             }
 
             if (prestamos.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "No se encontraron préstamos activos para el lector.", "Información", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "No se encontraron préstamos activos para el lector.",
+                        "Información", JOptionPane.INFORMATION_MESSAGE);
             }
 
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, "Error al obtener préstamos: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, "Error al obtener préstamos: " + ex.getMessage(),
+                        "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } 
 }
