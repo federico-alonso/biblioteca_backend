@@ -68,4 +68,9 @@ public class DtPrestamo {
         this.fechaDevolucion = fechaDevolucion;
     }
     public void setEstado(EstadoPmo estado){ this.estado = estado;}
+
+    @Override
+    public String toString() {
+    return "ID: " + getId() + " | Lector: " + getLector().getNombre();
+}
 }

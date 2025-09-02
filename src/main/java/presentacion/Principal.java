@@ -15,6 +15,8 @@ import interfaces.IControladorModificarEstadoLector;
 import interfaces.IControladorMaterial;
 import interfaces.IControladorModificarZonaLector;
 import interfaces.IControladorConsultarDonacion;
+import interfaces.IControladorPrestamo;
+import interfaces.IControladorModificarEstadoPrestamo;
 
 import interfaces.*;
 
@@ -30,11 +32,12 @@ public class Principal {
     private AltaDonacionLibro altaDonacionLibroInternalFrame;
     private AltaPrestamo altaPrestamoInternalFrame;
     private ConsultarDonacion consultarDonacionInternalFrame;
+    private ConsultaDonacionYFechaFrame consultaDonacionYFechaInternalFrame;
     private ListarPrestamosFrame listarPrestamosInternalFrame;
     private ConsultarPrestamosBibliotecario listarPrestamosBibliotecarioInternalFrame;
+    private ModificarEstadoPrestamoFrame modificarEstadoPrestamoInternalFrame;
     private ModificarTodoPrestamo modificarTodoPrestamoInternalFrame;
     private ConsultarZonaLectorFrame consultarZonaLectorInternalFrame;
-
 
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
@@ -58,8 +61,11 @@ public class Principal {
         IControladorConsultarDonacion controladorConsultarDonacion = fabrica.getIControladorConsultarDonacion();
         IControladorModificarZonaLector controladorModificarZona = fabrica.getIControladorModificarZonaLector();
         IControladorPrestamo controladorPrestamo = fabrica.getIControladorPrestamo();
+        IControladorModificarEstadoPrestamo controladorModificarEstadoPrestamo = fabrica.getIControladorModificarEstadoPrestamo();
+        IControladorConsultaDonacionYFecha controladorConsultaDonacionYFecha = fabrica.getIControladorConsultaDonacionYFecha();
         IControladorModificarTodoPrestamo controladorModificarTodoPrestamo = fabrica.getIControladorModificarTodoPrestamo();
         IControladorListarPrestamosZona controladorListarZona = fabrica.getIControladorListarPrestamosZona();
+
 
         Dimension desktopSize = frame.getSize();
 
@@ -145,6 +151,22 @@ public class Principal {
         listarPrestamosBibliotecarioInternalFrame.setVisible(false);
         frame.getContentPane().add(listarPrestamosBibliotecarioInternalFrame);
 
+        modificarEstadoPrestamoInternalFrame = new ModificarEstadoPrestamoFrame(controladorModificarEstadoPrestamo);
+        modificarEstadoPrestamoInternalFrame.setLocation(
+            (desktopSize.width - modificarEstadoPrestamoInternalFrame.getSize().width) / 2,
+            (desktopSize.height - modificarEstadoPrestamoInternalFrame.getSize().height) / 2
+        );
+        modificarEstadoPrestamoInternalFrame.setVisible(false);
+        frame.getContentPane().add(modificarEstadoPrestamoInternalFrame);
+
+        consultaDonacionYFechaInternalFrame = new ConsultaDonacionYFechaFrame(controladorConsultaDonacionYFecha);
+        consultaDonacionYFechaInternalFrame.setLocation(
+                (desktopSize.width - consultaDonacionYFechaInternalFrame.getSize().width) / 2,
+                (desktopSize.height - consultaDonacionYFechaInternalFrame.getSize().height) / 2
+        );
+        consultaDonacionYFechaInternalFrame.setVisible(false);
+        frame.getContentPane().add(consultaDonacionYFechaInternalFrame);
+
         modificarTodoPrestamoInternalFrame = new ModificarTodoPrestamo(controladorModificarTodoPrestamo);
         modificarTodoPrestamoInternalFrame.setLocation(
                 (desktopSize.width - modificarTodoPrestamoInternalFrame.getSize().width) / 2,
@@ -184,7 +206,11 @@ public class Principal {
         mnLectores.add(mntmBibliotecario);
 
         JMenuItem mntmCambiarEstado = new JMenuItem("Cambiar estado de lector");
-        mntmCambiarEstado.addActionListener(e -> estadoLectorInternalFrame.setVisible(true));
+        mntmCambiarEstado.addActionListener(e -> {
+            estadoLectorInternalFrame.limpiarFormulario();
+            estadoLectorInternalFrame.cargarNombresLectores();
+            estadoLectorInternalFrame.setVisible(true);
+        });
         mnLectores.add(mntmCambiarEstado);
 
         JMenuItem mntmCambiarZona = new JMenuItem("Cambiar zona de lector");
@@ -206,6 +232,10 @@ public class Principal {
         mntmConsultarDonacion.addActionListener(e -> consultarDonacionInternalFrame.setVisible(true));
         mnDonaciones.add(mntmConsultarDonacion);
 
+        JMenuItem mntmConsultarDonacionYFecha = new JMenuItem("Consultar donaciones por fecha");
+        mntmConsultarDonacionYFecha.addActionListener(e -> consultaDonacionYFechaInternalFrame.setVisible(true));
+        mnDonaciones.add(mntmConsultarDonacionYFecha);
+
         JMenu mnPrestamos = new JMenu("Prestamos");
         menuBar.add(mnPrestamos);
 
@@ -225,15 +255,24 @@ public class Principal {
         mntmListarPrestamosBibliotecario.addActionListener(e -> listarPrestamosBibliotecarioInternalFrame.setVisible(true));
         mnPrestamos.add(mntmListarPrestamosBibliotecario);
 
+        JMenuItem mntmModificarEstado = new JMenuItem("Modificar Estado de Préstamo");
+        mntmModificarEstado.addActionListener(e -> {
+            modificarEstadoPrestamoInternalFrame.setVisible(true);
+        });
+        mnPrestamos.add(mntmModificarEstado);
+
         JMenuItem mntmModificarPrestamo = new JMenuItem("Modificar préstamo");
         mntmModificarPrestamo.addActionListener(e -> modificarTodoPrestamoInternalFrame.setVisible(true));
         mnPrestamos.add(mntmModificarPrestamo);
     }
 
+
     public void actualizarInternalFrames(){
         altaPrestamoInternalFrame.cargarDatos();
         modificarZonaInternalFrame.cargarNombresLectores();
+        estadoLectorInternalFrame.cargarNombresLectores();
         listarPrestamosBibliotecarioInternalFrame.cargarDatos();
+        consultaDonacionYFechaInternalFrame.limpiarFormulario();
         modificarTodoPrestamoInternalFrame.cargarDatos();
     }
 
