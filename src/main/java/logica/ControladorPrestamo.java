@@ -113,6 +113,21 @@ public class ControladorPrestamo implements IControladorPrestamo {
     }
 
     @Override
+    public List<Object[]> consultarPrestamosComunes(){
+        EntityManager em = Conexion.getInstancia().getEntityManager();
+
+        List<Object[]> materiales = em.createQuery("SELECT p.material.id, count(p) FROM Prestamo p " +
+                "WHERE p.estado = 'PENDIENTE'" +
+                "GROUP BY p.material.id " +
+                "ORDER BY count(p) desc", Object[].class).getResultList();
+
+        for(Object[] fila : materiales) {
+            fila[0] =  ManejadorMaterial.getInstancia().buscarMaterial((Long)fila[0]).obtenerDt();
+        }
+        return materiales;
+    }
+
+    @Override
     public List<DtLector> getListadoLectores() {
         return ManejadorLector.getInstance().getLectores();
     }

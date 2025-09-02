@@ -6,13 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="c272a51f-009e-495a-9d53-7b45ce97aeda" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/datatypes/DtPrestamo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datatypes/DtPrestamo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/interfaces/IControladorPrestamo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interfaces/IControladorPrestamo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logica/Bibliotecario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/Bibliotecario.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/logica/ControladorPrestamo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/ControladorPrestamo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logica/Lector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/Lector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logica/Prestamo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/Prestamo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentacion/AltaPrestamo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentacion/AltaPrestamo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentacion/ConsultarPrestamosBibliotecario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentacion/ConsultarPrestamosBibliotecario.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/presentacion/Principal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentacion/Principal.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -23,9 +19,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Exception" />
         <option value="Interface" />
         <option value="Class" />
-        <option value="Exception" />
       </list>
     </option>
   </component>
@@ -87,6 +83,7 @@
       <workItem from="1756237649754" duration="2804000" />
       <workItem from="1756246130952" duration="11238000" />
       <workItem from="1756420600707" duration="3980000" />
+      <workItem from="1756758245596" duration="9206000" />
     </task>
     <servers />
   </component>

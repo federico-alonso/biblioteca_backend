@@ -32,6 +32,7 @@ public class Principal {
     private ConsultarDonacion consultarDonacionInternalFrame;
     private ListarPrestamosFrame listarPrestamosInternalFrame;
     private ConsultarPrestamosBibliotecario listarPrestamosBibliotecarioInternalFrame;
+    private ConsultarPrestamosComunes listarPrestamosComunesInternalFrame;
 
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
@@ -140,6 +141,14 @@ public class Principal {
         listarPrestamosBibliotecarioInternalFrame.setVisible(false);
         frame.getContentPane().add(listarPrestamosBibliotecarioInternalFrame);
 
+        listarPrestamosComunesInternalFrame = new ConsultarPrestamosComunes(controladorPrestamo, this);
+        listarPrestamosComunesInternalFrame.setLocation(
+                (desktopSize.width - listarPrestamosBibliotecarioInternalFrame.getSize().width) / 2,
+                (desktopSize.height - listarPrestamosBibliotecarioInternalFrame.getSize().height) / 2
+        );
+        listarPrestamosBibliotecarioInternalFrame.setVisible(false);
+        frame.getContentPane().add(listarPrestamosComunesInternalFrame);
+
     }
 
     private void initialize() {
@@ -200,6 +209,9 @@ public class Principal {
         mntmListarPrestamosBibliotecario.addActionListener(e -> listarPrestamosBibliotecarioInternalFrame.setVisible(true));
         mnPrestamos.add(mntmListarPrestamosBibliotecario);
 
+        JMenuItem mntmListarPrestamosComunes = new JMenuItem("Listar materiales comunes");
+        mntmListarPrestamosComunes.addActionListener(e -> listarPrestamosComunesInternalFrame.setVisible(true));
+        mnPrestamos.add(mntmListarPrestamosComunes);
     }
 
     public void actualizarInternalFrames(){
