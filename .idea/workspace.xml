@@ -4,12 +4,35 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c272a51f-009e-495a-9d53-7b45ce97aeda" name="Changes" comment="">
+    <list default="true" id="034b03cf-44a8-46ee-83bf-ff852caeff35" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/datatypes/DtEstadoPorZona.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/excepciones/PrestamoNoExisteExcepcion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/interfaces/IControladorConsultaDonacionYFecha.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/interfaces/IControladorListarPrestamosZona.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/interfaces/IControladorModificarEstadoPrestamo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/interfaces/IControladorModificarTodoPrestamo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/logica/ControladorConsultaDonacionYFecha.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/logica/ControladorListarPrestamosZona.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/logica/ControladorModificarEstadoPrestamo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/logica/ControladorModificarTodoPrestamo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/presentacion/ConsultaDonacionYFechaFrame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/presentacion/ConsultarZonaLectorFrame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/presentacion/ModificarEstadoPrestamoFrame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/presentacion/ModificarTodoPrestamo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/datatypes/DtPrestamo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datatypes/DtPrestamo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/interfaces/Fabrica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interfaces/Fabrica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/interfaces/IControladorModificarEstadoLector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interfaces/IControladorModificarEstadoLector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/interfaces/IControladorPrestamo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interfaces/IControladorPrestamo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/logica/ControladorModificarEstadoLector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/ControladorModificarEstadoLector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/logica/ControladorPrestamo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/ControladorPrestamo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentacion/ConsultarPrestamosBibliotecario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentacion/ConsultarPrestamosBibliotecario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/logica/ManejadorMaterial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/ManejadorMaterial.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/logica/ManejadorPrestamo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/ManejadorPrestamo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentacion/EstadoLectorFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentacion/EstadoLectorFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentacion/ListarPrestamosFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentacion/ListarPrestamosFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentacion/ModificarZonaLectorFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentacion/ModificarZonaLectorFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/presentacion/Principal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentacion/Principal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/logica/ManejadorMaterial.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/logica/ManejadorMaterial.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,21 +71,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Principal.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Principal.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "Merging main",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -86,8 +109,5 @@
       <workItem from="1756758245596" duration="9206000" />
     </task>
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
   </component>
 </project>

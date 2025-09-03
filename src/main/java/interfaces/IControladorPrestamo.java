@@ -22,6 +22,8 @@ public interface IControladorPrestamo {
     List<DtPrestamo> consultarPrestamosBibliotecario(DtBibliotecario bibliotecario) throws BibliotecarioNoTienePrestamos;
     List<Object[]> consultarPrestamosComunes();
 
-    // Updated to reflect minimal DTO for ListarPréstamos
-    List<DtPrestamoSimple> getPrestamosActivosPorLector(String lectorNombre);
+    List<DtPrestamoSimple> getPrestamosActivosPorLector(DtLector lector);
+
+    List<String> getNombresLectores();
+
 }
