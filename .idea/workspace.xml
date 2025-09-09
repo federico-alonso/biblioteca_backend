@@ -5,34 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="034b03cf-44a8-46ee-83bf-ff852caeff35" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/datatypes/DtEstadoPorZona.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/excepciones/PrestamoNoExisteExcepcion.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/interfaces/IControladorConsultaDonacionYFecha.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/interfaces/IControladorListarPrestamosZona.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/interfaces/IControladorModificarEstadoPrestamo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/interfaces/IControladorModificarTodoPrestamo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/logica/ControladorConsultaDonacionYFecha.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/logica/ControladorListarPrestamosZona.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/logica/ControladorModificarEstadoPrestamo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/logica/ControladorModificarTodoPrestamo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/presentacion/ConsultaDonacionYFechaFrame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/presentacion/ConsultarZonaLectorFrame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/presentacion/ModificarEstadoPrestamoFrame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/presentacion/ModificarTodoPrestamo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/interfaces/IControladorAltaDonacionEspecial.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/interfaces/IControladorAltaDonacionLibro.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/logica/ControladorAltaDonacionEspecial.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/logica/ControladorAltaDonacionLibro.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/datatypes/DtPrestamo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datatypes/DtPrestamo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/interfaces/Fabrica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interfaces/Fabrica.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/interfaces/IControladorModificarEstadoLector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interfaces/IControladorModificarEstadoLector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/interfaces/IControladorPrestamo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interfaces/IControladorPrestamo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logica/ControladorModificarEstadoLector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/ControladorModificarEstadoLector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logica/ControladorPrestamo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/ControladorPrestamo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logica/ManejadorMaterial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/ManejadorMaterial.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logica/ManejadorPrestamo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/ManejadorPrestamo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentacion/AltaBibliotecario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentacion/AltaBibliotecario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentacion/AltaDonacionEspecial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentacion/AltaDonacionEspecial.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentacion/AltaDonacionLibro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentacion/AltaDonacionLibro.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentacion/AltaLector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentacion/AltaLector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentacion/AltaPrestamo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentacion/AltaPrestamo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentacion/ConsultarPrestamosComunes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentacion/ConsultarPrestamosComunes.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/presentacion/EstadoLectorFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentacion/EstadoLectorFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentacion/ListarPrestamosFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentacion/ListarPrestamosFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentacion/ModificarEstadoPrestamoFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentacion/ModificarEstadoPrestamoFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentacion/ModificarTodoPrestamo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentacion/ModificarTodoPrestamo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/presentacion/ModificarZonaLectorFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentacion/ModificarZonaLectorFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/presentacion/Principal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentacion/Principal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/logica/ManejadorMaterial.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/logica/ManejadorMaterial.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +67,7 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "Merging main",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",

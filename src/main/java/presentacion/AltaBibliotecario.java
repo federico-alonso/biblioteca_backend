@@ -23,12 +23,12 @@ public class AltaBibliotecario extends JInternalFrame {
         this.iconBibliotecario = iconBibliotecario;
         this.principal = principal;
 
-        setTitle("Alta Bibliotecario");
+        setTitle("Agregar bibliotecario");
         setBounds(100, 100, 450, 190);
-        setResizable(true);
+        setResizable(false);
         setClosable(true);
-        setIconifiable(true);
-        setMaximizable(true);
+        setIconifiable(false);
+        setMaximizable(false);
         getContentPane().setLayout(null);
         
         JLabel lblNombre = new JLabel("Nombre:");

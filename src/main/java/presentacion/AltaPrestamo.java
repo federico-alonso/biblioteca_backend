@@ -11,7 +11,6 @@ import excepciones.PrestamoYaExisteExcepcion;
 import interfaces.IControladorPrestamo;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import logica.ManejadorLector;
 
 public class AltaPrestamo extends JInternalFrame {
     private static final long serialVersionUID = 1L;

@@ -46,11 +46,11 @@ public class ConsultarPrestamosComunes extends JInternalFrame {
 
     // --- Inicialización UI ---
     private void initialize() {
-        setTitle("Consultar Préstamos Comunes");
+        setTitle("Consultar préstamos comunes");
         setClosable(true);
-        setResizable(true);
-        setMaximizable(true);
-        setIconifiable(true);
+        setResizable(false);
+        setMaximizable(false);
+        setIconifiable(false);
         setBounds(100, 100, 800, 400);
 
         JPanel panelContenido = new JPanel(new BorderLayout(0, 10));
@@ -58,7 +58,7 @@ public class ConsultarPrestamosComunes extends JInternalFrame {
         setContentPane(panelContenido);
 
         // Panel superior con título
-        JLabel etiquetaTitulo = new JLabel("Listado de Préstamos Comunes");
+        JLabel etiquetaTitulo = new JLabel("Listado de préstamos comunes");
         etiquetaTitulo.setFont(new Font("Arial", Font.BOLD, 16));
         etiquetaTitulo.setHorizontalAlignment(SwingConstants.CENTER);
         panelContenido.add(etiquetaTitulo, BorderLayout.NORTH);

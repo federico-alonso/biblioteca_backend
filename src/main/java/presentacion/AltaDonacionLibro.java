@@ -1,14 +1,11 @@
 package presentacion;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Date;
 
-import interfaces.IControladorMaterial;
 import datatypes.DtLibro;
+import interfaces.IControladorAltaDonacionLibro;
 
 public class AltaDonacionLibro extends JInternalFrame {
     private static final long serialVersionUID = 1L;
@@ -19,132 +16,85 @@ public class AltaDonacionLibro extends JInternalFrame {
     private JButton btnLimpiar;
 
     private Principal principal;
-    private IControladorMaterial controlador;
+    private IControladorAltaDonacionLibro controlador;
 
-    public AltaDonacionLibro(IControladorMaterial controlador, Principal principal) {
+    public AltaDonacionLibro(IControladorAltaDonacionLibro controlador, Principal principal) {
         this.controlador = controlador;
         this.principal = principal;
         initialize();
     }
 
     private void initialize() {
-        setTitle("Alta Donación de Libro");
+        setTitle("Registrar libro");
         setClosable(true);
         setResizable(true);
         setMaximizable(true);
         setIconifiable(true);
-        setBounds(120, 120, 500, 260);
+        setBounds(100, 100, 450, 250);
+        getContentPane().setLayout(null);
 
-        JPanel contentPane = new JPanel();
-        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-        setContentPane(contentPane);
-        contentPane.setLayout(new BorderLayout(0, 0));
-
-        JPanel mainPanel = new JPanel(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(5, 5, 5, 5);
-
-        JLabel lblTituloPantalla = new JLabel("Registrar Nueva Donación de Libro");
-        lblTituloPantalla.setFont(new Font("Arial", Font.BOLD, 16));
-        lblTituloPantalla.setHorizontalAlignment(SwingConstants.CENTER);
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.gridwidth = 2;
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-        mainPanel.add(lblTituloPantalla, gbc);
+        JLabel lblTituloPantalla = new JLabel("Registrar nueva donación de libro");
+        lblTituloPantalla.setBounds(100, 10, 250, 20);
+        getContentPane().add(lblTituloPantalla);
 
         JLabel lblTitulo = new JLabel("Título:");
-        gbc.gridx = 0;
-        gbc.gridy = 1;
-        gbc.gridwidth = 1;
-        gbc.anchor = GridBagConstraints.WEST;
-        mainPanel.add(lblTitulo, gbc);
+        lblTitulo.setBounds(30, 50, 100, 20);
+        getContentPane().add(lblTitulo);
 
-        txtTitulo = new JTextField(22);
-        gbc.gridx = 1;
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-        mainPanel.add(txtTitulo, gbc);
+        txtTitulo = new JTextField();
+        txtTitulo.setBounds(140, 50, 250, 20);
+        getContentPane().add(txtTitulo);
+        txtTitulo.setColumns(10);
 
         JLabel lblPaginas = new JLabel("Cantidad de páginas:");
-        gbc.gridx = 0;
-        gbc.gridy = 2;
-        gbc.fill = GridBagConstraints.NONE;
-        mainPanel.add(lblPaginas, gbc);
+        lblPaginas.setBounds(30, 90, 150, 20);
+        getContentPane().add(lblPaginas);
 
-        txtCantidadPaginas = new JTextField(10);
-        gbc.gridx = 1;
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-        mainPanel.add(txtCantidadPaginas, gbc);
-
-        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        txtCantidadPaginas = new JTextField();
+        txtCantidadPaginas.setBounds(180, 90, 80, 20);
+        getContentPane().add(txtCantidadPaginas);
+        txtCantidadPaginas.setColumns(10);
 
         btnRegistrar = new JButton("Registrar Donación");
-        btnRegistrar.setBackground(new Color(46, 204, 113));
-        btnRegistrar.setForeground(Color.WHITE);
-        btnRegistrar.setFocusPainted(false);
-        btnRegistrar.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                registrarDonacion();
-            }
-        });
+        btnRegistrar.setBounds(80, 150, 140, 25);
+        btnRegistrar.addActionListener(this::registrarDonacion);
+        getContentPane().add(btnRegistrar);
 
         btnLimpiar = new JButton("Limpiar");
-        btnLimpiar.setBackground(new Color(52, 152, 219));
-        btnLimpiar.setForeground(Color.WHITE);
-        btnLimpiar.setFocusPainted(false);
-        btnLimpiar.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                limpiarCampos();
-            }
-        });
-
-        buttonPanel.add(btnRegistrar);
-        buttonPanel.add(btnLimpiar);
-
-        contentPane.add(mainPanel, BorderLayout.CENTER);
-        contentPane.add(buttonPanel, BorderLayout.SOUTH);
-
-        mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        btnLimpiar.setBounds(240, 150, 100, 25);
+        btnLimpiar.addActionListener(e -> limpiarCampos());
+        getContentPane().add(btnLimpiar);
     }
 
-    private void registrarDonacion() {
+    private void registrarDonacion(ActionEvent e) {
         try {
             if (txtTitulo.getText().trim().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "El título es obligatorio", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "El título es obligatorio");
                 return;
             }
 
             int paginas = Integer.parseInt(txtCantidadPaginas.getText().trim());
             if (paginas <= 0) {
-                JOptionPane.showMessageDialog(this, "La cantidad de páginas debe ser mayor a 0", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "La cantidad de páginas debe ser mayor a 0");
                 return;
             }
 
             DtLibro dtLibro = new DtLibro(0,
-                txtTitulo.getText().trim(),
-                paginas,
+                    txtTitulo.getText().trim(),
+                    paginas,
                     new Date()
             );
 
             controlador.altaDonacionLibro(dtLibro);
 
-            JOptionPane.showMessageDialog(this,
-                "Donación de libro registrada exitosamente",
-                "Éxito",
-                JOptionPane.INFORMATION_MESSAGE);
-                principal.actualizarInternalFrames();
+            JOptionPane.showMessageDialog(this, "Donación de libro registrada exitosamente");
+            principal.actualizarInternalFrames();
             limpiarCampos();
 
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this,
-                "Por favor, ingrese un número válido para cantidad de páginas",
-                "Error de formato",
-                JOptionPane.ERROR_MESSAGE);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this,
-                "Error al registrar la donación: " + e.getMessage(),
-                "Error",
-                JOptionPane.ERROR_MESSAGE);
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Ingrese un número válido para cantidad de páginas");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Error al registrar la donación: " + ex.getMessage());
         }
     }
 
@@ -154,5 +104,3 @@ public class AltaDonacionLibro extends JInternalFrame {
         txtTitulo.requestFocus();
     }
 }
-
-

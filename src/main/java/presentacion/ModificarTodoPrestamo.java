@@ -34,9 +34,9 @@ public class ModificarTodoPrestamo extends JInternalFrame {
         setTitle("Modificar Préstamo");
         setBounds(100, 100, 700, 400);
         setClosable(true);
-        setMaximizable(true);
-        setIconifiable(true);
-        setResizable(true);
+        setMaximizable(false);
+        setIconifiable(false);
+        setResizable(false);
 
         getContentPane().setLayout(null);
 

@@ -21,7 +21,7 @@ public class EstadoLectorFrame extends JInternalFrame {
         this.icon = icon;
         this.principal = principal;
 
-        setTitle("Cambiar Estado del Lector");
+        setTitle("Cambiar estado del lector");
         setClosable(true);
         setSize(450, 200);
 
