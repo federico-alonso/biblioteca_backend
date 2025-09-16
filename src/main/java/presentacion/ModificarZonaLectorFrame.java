@@ -7,19 +7,16 @@ import java.util.List;
 import datatypes.Zona;
 import excepciones.LectorNoExisteExcepcion;
 import interfaces.IControladorModificarZonaLector;
-import logica.Lector;
-import logica.ManejadorLector;
 
 public class ModificarZonaLectorFrame extends JInternalFrame {
 
-    private IControladorModificarZonaLector icon;
+    private IControladorModificarZonaLector controlador;
     private Principal principal;
     private JComboBox<String> comboBoxNombre;
     private JComboBox<Zona> comboBoxZona;
-    private JButton btnAceptar;
 
-    public ModificarZonaLectorFrame(IControladorModificarZonaLector icon, Principal principal) {
-        this.icon = icon;
+    public ModificarZonaLectorFrame(IControladorModificarZonaLector controlador, Principal principal) {
+        this.controlador = controlador;
         this.principal = principal;
 
         setTitle("Cambiar Zona del Lector");
@@ -47,7 +44,7 @@ public class ModificarZonaLectorFrame extends JInternalFrame {
         comboBoxZona.setBounds(180, 60, 180, 20);
         getContentPane().add(comboBoxZona);
 
-        btnAceptar = new JButton("Aceptar");
+        JButton btnAceptar = new JButton("Aceptar");
         btnAceptar.setBounds(80, 110, 100, 25);
         btnAceptar.addActionListener(this::cambiarZonaActionPerformed);
         getContentPane().add(btnAceptar);
@@ -71,22 +68,8 @@ public class ModificarZonaLectorFrame extends JInternalFrame {
         }
 
         try {
-            ManejadorLector manejador = ManejadorLector.getInstance();
-            Lector lector = manejador.buscarLector(nombre);
-
-            if (lector == null) {
-                throw new LectorNoExisteExcepcion("El lector '" + nombre + "' no existe");
-            }
-
-            if (lector.getZona() == nuevaZona) {
-                JOptionPane.showMessageDialog(this,
-                        "El lector ya se encuentra en la zona: " + nuevaZona,
-                        "Información",
-                        JOptionPane.INFORMATION_MESSAGE);
-                return;
-            }
-
-            icon.modificarZonaLector(nombre, nuevaZona);
+            // Interact only through the interface
+            controlador.modificarZonaLector(nombre, nuevaZona);
             JOptionPane.showMessageDialog(this,
                     "Zona del lector modificada exitosamente a: " + nuevaZona,
                     "Éxito",
@@ -109,7 +92,7 @@ public class ModificarZonaLectorFrame extends JInternalFrame {
 
     public void cargarNombresLectores() {
         try {
-            List<String> nombres = icon.listarNombresLectores();
+            List<String> nombres = controlador.listarNombresLectores();
             comboBoxNombre.removeAllItems();
             comboBoxNombre.addItem("Seleccione un lector");
             for (String nombre : nombres) {

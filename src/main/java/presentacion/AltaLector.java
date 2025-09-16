@@ -6,6 +6,11 @@ import java.awt.event.ActionListener;
 import java.util.Calendar;
 import java.util.Date;
 
+import org.jdatepicker.impl.JDatePanelImpl;
+import org.jdatepicker.impl.JDatePickerImpl;
+import org.jdatepicker.impl.UtilDateModel;
+import java.util.Properties;
+
 import datatypes.Zona;
 import excepciones.LectorRepetidoExcepcion;
 import interfaces.IControladorAltaLector;
@@ -26,12 +31,12 @@ public class AltaLector extends JInternalFrame {
         this.icon = icon;
         this.principal = principal;
 
-        setResizable(true);
-        setIconifiable(true);
-        setMaximizable(true);
+        setResizable(false);
+        setIconifiable(false);
+        setMaximizable(false);
         setClosable(true);
         setDefaultCloseOperation(JInternalFrame.DISPOSE_ON_CLOSE);
-        setTitle("AltaLector");
+        setTitle("Agregar lector");
         setBounds(100, 100, 450, 300);
         getContentPane().setLayout(null);
 

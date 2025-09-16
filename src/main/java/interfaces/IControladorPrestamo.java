@@ -8,6 +8,7 @@ import datatypes.DtPrestamoSimple;
 import excepciones.PrestamoYaExisteExcepcion;
 import excepciones.BibliotecarioNoTienePrestamos;
 
+
 import java.util.List;
 
 public interface IControladorPrestamo {
@@ -19,6 +20,7 @@ public interface IControladorPrestamo {
     List<DtMaterial> getListadoMateriales();
 
     List<DtPrestamo> consultarPrestamosBibliotecario(DtBibliotecario bibliotecario) throws BibliotecarioNoTienePrestamos;
+    List<Object[]> consultarPrestamosComunes();
 
     List<DtPrestamoSimple> getPrestamosActivosPorLector(DtLector lector);
 

@@ -22,9 +22,9 @@ public class ModificarEstadoPrestamoFrame extends JInternalFrame {
         this.controlador = controlador;
         setTitle("Modificar Estado de Préstamo");
         setClosable(true);
-        setResizable(true);
-        setMaximizable(true);
-        setIconifiable(true);
+        setResizable(false);
+        setMaximizable(false);
+        setIconifiable(false);
         setBounds(100, 100, 500, 200);
 
         JPanel panel = new JPanel();

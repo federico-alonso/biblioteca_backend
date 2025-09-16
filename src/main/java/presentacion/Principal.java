@@ -7,18 +7,22 @@ import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.UIManager;
+import javax.swing.SwingUtilities;
 
 import interfaces.Fabrica;
 import interfaces.IControladorAltaLector;
 import interfaces.IControladorAltaBibliotecario;
 import interfaces.IControladorModificarEstadoLector;
-import interfaces.IControladorMaterial;
+import interfaces.IControladorAltaDonacionLibro;
+import interfaces.IControladorAltaDonacionEspecial;
 import interfaces.IControladorModificarZonaLector;
 import interfaces.IControladorConsultarDonacion;
 import interfaces.IControladorPrestamo;
 import interfaces.IControladorModificarEstadoPrestamo;
-
-import interfaces.*;
+import interfaces.IControladorConsultaDonacionYFecha;
+import interfaces.IControladorModificarTodoPrestamo;
+import interfaces.IControladorListarPrestamosZona;
 
 public class Principal {
     private JFrame frame;
@@ -35,6 +39,7 @@ public class Principal {
     private ConsultaDonacionYFechaFrame consultaDonacionYFechaInternalFrame;
     private ListarPrestamosFrame listarPrestamosInternalFrame;
     private ConsultarPrestamosBibliotecario listarPrestamosBibliotecarioInternalFrame;
+    private ConsultarPrestamosComunes listarPrestamosComunesInternalFrame;
     private ModificarEstadoPrestamoFrame modificarEstadoPrestamoInternalFrame;
     private ModificarTodoPrestamo modificarTodoPrestamoInternalFrame;
     private ConsultarZonaLectorFrame consultarZonaLectorInternalFrame;
@@ -50,14 +55,15 @@ public class Principal {
         });
     }
 
-    public  Principal() {
+    public Principal() {
         initialize();
 
         Fabrica fabrica = Fabrica.getInstancia();
         IControladorAltaLector controladorAlta = fabrica.getIControladorAltaLector();
         IControladorAltaBibliotecario controladorBibliotecario = fabrica.getIControladorAltaBibliotecario();
         IControladorModificarEstadoLector controladorModificarEstado = fabrica.getIControladorModificarEstadoLector();
-        IControladorMaterial controladorMaterial = fabrica.getIControladorMaterial();
+        IControladorAltaDonacionLibro controladorAltaLibro = fabrica.getIControladorAltaDonacionLibro();
+        IControladorAltaDonacionEspecial controladorAltaEspecial = fabrica.getIControladorAltaDonacionEspecial();
         IControladorConsultarDonacion controladorConsultarDonacion = fabrica.getIControladorConsultarDonacion();
         IControladorModificarZonaLector controladorModificarZona = fabrica.getIControladorModificarZonaLector();
         IControladorPrestamo controladorPrestamo = fabrica.getIControladorPrestamo();
@@ -66,9 +72,9 @@ public class Principal {
         IControladorModificarTodoPrestamo controladorModificarTodoPrestamo = fabrica.getIControladorModificarTodoPrestamo();
         IControladorListarPrestamosZona controladorListarZona = fabrica.getIControladorListarPrestamosZona();
 
-
         Dimension desktopSize = frame.getSize();
 
+        // === Alta Lector ===
         agregarLectorInternalFrame = new AltaLector(controladorAlta, this);
         agregarLectorInternalFrame.setLocation(
                 (desktopSize.width - agregarLectorInternalFrame.getSize().width) / 2,
@@ -77,6 +83,7 @@ public class Principal {
         agregarLectorInternalFrame.setVisible(false);
         frame.getContentPane().add(agregarLectorInternalFrame);
 
+        // === Alta Bibliotecario ===
         agregarBibliotecarioInternalFrame = new AltaBibliotecario(controladorBibliotecario, this);
         agregarBibliotecarioInternalFrame.setLocation(
                 (desktopSize.width - agregarBibliotecarioInternalFrame.getSize().width) / 2,
@@ -85,9 +92,8 @@ public class Principal {
         agregarBibliotecarioInternalFrame.setVisible(false);
         frame.getContentPane().add(agregarBibliotecarioInternalFrame);
 
-
+        // === Estado Lector ===
         estadoLectorInternalFrame = new EstadoLectorFrame(controladorModificarEstado, this);
-
         estadoLectorInternalFrame.setLocation(
                 (desktopSize.width - estadoLectorInternalFrame.getSize().width) / 2,
                 (desktopSize.height - estadoLectorInternalFrame.getSize().height) / 2
@@ -95,6 +101,7 @@ public class Principal {
         estadoLectorInternalFrame.setVisible(false);
         frame.getContentPane().add(estadoLectorInternalFrame);
 
+        // === Modificar Zona Lector ===
         modificarZonaInternalFrame = new ModificarZonaLectorFrame(controladorModificarZona, this);
         modificarZonaInternalFrame.setLocation(
                 (desktopSize.width - modificarZonaInternalFrame.getSize().width) / 2,
@@ -103,7 +110,8 @@ public class Principal {
         modificarZonaInternalFrame.setVisible(false);
         frame.getContentPane().add(modificarZonaInternalFrame);
 
-        altaDonacionEspecialInternalFrame = new AltaDonacionEspecial(controladorMaterial, this);
+        // === Alta Donación Especial ===
+        altaDonacionEspecialInternalFrame = new AltaDonacionEspecial(controladorAltaEspecial, this);
         altaDonacionEspecialInternalFrame.setLocation(
                 (desktopSize.width - altaDonacionEspecialInternalFrame.getSize().width) / 2,
                 (desktopSize.height - altaDonacionEspecialInternalFrame.getSize().height) / 2
@@ -111,7 +119,8 @@ public class Principal {
         altaDonacionEspecialInternalFrame.setVisible(false);
         frame.getContentPane().add(altaDonacionEspecialInternalFrame);
 
-        altaDonacionLibroInternalFrame = new AltaDonacionLibro(controladorMaterial, this);
+        // === Alta Donación Libro ===
+        altaDonacionLibroInternalFrame = new AltaDonacionLibro(controladorAltaLibro, this);
         altaDonacionLibroInternalFrame.setLocation(
                 (desktopSize.width - altaDonacionLibroInternalFrame.getSize().width) / 2,
                 (desktopSize.height - altaDonacionLibroInternalFrame.getSize().height) / 2
@@ -119,6 +128,7 @@ public class Principal {
         altaDonacionLibroInternalFrame.setVisible(false);
         frame.getContentPane().add(altaDonacionLibroInternalFrame);
 
+        // === Consultar Donación ===
         consultarDonacionInternalFrame = new ConsultarDonacion(controladorConsultarDonacion, this);
         consultarDonacionInternalFrame.setLocation(
                 (desktopSize.width - consultarDonacionInternalFrame.getSize().width) / 2,
@@ -127,6 +137,7 @@ public class Principal {
         consultarDonacionInternalFrame.setVisible(false);
         frame.getContentPane().add(consultarDonacionInternalFrame);
 
+        // === Resto de frames (Préstamos, Listados, etc.) ===
         altaPrestamoInternalFrame = new AltaPrestamo(controladorPrestamo);
         altaPrestamoInternalFrame.setLocation(
                 (desktopSize.width - altaPrestamoInternalFrame.getSize().width) / 2,
@@ -151,10 +162,18 @@ public class Principal {
         listarPrestamosBibliotecarioInternalFrame.setVisible(false);
         frame.getContentPane().add(listarPrestamosBibliotecarioInternalFrame);
 
+        listarPrestamosComunesInternalFrame = new ConsultarPrestamosComunes(controladorPrestamo, this);
+        listarPrestamosComunesInternalFrame.setLocation(
+                (desktopSize.width - listarPrestamosComunesInternalFrame.getSize().width) / 2,
+                (desktopSize.height - listarPrestamosComunesInternalFrame.getSize().height) / 2
+        );
+        listarPrestamosComunesInternalFrame.setVisible(false);
+        frame.getContentPane().add(listarPrestamosComunesInternalFrame);
+
         modificarEstadoPrestamoInternalFrame = new ModificarEstadoPrestamoFrame(controladorModificarEstadoPrestamo);
         modificarEstadoPrestamoInternalFrame.setLocation(
-            (desktopSize.width - modificarEstadoPrestamoInternalFrame.getSize().width) / 2,
-            (desktopSize.height - modificarEstadoPrestamoInternalFrame.getSize().height) / 2
+                (desktopSize.width - modificarEstadoPrestamoInternalFrame.getSize().width) / 2,
+                (desktopSize.height - modificarEstadoPrestamoInternalFrame.getSize().height) / 2
         );
         modificarEstadoPrestamoInternalFrame.setVisible(false);
         frame.getContentPane().add(modificarEstadoPrestamoInternalFrame);
@@ -182,92 +201,99 @@ public class Principal {
         );
         consultarZonaLectorInternalFrame.setVisible(false);
         frame.getContentPane().add(consultarZonaLectorInternalFrame);
-
     }
 
     private void initialize() {
         frame = new JFrame();
+        frame.setTitle("Sistema de Biblioteca");
         frame.setBounds(200, 200, 900, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(null);
 
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            SwingUtilities.updateComponentTreeUI(frame);
+        } catch (Exception e) {
+            System.err.println("No se pudo aplicar Look and Feel del sistema: " + e.getMessage());
+        }
+
         JMenuBar menuBar = new JMenuBar();
         frame.setJMenuBar(menuBar);
 
-        JMenu mnLectores = new JMenu("Lectores");
-        menuBar.add(mnLectores);
+        JMenu mnAñadir = new JMenu("Añadir");
+        mnAñadir.setMnemonic('A');
+        menuBar.add(mnAñadir);
 
         JMenuItem mntmAgregarLector = new JMenuItem("Agregar lector");
         mntmAgregarLector.addActionListener(e -> agregarLectorInternalFrame.setVisible(true));
-        mnLectores.add(mntmAgregarLector);
+        mnAñadir.add(mntmAgregarLector);
 
-        JMenuItem mntmBibliotecario = new JMenuItem("Agregar bibliotecario");
-        mntmBibliotecario.addActionListener(e -> agregarBibliotecarioInternalFrame.setVisible(true));
-        mnLectores.add(mntmBibliotecario);
+        JMenuItem mntmAgregarBibliotecario = new JMenuItem("Agregar bibliotecario");
+        mntmAgregarBibliotecario.addActionListener(e -> agregarBibliotecarioInternalFrame.setVisible(true));
+        mnAñadir.add(mntmAgregarBibliotecario);
 
-        JMenuItem mntmCambiarEstado = new JMenuItem("Cambiar estado de lector");
-        mntmCambiarEstado.addActionListener(e -> {
+        JMenuItem mntmRegistrarLibro = new JMenuItem("Registrar libro");
+        mntmRegistrarLibro.addActionListener(e -> altaDonacionLibroInternalFrame.setVisible(true));
+        mnAñadir.add(mntmRegistrarLibro);
+
+        JMenuItem mntmRegistrarArticuloEspecial = new JMenuItem("Registrar artículo especial");
+        mntmRegistrarArticuloEspecial.addActionListener(e -> altaDonacionEspecialInternalFrame.setVisible(true));
+        mnAñadir.add(mntmRegistrarArticuloEspecial);
+
+        JMenu mnEditar = new JMenu("Editar");
+        mnEditar.setMnemonic('E');
+        menuBar.add(mnEditar);
+
+        JMenuItem mntmCambiarEstadoLector = new JMenuItem("Cambiar estado de lector");
+        mntmCambiarEstadoLector.addActionListener(e -> {
             estadoLectorInternalFrame.limpiarFormulario();
             estadoLectorInternalFrame.cargarNombresLectores();
             estadoLectorInternalFrame.setVisible(true);
         });
-        mnLectores.add(mntmCambiarEstado);
+        mnEditar.add(mntmCambiarEstadoLector);
 
-        JMenuItem mntmCambiarZona = new JMenuItem("Cambiar zona de lector");
-        mntmCambiarZona.addActionListener(e -> modificarZonaInternalFrame.setVisible(true));
-        mnLectores.add(mntmCambiarZona);
+        JMenuItem mntmCambiarZonaLector = new JMenuItem("Cambiar zona de lector");
+        mntmCambiarZonaLector.addActionListener(e -> modificarZonaInternalFrame.setVisible(true));
+        mnEditar.add(mntmCambiarZonaLector);
 
-        JMenu mnDonaciones = new JMenu("Donaciones");
-        menuBar.add(mnDonaciones);
-
-        JMenuItem mntmAltaDonacionLibro = new JMenuItem("Registrar Libro");
-        mntmAltaDonacionLibro.addActionListener(e -> altaDonacionLibroInternalFrame.setVisible(true));
-        mnDonaciones.add(mntmAltaDonacionLibro);
-
-        JMenuItem mntmAltaDonacionEspecial = new JMenuItem("Registrar Articulo Especial");
-        mntmAltaDonacionEspecial.addActionListener(e -> altaDonacionEspecialInternalFrame.setVisible(true));
-        mnDonaciones.add(mntmAltaDonacionEspecial);
-
-        JMenuItem mntmConsultarDonacion = new JMenuItem("Consultar donaciones");
-        mntmConsultarDonacion.addActionListener(e -> consultarDonacionInternalFrame.setVisible(true));
-        mnDonaciones.add(mntmConsultarDonacion);
-
-        JMenuItem mntmConsultarDonacionYFecha = new JMenuItem("Consultar donaciones por fecha");
-        mntmConsultarDonacionYFecha.addActionListener(e -> consultaDonacionYFechaInternalFrame.setVisible(true));
-        mnDonaciones.add(mntmConsultarDonacionYFecha);
-
-        JMenu mnPrestamos = new JMenu("Prestamos");
-        menuBar.add(mnPrestamos);
-
-        JMenuItem mntmResumenPorZona = new JMenuItem("Resumen por zona");
-        mntmResumenPorZona.addActionListener(e -> consultarZonaLectorInternalFrame.setVisible(true));
-        mnPrestamos.add(mntmResumenPorZona);
-
-        JMenuItem mntmAltaPrestamo = new JMenuItem("Registrar prestamo");
-        mntmAltaPrestamo.addActionListener(e -> altaPrestamoInternalFrame.setVisible(true));
-        mnPrestamos.add(mntmAltaPrestamo);
-
-        JMenuItem mntmListarPrestamos = new JMenuItem("Listar préstamos por lector");
-        mntmListarPrestamos.addActionListener(e -> listarPrestamosInternalFrame.setVisible(true));
-        mnPrestamos.add(mntmListarPrestamos);
-
-        JMenuItem mntmListarPrestamosBibliotecario = new JMenuItem("Listar préstamos por bibliotecario");
-        mntmListarPrestamosBibliotecario.addActionListener(e -> listarPrestamosBibliotecarioInternalFrame.setVisible(true));
-        mnPrestamos.add(mntmListarPrestamosBibliotecario);
-
-        JMenuItem mntmModificarEstado = new JMenuItem("Modificar Estado de Préstamo");
-        mntmModificarEstado.addActionListener(e -> {
-            modificarEstadoPrestamoInternalFrame.setVisible(true);
-        });
-        mnPrestamos.add(mntmModificarEstado);
+        JMenuItem mntmModificarEstadoPrestamo = new JMenuItem("Modificar estado de préstamo");
+        mntmModificarEstadoPrestamo.addActionListener(e -> modificarEstadoPrestamoInternalFrame.setVisible(true));
+        mnEditar.add(mntmModificarEstadoPrestamo);
 
         JMenuItem mntmModificarPrestamo = new JMenuItem("Modificar préstamo");
         mntmModificarPrestamo.addActionListener(e -> modificarTodoPrestamoInternalFrame.setVisible(true));
-        mnPrestamos.add(mntmModificarPrestamo);
+        mnEditar.add(mntmModificarPrestamo);
+
+        JMenu mnBuscar = new JMenu("Buscar");
+        mnBuscar.setMnemonic('B');
+        menuBar.add(mnBuscar);
+
+        JMenuItem mntmConsultarDonacion = new JMenuItem("Consultar donaciones");
+        mntmConsultarDonacion.addActionListener(e -> consultarDonacionInternalFrame.setVisible(true));
+        mnBuscar.add(mntmConsultarDonacion);
+
+        JMenuItem mntmConsultarDonacionYFecha = new JMenuItem("Consultar donaciones por fecha");
+        mntmConsultarDonacionYFecha.addActionListener(e -> consultaDonacionYFechaInternalFrame.setVisible(true));
+        mnBuscar.add(mntmConsultarDonacionYFecha);
+
+        JMenuItem mntmResumenPorZona = new JMenuItem("Resumen por zona");
+        mntmResumenPorZona.addActionListener(e -> consultarZonaLectorInternalFrame.setVisible(true));
+        mnBuscar.add(mntmResumenPorZona);
+
+        JMenuItem mntmListarPrestamosPorLector = new JMenuItem("Listar préstamos por lector");
+        mntmListarPrestamosPorLector.addActionListener(e -> listarPrestamosInternalFrame.setVisible(true));
+        mnBuscar.add(mntmListarPrestamosPorLector);
+
+        JMenuItem mntmListarPrestamosBibliotecario = new JMenuItem("Listar préstamos por bibliotecario");
+        mntmListarPrestamosBibliotecario.addActionListener(e -> listarPrestamosBibliotecarioInternalFrame.setVisible(true));
+        mnBuscar.add(mntmListarPrestamosBibliotecario);
+
+        JMenuItem mntmListarPrestamosComunes = new JMenuItem("Listar préstamos comunes");
+        mntmListarPrestamosComunes.addActionListener(e -> listarPrestamosComunesInternalFrame.setVisible(true));
+        mnBuscar.add(mntmListarPrestamosComunes);
     }
 
-
-    public void actualizarInternalFrames(){
+    public void actualizarInternalFrames() {
         altaPrestamoInternalFrame.cargarDatos();
         modificarZonaInternalFrame.cargarNombresLectores();
         estadoLectorInternalFrame.cargarNombresLectores();
@@ -275,5 +301,4 @@ public class Principal {
         consultaDonacionYFechaInternalFrame.limpiarFormulario();
         modificarTodoPrestamoInternalFrame.cargarDatos();
     }
-
 }

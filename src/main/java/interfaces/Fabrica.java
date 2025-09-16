@@ -2,7 +2,8 @@ package interfaces;
 
 import logica.ControladorAltaBibliotecario;
 import logica.ControladorAltaLector;
-import logica.ControladorMaterial;
+import logica.ControladorAltaDonacionLibro;
+import logica.ControladorAltaDonacionEspecial;
 import logica.ControladorModificarEstadoLector;
 import logica.ControladorModificarZonaLector;
 import logica.ControladorPrestamo;
@@ -11,7 +12,6 @@ import logica.ControladorModificarEstadoPrestamo;
 import logica.ControladorConsultaDonacionYFecha;
 import logica.ControladorModificarTodoPrestamo;
 import logica.ControladorListarPrestamosZona;
-
 
 public class Fabrica {
     private static Fabrica instancia = null;
@@ -24,6 +24,7 @@ public class Fabrica {
         return instancia;
     }
 
+    // === Alta Lector / Bibliotecario ===
     public IControladorAltaLector getIControladorAltaLector() {
         return new ControladorAltaLector();
     }
@@ -32,10 +33,16 @@ public class Fabrica {
         return new ControladorAltaBibliotecario();
     }
 
-    public IControladorMaterial getIControladorMaterial() {
-        return new ControladorMaterial();
+    // === Donaciones separadas ===
+    public IControladorAltaDonacionLibro getIControladorAltaDonacionLibro() {
+        return new ControladorAltaDonacionLibro();
     }
 
+    public IControladorAltaDonacionEspecial getIControladorAltaDonacionEspecial() {
+        return new ControladorAltaDonacionEspecial();
+    }
+
+    // === Modificaciones y Prestamos ===
     public IControladorModificarEstadoLector getIControladorModificarEstadoLector() {
         return new ControladorModificarEstadoLector();
     }
@@ -67,5 +74,4 @@ public class Fabrica {
     public IControladorListarPrestamosZona getIControladorListarPrestamosZona() {
         return new ControladorListarPrestamosZona();
     }
-
 }

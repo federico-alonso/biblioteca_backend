@@ -43,12 +43,12 @@ public class ConsultarPrestamosBibliotecario extends JInternalFrame {
     private JComboBox<String> comboFiltro;
 
     // --- Dependencias ---
-    private final IControladorPrestamo controlador;
+    private final IControladorPrestamo icon;
     private final Principal principal;
 
     // --- Constructor ---
-    public ConsultarPrestamosBibliotecario(IControladorPrestamo controlador, Principal principal) {
-        this.controlador = controlador;
+    public ConsultarPrestamosBibliotecario(IControladorPrestamo icon, Principal principal) {
+        this.icon = icon;
         this.principal = principal;
         initialize();
     }
@@ -135,7 +135,7 @@ public class ConsultarPrestamosBibliotecario extends JInternalFrame {
 
     // --- Lógica pública ---
     public void cargarDatos() {
-        List<DtBibliotecario> bibliotecarios = controlador.getListadoBibliotecarios();
+        List<DtBibliotecario> bibliotecarios = icon.getListadoBibliotecarios();
         List<String> nombres = bibliotecarios.stream()
                 .map(DtBibliotecario::getNombre)
                 .toList();
@@ -153,7 +153,7 @@ public class ConsultarPrestamosBibliotecario extends JInternalFrame {
             }
 
             DtBibliotecario filtro = new DtBibliotecario(seleccionado.toString().trim(), null, 0);
-            List<DtPrestamo> prestamos = controlador.consultarPrestamosBibliotecario(filtro);
+            List<DtPrestamo> prestamos = icon.consultarPrestamosBibliotecario(filtro);
 
             for (DtPrestamo prestamo : prestamos) {
                 modeloTabla.addRow(new Object[]{
@@ -169,7 +169,7 @@ public class ConsultarPrestamosBibliotecario extends JInternalFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this,
                     e.getMessage(),
-                    "Error",
+                    "Errorrrrr",
                     JOptionPane.ERROR_MESSAGE);
         }
     }
