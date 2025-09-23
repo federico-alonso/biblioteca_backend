@@ -240,6 +240,10 @@ public class Principal {
         mntmRegistrarArticuloEspecial.addActionListener(e -> altaDonacionEspecialInternalFrame.setVisible(true));
         mnAñadir.add(mntmRegistrarArticuloEspecial);
 
+        JMenuItem mntmRegistrarPrestamo = new JMenuItem("Registrar préstamo");
+        mntmRegistrarPrestamo.addActionListener(e -> altaPrestamoInternalFrame.setVisible(true));
+        mnAñadir.add(mntmRegistrarPrestamo);
+
         JMenu mnEditar = new JMenu("Editar");
         mnEditar.setMnemonic('E');
         menuBar.add(mnEditar);
