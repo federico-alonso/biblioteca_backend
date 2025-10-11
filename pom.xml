@@ -57,6 +57,8 @@
             <version>${postgres.version}</version>
         </dependency>
 
+        
+
         <!-- SLF4J Logging -->
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -67,6 +69,20 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
             <version>${slf4j.version}</version>
+        </dependency>
+
+        <!-- Jakarta XML Web Services API -->
+        <dependency>
+            <groupId>jakarta.xml.ws</groupId>
+            <artifactId>jakarta.xml.ws-api</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+
+        <!-- Implementación de JAX-WS (por ejemplo, Eclipse Metro) -->
+        <dependency>
+            <groupId>com.sun.xml.ws</groupId>
+            <artifactId>jaxws-rt</artifactId>
+            <version>3.0.2</version>
         </dependency>
     </dependencies>
 </project>

@@ -5,5 +5,5 @@ import datatypes.Zona;
 import excepciones.LectorRepetidoExcepcion;
 
 public interface IControladorAltaLector {
-    void altaLector(String nombre, String email, String direccion, Date fechaRegistro, Zona zona) throws LectorRepetidoExcepcion;
+    void altaLector(String nombre, String email, String contrasena, String direccion, Date fechaRegistro, Zona zona) throws LectorRepetidoExcepcion;
 }

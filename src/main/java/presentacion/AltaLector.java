@@ -23,6 +23,7 @@ public class AltaLector extends JInternalFrame {
 
     private JTextField textFieldNombre;
     private JTextField textFieldEmail;
+    private JTextField textFieldContrasena;
     private JTextField textFieldDireccion;
     private JSpinner spinnerFechaRegistro;
     private JComboBox<Zona> comboBoxZona;
@@ -37,7 +38,7 @@ public class AltaLector extends JInternalFrame {
         setClosable(true);
         setDefaultCloseOperation(JInternalFrame.DISPOSE_ON_CLOSE);
         setTitle("Agregar lector");
-        setBounds(100, 100, 450, 300);
+        setBounds(100, 100, 450, 330);
         getContentPane().setLayout(null);
 
         JLabel lblNombre = new JLabel("Nombre:");
@@ -58,33 +59,42 @@ public class AltaLector extends JInternalFrame {
         getContentPane().add(textFieldEmail);
         textFieldEmail.setColumns(10);
 
+        JLabel lblContrasena = new JLabel("Contraseña:");
+        lblContrasena.setBounds(10, 70, 100, 20);
+        getContentPane().add(lblContrasena);
+
+        textFieldContrasena = new JTextField();
+        textFieldContrasena.setBounds(120, 70, 200, 20);
+        getContentPane().add(textFieldContrasena);
+        textFieldContrasena.setColumns(10);
+
         JLabel lblDireccion = new JLabel("Dirección:");
-        lblDireccion.setBounds(10, 70, 100, 20);
+        lblDireccion.setBounds(10, 100, 100, 20);
         getContentPane().add(lblDireccion);
 
         textFieldDireccion = new JTextField();
-        textFieldDireccion.setBounds(120, 70, 200, 20);
+        textFieldDireccion.setBounds(120, 100, 200, 20);
         getContentPane().add(textFieldDireccion);
         textFieldDireccion.setColumns(10);
 
         JLabel lblFechaRegistro = new JLabel("Fecha de Registro:");
-        lblFechaRegistro.setBounds(10, 100, 120, 20);
+        lblFechaRegistro.setBounds(10, 130, 120, 20);
         getContentPane().add(lblFechaRegistro);
 
         spinnerFechaRegistro = new JSpinner(new SpinnerDateModel(new Date(), null, null, Calendar.DAY_OF_MONTH));
-        spinnerFechaRegistro.setBounds(140, 100, 180, 25);
+        spinnerFechaRegistro.setBounds(140, 130, 180, 25);
         getContentPane().add(spinnerFechaRegistro);
 
         JLabel lblZona = new JLabel("Zona:");
-        lblZona.setBounds(10, 130, 100, 20);
+        lblZona.setBounds(10, 160, 100, 20);
         getContentPane().add(lblZona);
 
         comboBoxZona = new JComboBox<>(Zona.values());
-        comboBoxZona.setBounds(120, 130, 200, 25);
+        comboBoxZona.setBounds(120, 160, 200, 25);
         getContentPane().add(comboBoxZona);
 
         JButton btnAceptar = new JButton("Aceptar");
-        btnAceptar.setBounds(120, 170, 100, 25);
+        btnAceptar.setBounds(120, 200, 100, 25);
         btnAceptar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 agregarLectorAceptarActionPerformed(e);
@@ -93,7 +103,7 @@ public class AltaLector extends JInternalFrame {
         getContentPane().add(btnAceptar);
 
         JButton btnCancelar = new JButton("Cancelar");
-        btnCancelar.setBounds(230, 170, 100, 25);
+        btnCancelar.setBounds(230, 200, 100, 25);
         btnCancelar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 agregarLectorCancelarActionPerformed(e);
@@ -110,13 +120,14 @@ public class AltaLector extends JInternalFrame {
     protected void agregarLectorAceptarActionPerformed(ActionEvent arg0) {
         String nombre = textFieldNombre.getText();
         String email = textFieldEmail.getText();
+        String contrasena = textFieldContrasena.getText();
         String direccion = textFieldDireccion.getText();
         Date fechaRegistro = (Date) spinnerFechaRegistro.getValue();
         Zona zona = (Zona) comboBoxZona.getSelectedItem();
 
         if (checkFormulario()) {
             try {
-                icon.altaLector(nombre, email, direccion, fechaRegistro, zona);
+                icon.altaLector(nombre, email, contrasena, direccion, fechaRegistro, zona);
                 JOptionPane.showMessageDialog(this, "Lector Aceptado");
             } catch (LectorRepetidoExcepcion e) {
                 JOptionPane.showMessageDialog(this, "Lector Repetido");
@@ -130,6 +141,7 @@ public class AltaLector extends JInternalFrame {
     protected void limpiarFormulario() {
         textFieldNombre.setText("");
         textFieldEmail.setText("");
+        textFieldContrasena.setText("");
         textFieldDireccion.setText("");
         spinnerFechaRegistro.setValue(new Date());
         comboBoxZona.setSelectedIndex(0);
@@ -138,11 +150,12 @@ public class AltaLector extends JInternalFrame {
     private boolean checkFormulario() {
         String nombre = textFieldNombre.getText();
         String email = textFieldEmail.getText();
+        String contrasena = textFieldContrasena.getText();
         String direccion = textFieldDireccion.getText();
         Date fechaRegistro = (Date) spinnerFechaRegistro.getValue();
         Zona zona = (Zona) comboBoxZona.getSelectedItem();
 
-        if (nombre.isEmpty() || email.isEmpty() || direccion.isEmpty() || fechaRegistro == null || zona == null) {
+        if (nombre.isEmpty() || email.isEmpty() || contrasena.isEmpty() || direccion.isEmpty() || fechaRegistro == null || zona == null) {
             JOptionPane.showMessageDialog(this, "Hay parámetros en blanco");
             return false;
         }

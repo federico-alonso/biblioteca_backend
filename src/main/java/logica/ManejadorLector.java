@@ -86,7 +86,7 @@ public class ManejadorLector {
 
             // Convertir a DTO y agregar a la lista
             for (Lector l : lectores) {
-                dtLectores.add(new DtLector(l.getNombre(), l.getEmail(), l.getDireccion(), l.getFechaRegistro(), l.getEstado()));
+                dtLectores.add(new DtLector(l.getNombre(), l.getEmail(), l.getContrasena(), l.getDireccion(), l.getFechaRegistro(), l.getEstado()));
             }
 
             return dtLectores;

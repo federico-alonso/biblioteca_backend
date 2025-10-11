@@ -21,9 +21,9 @@
         <properties>
             <!-- JDBC configuration using jakarta.persistence -->
             <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
-            <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://dpg-d2hsb9f5r7bs73ep5g20-a.oregon-postgres.render.com:5432/bdpap"/>
-            <property name="jakarta.persistence.jdbc.user" value="bdpap_user"/>
-            <property name="jakarta.persistence.jdbc.password" value="LwstmzCBSPaaKmUknErzbHZ0ZJRFfQIT"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://biblioteca-backeend-federico-1969.b.aivencloud.com:16394/defaultdb?sslmode=require"/>
+            <property name="jakarta.persistence.jdbc.user" value="avnadmin"/>
+            <property name="jakarta.persistence.jdbc.password" value="AVNS_RQJ3XrFxUx0SrdcP_5g"/>
 
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>

@@ -9,13 +9,13 @@ public class ControladorAltaBibliotecario implements IControladorAltaBibliotecar
     }
 
     @Override
-    public void altaBibliotecario(String nombre, String email) throws BibliotecarioRepetidoExcepcion{
+    public void altaBibliotecario(String nombre, String email, String contrasena) throws BibliotecarioRepetidoExcepcion{
         ManejadorBibliotecario manejadorBibliotecario = ManejadorBibliotecario.getInstance();
         Bibliotecario bibliotecario = manejadorBibliotecario.buscarBibliotecario(nombre);
         if(bibliotecario != null){
             throw new BibliotecarioRepetidoExcepcion("El bibliotecario '" + nombre + "' ya está registrado");
         }
-        bibliotecario = new Bibliotecario(nombre, email);
+        bibliotecario = new Bibliotecario(nombre, email, contrasena);
         manejadorBibliotecario.agregarBibliotecario(bibliotecario);
     }
 }

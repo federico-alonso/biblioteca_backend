@@ -18,13 +18,14 @@ public class AltaBibliotecario extends JInternalFrame {
     private IControladorAltaBibliotecario iconBibliotecario;
     private JTextField textFieldNombre;
     private JTextField textFieldEmail;
+    private JTextField textFieldContrasena;
 
     public AltaBibliotecario(IControladorAltaBibliotecario iconBibliotecario, Principal principal) {
         this.iconBibliotecario = iconBibliotecario;
         this.principal = principal;
 
         setTitle("Agregar bibliotecario");
-        setBounds(100, 100, 450, 190);
+        setBounds(100, 100, 450, 220);
         setResizable(false);
         setClosable(true);
         setIconifiable(false);
@@ -49,13 +50,22 @@ public class AltaBibliotecario extends JInternalFrame {
         getContentPane().add(textFieldEmail);
         textFieldEmail.setColumns(10);
         
+        JLabel lblContrasena = new JLabel("Contraseña:");
+        lblContrasena.setBounds(10, 73, 70, 14);
+        getContentPane().add(lblContrasena);
+        
+        textFieldContrasena = new JTextField();
+        textFieldContrasena.setBounds(90, 70, 260, 20);
+        getContentPane().add(textFieldContrasena);
+        textFieldContrasena.setColumns(10);
+        
         JButton btnAceptar = new JButton("Aceptar");
         btnAceptar.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		altaBibliotecarioAceptarActionPerformed(e);
         	}
         });
-        btnAceptar.setBounds(90, 80, 89, 23);
+        btnAceptar.setBounds(90, 110, 89, 23);
         getContentPane().add(btnAceptar);
         
         JButton btnCancelar = new JButton("Cancelar");
@@ -64,17 +74,18 @@ public class AltaBibliotecario extends JInternalFrame {
         		altaBibliotecarioCancelarActionPerformed(e);
         	}
         });
-        btnCancelar.setBounds(261, 80, 89, 23);
+        btnCancelar.setBounds(261, 110, 89, 23);
         getContentPane().add(btnCancelar);
     }
     
     protected void altaBibliotecarioAceptarActionPerformed(ActionEvent e) {
         String nombre = textFieldNombre.getText();
         String email = textFieldEmail.getText();
+        String contrasena = textFieldContrasena.getText();
         
         if (checkFormulario()) {
             try {
-                iconBibliotecario.altaBibliotecario(nombre, email);
+                iconBibliotecario.altaBibliotecario(nombre, email, contrasena);
                 JOptionPane.showMessageDialog(this, "Bibliotecario dado de alta exitosamente.", "Alta Bibliotecario", JOptionPane.INFORMATION_MESSAGE);
             } catch (BibliotecarioRepetidoExcepcion ex) {
                 JOptionPane.showMessageDialog(this, ex.getMessage(), "Alta Bibliotecario", JOptionPane.ERROR_MESSAGE);
@@ -91,7 +102,7 @@ public class AltaBibliotecario extends JInternalFrame {
     }
 
     private boolean checkFormulario() {
-        if (textFieldNombre.getText().isEmpty() || textFieldEmail.getText().isEmpty()) {
+        if (textFieldNombre.getText().isEmpty() || textFieldEmail.getText().isEmpty() || textFieldContrasena.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "No puede haber campos vacíos.", "Alta Bibliotecario", JOptionPane.ERROR_MESSAGE);
             return false;
         }
@@ -101,5 +112,6 @@ public class AltaBibliotecario extends JInternalFrame {
     private void limpiarFormulario() {
         textFieldNombre.setText("");
         textFieldEmail.setText("");
+        textFieldContrasena.setText("");
     }
 }

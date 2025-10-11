@@ -39,8 +39,8 @@ public class Lector extends Usuario {
         super();
     }
 
-    public Lector(String nombre, String email, Date fechaRegistro, String direccion, Zona zona) {
-        super(nombre, email);
+    public Lector(String nombre, String email, String contrasena, Date fechaRegistro, String direccion, Zona zona) {
+        super(nombre, email, contrasena);
         this.fechaRegistro = fechaRegistro;
         this.direccion = direccion;
         this.estado = EstadoLector.ACTIVO;
@@ -88,7 +88,7 @@ public class Lector extends Usuario {
     }
 
     public DtLector obtenerDt(){
-        return new DtLector(nombre, email, direccion, fechaRegistro, estado);
+        return new DtLector(nombre, email, contrasena, direccion, fechaRegistro, estado);
     }
 
 }

@@ -56,7 +56,7 @@ public class ManejadorBibliotecario {
 
             // Convertir a DTO y agregar a la lista
             for (Bibliotecario b : bibliotecarios) {
-                dtBibliotecarios.add(new DtBibliotecario(b.getNombre(),b.getEmail(),b.getNumero()));
+                dtBibliotecarios.add(new DtBibliotecario(b.getNombre(), b.getEmail(), b.getContrasena(), b.getNumero()));
             }
 
             return dtBibliotecarios;

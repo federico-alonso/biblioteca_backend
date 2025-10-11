@@ -11,8 +11,8 @@ public class DtLector extends DtUsuario {
         this.fechaRegistro = new Date();
     }
 
-    public DtLector(String nombre, String email, String direccion, Date fechaRegistro, EstadoLector estado) {
-        super(nombre, email);
+    public DtLector(String nombre, String email, String contrasena, String direccion, Date fechaRegistro, EstadoLector estado) {
+        super(nombre, email, contrasena);
         this.direccion = direccion;
         this.fechaRegistro = fechaRegistro;
         this.estado = estado;

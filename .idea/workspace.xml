@@ -5,24 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="034b03cf-44a8-46ee-83bf-ff852caeff35" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/interfaces/IControladorAltaDonacionEspecial.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/interfaces/IControladorAltaDonacionLibro.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/logica/ControladorAltaDonacionEspecial.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/logica/ControladorAltaDonacionLibro.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/interfaces/Fabrica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interfaces/Fabrica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/datatypes/DtBibliotecario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datatypes/DtBibliotecario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/datatypes/DtLector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datatypes/DtLector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/datatypes/DtUsuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datatypes/DtUsuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/interfaces/IControladorAltaBibliotecario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interfaces/IControladorAltaBibliotecario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/interfaces/IControladorAltaLector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interfaces/IControladorAltaLector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/logica/Bibliotecario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/Bibliotecario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/logica/ControladorAltaBibliotecario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/ControladorAltaBibliotecario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/logica/ControladorAltaLector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/ControladorAltaLector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/logica/ControladorMaterial.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/logica/Lector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/Lector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/logica/ManejadorBibliotecario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/ManejadorBibliotecario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/logica/ManejadorLector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/ManejadorLector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/logica/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/Usuario.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/presentacion/AltaBibliotecario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentacion/AltaBibliotecario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentacion/AltaDonacionEspecial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentacion/AltaDonacionEspecial.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentacion/AltaDonacionLibro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentacion/AltaDonacionLibro.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/presentacion/AltaLector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentacion/AltaLector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/presentacion/AltaPrestamo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentacion/AltaPrestamo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentacion/ConsultarPrestamosComunes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentacion/ConsultarPrestamosComunes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentacion/EstadoLectorFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentacion/EstadoLectorFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentacion/ModificarEstadoPrestamoFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentacion/ModificarEstadoPrestamoFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentacion/ModificarTodoPrestamo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentacion/ModificarTodoPrestamo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentacion/ModificarZonaLectorFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentacion/ModificarZonaLectorFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentacion/Principal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentacion/Principal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentacion/ConsultarPrestamosBibliotecario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentacion/ConsultarPrestamosBibliotecario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,12 +48,12 @@
     &quot;assignee&quot;: &quot;RTowari&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/RTowari/biblioteca&quot;,
-    &quot;accountId&quot;: &quot;40f87ef3-afae-47dc-a322-b37eb8815d40&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/federico-alonso/biblioteca_backend.git",
+    "accountId": "40f87ef3-afae-47dc-a322-b37eb8815d40"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
 }</component>
@@ -66,9 +67,12 @@
     "Application.Principal.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/fede/biblioteca_backend",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -80,13 +84,12 @@
     <attachedChunks>
       <set>
         <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.23892.409" />
-        <option value="bundled-js-predefined-d6986cc7102b-e03c56caf84a-JavaScript-IU-252.23892.409" />
       </set>
     </attachedChunks>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="c272a51f-009e-495a-9d53-7b45ce97aeda" name="Changes" comment="" />
+      <changelist id="034b03cf-44a8-46ee-83bf-ff852caeff35" name="Changes" comment="" />
       <created>1756170877175</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />

@@ -149,8 +149,8 @@ public class AltaPrestamo extends JInternalFrame {
             // Llamada al controlador para crear el préstamo
             try {
                 icon.altaPrestamo(new DtPrestamo(new DtMaterial(idMaterial, null),
-                        new DtLector(lector, null,null,null, null),
-                        new DtBibliotecario(biblio, null, 0),
+                        new DtLector(lector, null, null, null, null, null),
+                        new DtBibliotecario(biblio, null, null, 0),
                         fechaSol, fechaDev, estado)
                 );
                 JOptionPane.showMessageDialog(this, "Préstamo agregado al sistema.");

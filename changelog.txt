@@ -28,3 +28,8 @@
             - Se revisaron manualmente las anotaciones @Entity y @Table para asegurar consistencia con la estrategia JOINED.
             - Se validó la estructura de la base de datos contra el modelo de entidades actualizado.
             - Se confirmó la compatibilidad con Jakarta EE y Hibernate 6.2.5 tras la migr
+
+-25/08/2025 - Se modificaron Usuario, Lector y Bibliotecario para usar contrasenias.
+                - Tambien se modificaron los constructores en el back que usan los controladores.
+            - Se agregaron todos los archivos Publish. 
+                - Cada archivo Publish tiene los metodos web del Controlador del que vienen.

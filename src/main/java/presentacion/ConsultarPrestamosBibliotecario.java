@@ -152,7 +152,7 @@ public class ConsultarPrestamosBibliotecario extends JInternalFrame {
                 return;
             }
 
-            DtBibliotecario filtro = new DtBibliotecario(seleccionado.toString().trim(), null, 0);
+            DtBibliotecario filtro = new DtBibliotecario(seleccionado.toString().trim(), null, null, 0);
             List<DtPrestamo> prestamos = icon.consultarPrestamosBibliotecario(filtro);
 
             for (DtPrestamo prestamo : prestamos) {

@@ -20,8 +20,8 @@ public class Bibliotecario extends Usuario {
         super();
     }
 
-    public Bibliotecario(String nombre, String email) {
-        super(nombre, email);
+    public Bibliotecario(String nombre, String email, String contrasena) {
+        super(nombre, email, contrasena);
     }
 
     public int getNumero() {
@@ -41,6 +41,6 @@ public class Bibliotecario extends Usuario {
     }
 
     public DtBibliotecario obtenerDt(){
-        return new DtBibliotecario(nombre, email, numero);
+        return new DtBibliotecario(nombre, email, contrasena, numero);
     }
 }

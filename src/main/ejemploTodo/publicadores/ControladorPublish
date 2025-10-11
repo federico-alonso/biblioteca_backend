@@ -1,0 +1,94 @@
+package publicadores;
+
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+
+import javax.jws.WebMethod;
+import javax.jws.WebService;
+import javax.jws.soap.SOAPBinding;
+import javax.jws.soap.SOAPBinding.ParameterStyle;
+import javax.jws.soap.SOAPBinding.Style;
+import javax.xml.ws.Endpoint;
+
+import configuraciones.WebServiceConfiguracion;
+import datatypes.DtClase;
+import datatypes.DtEntrenamiento;
+import datatypes.DtSocio;
+import datatypes.DtSpinning;
+import interfaces.Fabrica;
+import interfaces.IControlador;
+
+@WebService
+@SOAPBinding(style = Style.RPC, parameterStyle = ParameterStyle.WRAPPED)
+public class ControladorPublish {
+	private Fabrica fabrica;
+	private IControlador icon;
+	private WebServiceConfiguracion configuracion;
+	private Endpoint endpoint;
+
+	public ControladorPublish() {
+		fabrica = Fabrica.getInstancia();
+		icon = fabrica.getIControlador();
+		try {
+			configuracion = new WebServiceConfiguracion();
+		} catch (Exception ex) {
+			
+		}
+	}
+
+	@WebMethod(exclude = true)
+	public void publicar() {
+		endpoint = Endpoint.publish("http://" + configuracion.getConfigOf("#WS_IP") + ":" + configuracion.getConfigOf("#WS_PORT") + "/controlador", this);
+		System.out.println("http://" + configuracion.getConfigOf("#WS_IP") + ":" + configuracion.getConfigOf("#WS_PORT") + "/controlador");
+	}
+	
+	@WebMethod(exclude = true)
+	public Endpoint getEndpoint() {
+        return endpoint;
+	}
+	
+	//LOS MÉTODOS QUE VAMOS A PUBLICAR
+	@WebMethod
+	public void agregarSocio(String ci, String nombre) {
+		icon.agregarSocio(ci, nombre);
+	}
+	
+	@WebMethod
+	public void agregarDtSpinning(DtSpinning clase){
+		icon.agregarDtSpinning(clase);;
+	}
+	
+	@WebMethod
+	public void agregarDtEntrenamiento(DtEntrenamiento clase){
+		icon.agregarDtEntrenamiento(clase);
+	}
+	
+	@WebMethod
+	public void agregarInscripcion(String ciSocio, int idClase, Calendar fecha){
+		icon.agregarInscripcion(ciSocio, idClase, fecha.getTime());
+	}
+	
+	@WebMethod
+	public void borrarInscripcion(String ciSocio, int idClase){
+		icon.borrarInscripcion(ciSocio, idClase);
+	}
+	
+	@WebMethod
+	public DtSocio[] obtenerInfoSociosPorClase (int idClase){
+		List<DtSocio> dtsocio = icon.obtenerInfoSociosPorClase(idClase);
+		int i = 0;
+        DtSocio[] ret = new DtSocio[dtsocio.size()];
+        for(DtSocio s : dtsocio) {
+            ret[i]=s;
+            i++;
+        }
+        return ret;
+	}
+	
+	@WebMethod
+	public DtClase obtenerClase(int idClase){
+		return icon.obtenerClase(idClase);
+	}
+
+}
