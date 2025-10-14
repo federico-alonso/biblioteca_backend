@@ -1,0 +1,41 @@
+Descripcion: Esto es una guia de como ejecutar y usar el backend y el front end. Tambien incluye una breve descripcion de los archivos
+
+Autor: Federico Alonso
+
+# !IMPORTANTE! Despues de crear un nuevo formulario html hay que comprobar si la db recibe los datos.
+Esa es la prueba de fuego.
+
+
+## Instrucciones de uso:
+
+Backend >>>>>>>>>>>>
+- Compila el proyecto usando Cursor o IntelliJ. Cada vez que se hace un cambio en el back
+a cualquier archivo, este paso es necesario.
+
+- Al ejecutar el backend, el archivo presentacion/Principal va a poner ciertos servicios
+disponibles en el navegador. 
+    - Para comprobar que el servicio funciona, ve a "http://localhost:18015/altaLector?wsdl"
+    En donde dice altaLector se puede poner cualquier servicio ya creado por el lector.
+    - Si el servicio esta funcional en programador va a ver un codigo web sencillo.
+    Si ese codigo no se ve y en su lugar aparece un error, es porque el servicio no esta dispoonible y el programa no funciona.
+
+- Ir a la raiz del proyecto  y ejecutar   "wsimport -keep -p cliente.altaLector -d src/main/java http://localhost:18015/altaLector?wsdl"
+    - En donde dice altaLector cambiar a gusto del lector.
+    - Este comando va a generar archivos java que van a tener nombres terminados en Publish, Service y Excepcion.
+
+- Los archivos .java generador por el comando deben ser ahora copiados al frontend.
+
+<<<<<<<<<<<<<<<<<<<
+
+Frontend >>>>>>>>>>>>
+- Tomar los archivos creador por el comando wsdl y llevarlos a java/cliente/NombreDelServicio
+    - En donde dice nombre del servicio, hay que poner la carpeta que el programador necesite.
+    En el programa ya existe la carpeta altaLector. Es una carpeta por caso de uso, mas o menos.
+- En IntelliJ "mvn clean compile" para compilar el proyecto.
+- "mvn clean package" para poner el proyecto como archivo web empaquetado.
+    - El archivo generado tiene la extension .war
+- Poner el archivo war. en la carpeta de tomcat C:\Program Files\Apache Software Foundation\Tomcat 10.1\webapps
+    - Asegurarse de que es Tomcat 10.1. Con la 9 el programa no funciona
+    - Luego de unos momentos el archivo war. va a crear una carpeta llamada biblioteca que tiene la web adentro.
+- Abrir google e ir a http://localhost:8080/NombreDelArchivoWarSinLaExtension
+    - Ejemplo: http://localhost:8080/biblioteca

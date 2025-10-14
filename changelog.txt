@@ -29,7 +29,11 @@
             - Se validó la estructura de la base de datos contra el modelo de entidades actualizado.
             - Se confirmó la compatibilidad con Jakarta EE y Hibernate 6.2.5 tras la migr
 
--25/08/2025 - Se modificaron Usuario, Lector y Bibliotecario para usar contrasenias.
+-10/10/2025 - Se modificaron Usuario, Lector y Bibliotecario para usar contrasenias.
                 - Tambien se modificaron los constructores en el back que usan los controladores.
             - Se agregaron todos los archivos Publish. 
                 - Cada archivo Publish tiene los metodos web del Controlador del que vienen.
+
+-10/14/2025 - Se agregaron instrucciones para correr el back y el front y las dependencias
+            - En presentacion/principal se agrego el servicio web para altaLector.
+                - Se ejecuta cuando se compila el proyecto. Consultar las instrucciones para detalles.
