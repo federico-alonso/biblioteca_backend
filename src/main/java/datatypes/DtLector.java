@@ -2,6 +2,10 @@ package datatypes;
 
 import java.util.Date;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+
+@XmlAccessorType(XmlAccessType.FIELD)
 public class DtLector extends DtUsuario {
     private String direccion;
     private Date fechaRegistro;

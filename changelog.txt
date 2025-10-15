@@ -39,3 +39,6 @@
                 - Se ejecuta cuando se compila el proyecto. Consultar las instrucciones para detalles.
 
 -10/15/2025 - Modificados todos los Publicadores para que no expongan metodos del Controlador
+            - Se cambiaron dts para que sus getters esten disponbiles en el front
+            - Se creo el controlador Login para vertificar los datos del front
+                - Se añadio este servicio a Principal

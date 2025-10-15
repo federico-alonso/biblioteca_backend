@@ -1,6 +1,10 @@
 package datatypes;
 
-public class DtBibliotecario extends DtUsuario{
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+
+@XmlAccessorType(XmlAccessType.FIELD)
+public class DtBibliotecario extends DtUsuario {
     private int numero;
 
     DtBibliotecario(){}

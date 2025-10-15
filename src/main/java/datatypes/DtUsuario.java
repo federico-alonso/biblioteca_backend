@@ -1,5 +1,11 @@
 package datatypes;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlSeeAlso;
+
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlSeeAlso({DtLector.class, DtBibliotecario.class})
 public abstract class DtUsuario {
     private String email;
     private String nombre;
