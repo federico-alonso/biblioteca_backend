@@ -76,7 +76,17 @@ public class ManejadorLector {
             }
     
             Lector l = resultado.get(0);
-            return new DtLector(l.getNombre(), l.getEmail(), l.getContrasena(), l.getDireccion(), l.getFechaRegistro(), l.getEstado());
+            DtLector dto = new DtLector(
+                l.getNombre(),
+                l.getEmail(),
+                l.getContrasena(),
+                l.getDireccion(),
+                l.getFechaRegistro(),
+                l.getEstado()
+            );
+            dto.setZona(l.getZona()); // ← esta línea es la clave
+    
+            return dto;
         } finally {
             em.close();
         }

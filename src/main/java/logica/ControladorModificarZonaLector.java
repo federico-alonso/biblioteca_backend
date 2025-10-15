@@ -4,6 +4,7 @@ import datatypes.Zona;
 import excepciones.LectorNoExisteExcepcion;
 import interfaces.IControladorModificarZonaLector;
 import java.util.List;
+import datatypes.DtLector;
 
 public class ControladorModificarZonaLector implements IControladorModificarZonaLector {
 
@@ -23,6 +24,19 @@ public class ControladorModificarZonaLector implements IControladorModificarZona
         lector.setZona(nuevaZona);
         manejadorLector.actualizarLector(lector);
     }
+
+    @Override
+    public DtLector getDtLectorPorCorreo(String correo) throws LectorNoExisteExcepcion {
+        ManejadorLector manejadorLector = ManejadorLector.getInstance();
+        DtLector lector = manejadorLector.buscarDtLectorPorCorreo(correo);
+
+        if (lector == null) {
+            throw new LectorNoExisteExcepcion("No se encontró lector con correo: " + correo);
+        }
+
+        return lector;
+}
+
 
     @Override
     public List<String> listarNombresLectores() {
