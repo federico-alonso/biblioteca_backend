@@ -62,7 +62,8 @@ public class Principal {
         publicadorLector.publicar("localhost", "18015");
 
         publicadores.LoginPublish publicadorLogin = new publicadores.LoginPublish();
-        publicadorLector.publicar("localhost", "18015");
+        publicadorLogin.publicar("localhost", "18016");
+
         
         Fabrica fabrica = Fabrica.getInstancia();
         IControladorAltaLector controladorAlta = fabrica.getIControladorAltaLector();
