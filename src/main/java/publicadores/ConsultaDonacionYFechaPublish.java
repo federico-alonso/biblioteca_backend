@@ -11,18 +11,20 @@ import java.util.Date;
 import java.util.List;
 
 import datatypes.DtMaterial;
+import interfaces.Fabrica;
 import interfaces.IControladorConsultaDonacionYFecha;
-import logica.ControladorConsultaDonacionYFecha;
 
 @WebService
 @SOAPBinding(style = Style.RPC, parameterStyle = ParameterStyle.WRAPPED)
 public class ConsultaDonacionYFechaPublish {
 
+    private Fabrica fabrica;
     private IControladorConsultaDonacionYFecha controlador;
     private Endpoint endpoint;
 
     public ConsultaDonacionYFechaPublish() {
-        controlador = new ControladorConsultaDonacionYFecha();
+        fabrica = Fabrica.getInstancia();
+        controlador = fabrica.getIControladorConsultaDonacionYFecha();
     }
 
     @WebMethod(exclude = true)

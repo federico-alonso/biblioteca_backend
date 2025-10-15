@@ -11,18 +11,20 @@ import java.util.List;
 
 import datatypes.Zona;
 import excepciones.LectorNoExisteExcepcion;
+import interfaces.Fabrica;
 import interfaces.IControladorModificarZonaLector;
-import logica.ControladorModificarZonaLector;
 
 @WebService
 @SOAPBinding(style = Style.RPC, parameterStyle = ParameterStyle.WRAPPED)
 public class ModificarZonaLectorPublish {
 
+    private Fabrica fabrica;
     private IControladorModificarZonaLector controlador;
     private Endpoint endpoint;
 
     public ModificarZonaLectorPublish() {
-        controlador = new ControladorModificarZonaLector();
+        fabrica = Fabrica.getInstancia();
+        controlador = fabrica.getIControladorModificarZonaLector();
     }
 
     @WebMethod(exclude = true)

@@ -16,18 +16,20 @@ import datatypes.DtBibliotecario;
 import datatypes.DtMaterial;
 import excepciones.PrestamoYaExisteExcepcion;
 import excepciones.BibliotecarioNoTienePrestamos;
+import interfaces.Fabrica;
 import interfaces.IControladorPrestamo;
-import logica.ControladorPrestamo;
 
 @WebService
 @SOAPBinding(style = Style.RPC, parameterStyle = ParameterStyle.WRAPPED)
 public class PrestamoPublish {
 
+    private Fabrica fabrica;
     private IControladorPrestamo controlador;
     private Endpoint endpoint;
 
     public PrestamoPublish() {
-        controlador = new ControladorPrestamo();
+        fabrica = Fabrica.getInstancia();
+        controlador = fabrica.getIControladorPrestamo();
     }
 
     @WebMethod(exclude = true)

@@ -11,18 +11,21 @@ import java.util.Date;
 
 import datatypes.Zona;
 import excepciones.LectorRepetidoExcepcion;
+import interfaces.Fabrica;
 import interfaces.IControladorAltaLector;
-import logica.ControladorAltaLector;
+
 
 @WebService
 @SOAPBinding(style = Style.RPC, parameterStyle = ParameterStyle.WRAPPED)
 public class AltaLectorPublish {
 
+    private Fabrica fabrica;
     private IControladorAltaLector controlador;
     private Endpoint endpoint;
 
     public AltaLectorPublish() {
-        controlador = new ControladorAltaLector();
+        fabrica = Fabrica.getInstancia();
+        controlador = fabrica.getIControladorAltaLector();
     }
 
     @WebMethod(exclude = true)

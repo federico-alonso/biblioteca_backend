@@ -10,18 +10,20 @@ import jakarta.xml.ws.Endpoint;
 import java.util.List;
 
 import datatypes.DtMaterial;
+import interfaces.Fabrica;
 import interfaces.IControladorConsultarDonacion;
-import logica.ControladorConsultarDonacion;
 
 @WebService
 @SOAPBinding(style = Style.RPC, parameterStyle = ParameterStyle.WRAPPED)
 public class ConsultarDonacionPublish {
 
+    private Fabrica fabrica;
     private IControladorConsultarDonacion controlador;
     private Endpoint endpoint;
 
     public ConsultarDonacionPublish() {
-        controlador = new ControladorConsultarDonacion();
+        fabrica = Fabrica.getInstancia();
+        controlador = fabrica.getIControladorConsultarDonacion();
     }
 
     @WebMethod(exclude = true)

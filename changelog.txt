@@ -37,3 +37,5 @@
 -10/14/2025 - Se agregaron instrucciones para correr el back y el front y las dependencias
             - En presentacion/principal se agrego el servicio web para altaLector.
                 - Se ejecuta cuando se compila el proyecto. Consultar las instrucciones para detalles.
+
+-10/15/2025 - Modificados todos los Publicadores para que no expongan metodos del Controlador

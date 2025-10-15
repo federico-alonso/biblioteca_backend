@@ -14,18 +14,20 @@ import datatypes.DtLector;
 import datatypes.DtBibliotecario;
 import datatypes.DtMaterial;
 import excepciones.PrestamoNoExisteExcepcion;
+import interfaces.Fabrica;
 import interfaces.IControladorModificarTodoPrestamo;
-import logica.ControladorModificarTodoPrestamo;
 
 @WebService
 @SOAPBinding(style = Style.RPC, parameterStyle = ParameterStyle.WRAPPED)
 public class ModificarTodoPrestamoPublish {
 
+    private Fabrica fabrica;
     private IControladorModificarTodoPrestamo controlador;
     private Endpoint endpoint;
 
     public ModificarTodoPrestamoPublish() {
-        controlador = new ControladorModificarTodoPrestamo();
+        fabrica = Fabrica.getInstancia();
+        controlador = fabrica.getIControladorModificarTodoPrestamo();
     }
 
     @WebMethod(exclude = true)

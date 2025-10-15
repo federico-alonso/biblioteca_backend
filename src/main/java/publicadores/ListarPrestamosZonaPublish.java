@@ -10,18 +10,20 @@ import jakarta.xml.ws.Endpoint;
 import java.util.List;
 
 import datatypes.DtEstadoPorZona;
+import interfaces.Fabrica;
 import interfaces.IControladorListarPrestamosZona;
-import logica.ControladorListarPrestamosZona;
 
 @WebService
 @SOAPBinding(style = Style.RPC, parameterStyle = ParameterStyle.WRAPPED)
 public class ListarPrestamosZonaPublish {
 
+    private Fabrica fabrica;
     private IControladorListarPrestamosZona controlador;
     private Endpoint endpoint;
 
     public ListarPrestamosZonaPublish() {
-        controlador = new ControladorListarPrestamosZona();
+        fabrica = Fabrica.getInstancia();
+        controlador = fabrica.getIControladorListarPrestamosZona();
     }
 
     @WebMethod(exclude = true)

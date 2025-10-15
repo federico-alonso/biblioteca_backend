@@ -8,18 +8,20 @@ import jakarta.jws.soap.SOAPBinding.ParameterStyle;
 import jakarta.xml.ws.Endpoint;
 
 import excepciones.BibliotecarioRepetidoExcepcion;
+import interfaces.Fabrica;
 import interfaces.IControladorAltaBibliotecario;
-import logica.ControladorAltaBibliotecario;
 
 @WebService
 @SOAPBinding(style = Style.RPC, parameterStyle = ParameterStyle.WRAPPED)
 public class AltaBibliotecarioPublish {
 
+    private Fabrica fabrica;
     private IControladorAltaBibliotecario controlador;
     private Endpoint endpoint;
 
     public AltaBibliotecarioPublish() {
-        controlador = new ControladorAltaBibliotecario();
+        fabrica = Fabrica.getInstancia();
+        controlador = fabrica.getIControladorAltaBibliotecario();
     }
 
     @WebMethod(exclude = true)

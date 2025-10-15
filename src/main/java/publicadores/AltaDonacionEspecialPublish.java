@@ -8,18 +8,20 @@ import jakarta.jws.soap.SOAPBinding.ParameterStyle;
 import jakarta.xml.ws.Endpoint;
 
 import datatypes.DtArticuloEspecial;
+import interfaces.Fabrica;
 import interfaces.IControladorAltaDonacionEspecial;
-import logica.ControladorAltaDonacionEspecial;
 
 @WebService
 @SOAPBinding(style = Style.RPC, parameterStyle = ParameterStyle.WRAPPED)
 public class AltaDonacionEspecialPublish {
 
+    private Fabrica fabrica;
     private IControladorAltaDonacionEspecial controlador;
     private Endpoint endpoint;
 
     public AltaDonacionEspecialPublish() {
-        controlador = new ControladorAltaDonacionEspecial();
+        fabrica = Fabrica.getInstancia();
+        controlador = fabrica.getIControladorAltaDonacionEspecial();
     }
 
     @WebMethod(exclude = true)
