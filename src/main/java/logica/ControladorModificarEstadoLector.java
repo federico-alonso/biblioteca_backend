@@ -4,6 +4,7 @@ import datatypes.EstadoLector;
 import excepciones.LectorNoExisteExcepcion;
 import interfaces.IControladorModificarEstadoLector;
 import java.util.List;
+import datatypes.DtLector;
 
 public class ControladorModificarEstadoLector implements IControladorModificarEstadoLector {
 
@@ -41,4 +42,19 @@ public class ControladorModificarEstadoLector implements IControladorModificarEs
 
         return lector.getEstado();
     }
+
+    @Override
+    public DtLector getDtLectorPorCorreo(String correo) throws LectorNoExisteExcepcion {
+        ManejadorLector manejadorLector = ManejadorLector.getInstance();
+        DtLector lector = manejadorLector.buscarDtLectorPorCorreo(correo);
+
+        if (lector == null) {
+            throw new LectorNoExisteExcepcion("No se encontró lector con correo: " + correo);
+        }
+
+        return lector;
+    }
+
+
+    
 }

@@ -63,6 +63,26 @@ public class ManejadorLector {
         }
     }
 
+    public DtLector buscarDtLectorPorCorreo(String correo) {
+        EntityManager em = Conexion.getInstancia().getEntityManager();
+        try {
+            TypedQuery<Lector> query = em.createQuery(
+                "SELECT l FROM Lector l WHERE LOWER(l.email) = LOWER(:correo)", Lector.class);
+            query.setParameter("correo", correo);
+            List<Lector> resultado = query.getResultList();
+    
+            if (resultado.isEmpty()) {
+                return null;
+            }
+    
+            Lector l = resultado.get(0);
+            return new DtLector(l.getNombre(), l.getEmail(), l.getContrasena(), l.getDireccion(), l.getFechaRegistro(), l.getEstado());
+        } finally {
+            em.close();
+        }
+    }
+    
+
     public List<String> listarNombresLectores() {
         EntityManager em = Conexion.getInstancia().getEntityManager();
         try {

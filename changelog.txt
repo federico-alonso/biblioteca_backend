@@ -42,3 +42,4 @@
             - Se cambiaron dts para que sus getters esten disponbiles en el front
             - Se creo el controlador Login para vertificar los datos del front
                 - Se añadio este servicio a Principal
+            - Se puso ModificarEstadoLector como servicio y se creo un nuevo metodo

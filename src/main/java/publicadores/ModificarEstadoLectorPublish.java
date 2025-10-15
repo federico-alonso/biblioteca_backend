@@ -13,6 +13,8 @@ import datatypes.EstadoLector;
 import excepciones.LectorNoExisteExcepcion;
 import interfaces.Fabrica;
 import interfaces.IControladorModificarEstadoLector;
+import datatypes.DtLector; // Asegurate de tener esta importación
+
 
 @WebService
 @SOAPBinding(style = Style.RPC, parameterStyle = ParameterStyle.WRAPPED)
@@ -54,4 +56,10 @@ public class ModificarEstadoLectorPublish {
     public EstadoLector getEstadoLector(String nombre) throws LectorNoExisteExcepcion {
         return controlador.getEstadoLector(nombre);
     }
+
+    @WebMethod
+    public DtLector getDtLectorPorCorreo(String correo) throws LectorNoExisteExcepcion {
+        return controlador.getDtLectorPorCorreo(correo);
+    }
+
 }
