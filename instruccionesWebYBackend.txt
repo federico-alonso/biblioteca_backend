@@ -23,7 +23,7 @@ disponibles en el navegador.
     & ".\wsimport.bat" -keep -p cliente.altaLector -d generado http://localhost:18015/altaLector?wsdl
     & ".\wsimport.bat" -keep -p cliente.login -d generado http://localhost:18016/login?wsdl
     & ".\wsimport.bat" -keep -p cliente.modificarEstadoLector -d generado http://localhost:18017/modificarEstadoLector?wsdl
-    & ".\wsimport.bat" -keep -p cliente.modificarZonaLector -d generado http://localhost:18017/modificarZonaLector?wsdl
+    & ".\wsimport.bat" -keep -p cliente.modificarZonaLector -d generado http://localhost:18018/modificarZonaLector?wsdl
     - Este comando va a generar archivos java que van a tener nombres terminados en Publish, Service y Excepcion.
 
 - Los archivos .java generador por el comando deben ser ahora copiados al frontend.
