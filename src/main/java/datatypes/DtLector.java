@@ -1,7 +1,6 @@
 package datatypes;
 
 import java.util.Date;
-
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 
@@ -10,6 +9,7 @@ public class DtLector extends DtUsuario {
     private String direccion;
     private Date fechaRegistro;
     private EstadoLector estado;
+    private Zona zona; // ← nuevo campo opcional
 
     DtLector() {
         this.fechaRegistro = new Date();
@@ -45,5 +45,13 @@ public class DtLector extends DtUsuario {
 
     public void setEstado(EstadoLector estado) {
         this.estado = estado;
+    }
+
+    public Zona getZona() {
+        return zona;
+    }
+
+    public void setZona(Zona zona) {
+        this.zona = zona;
     }
 }

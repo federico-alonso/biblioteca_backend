@@ -19,8 +19,11 @@ disponibles en el navegador.
     - Si el servicio esta funcional en programador va a ver un codigo web sencillo.
     Si ese codigo no se ve y en su lugar aparece un error, es porque el servicio no esta dispoonible y el programa no funciona.
 
-- Ir a la raiz del proyecto  y ejecutar   "wsimport -keep -p cliente.altaLector -d src/main/java http://localhost:18015/altaLector?wsdl"
-    - En donde dice altaLector cambiar a gusto del lector.
+- Ir a la raiz del proyecto  y ejecutar   
+    & ".\wsimport.bat" -keep -p cliente.altaLector -d generado http://localhost:18015/altaLector?wsdl
+    & ".\wsimport.bat" -keep -p cliente.login -d generado http://localhost:18016/login?wsdl
+    & ".\wsimport.bat" -keep -p cliente.modificarEstadoLector -d generado http://localhost:18017/modificarEstadoLector?wsdl
+    & ".\wsimport.bat" -keep -p cliente.modificarZonaLector -d generado http://localhost:18017/modificarZonaLector?wsdl
     - Este comando va a generar archivos java que van a tener nombres terminados en Publish, Service y Excepcion.
 
 - Los archivos .java generador por el comando deben ser ahora copiados al frontend.
