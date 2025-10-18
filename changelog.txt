@@ -44,3 +44,8 @@
                 - Se añadio este servicio a Principal
             - Se puso ModificarEstadoLector como servicio y se creo un nuevo metodo
             - Se agrego ModificarZonaLector como servicio
+
+-10/18/2025 - Se agrego un menu de usuario
+            - El usuario puede ver todo el catalogo
+            - El usuario puede pedir un prestamo
+            

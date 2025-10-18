@@ -1,7 +1,10 @@
 package datatypes;
 
 import java.util.Date;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 public class DtLibro extends DtMaterial {
     private String titulo;
     private int cantidadPag;

@@ -69,6 +69,13 @@ public class Principal {
 
         publicadores.ModificarZonaLectorPublish publicadorModificarZonaLector = new publicadores.ModificarZonaLectorPublish();
         publicadorModificarZonaLector.publicar("localhost", "18018");
+
+        publicadores.ControladorDonacionesPublish publicadorDonaciones = new publicadores.ControladorDonacionesPublish();
+        publicadorDonaciones.publicar("localhost", "18019");
+
+        publicadores.PrestamoPublish publicadorPrestamo = new publicadores.PrestamoPublish();
+        publicadorPrestamo.publicar("localhost", "18020");
+
         
         Fabrica fabrica = Fabrica.getInstancia();
         IControladorAltaLector controladorAlta = fabrica.getIControladorAltaLector();

@@ -1,7 +1,10 @@
 package datatypes;
 
 import java.util.Date;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 public class DtArticuloEspecial extends DtMaterial {
     private String descripcion;
     private float pesoKg;

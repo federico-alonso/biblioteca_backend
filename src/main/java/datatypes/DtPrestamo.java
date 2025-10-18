@@ -1,7 +1,11 @@
 package datatypes;
 
 import java.util.Date;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlSeeAlso;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 public class DtPrestamo {
     private long id;
     private DtMaterial material;

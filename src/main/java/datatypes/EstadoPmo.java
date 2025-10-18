@@ -3,5 +3,6 @@ package datatypes;
 public enum EstadoPmo{
     PENDIENTE,
     ACTIVO,
-    DEVUELTO
+    DEVUELTO,
+    EN_CURSO,
 }

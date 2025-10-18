@@ -36,37 +36,41 @@ public class ControladorPrestamo implements IControladorPrestamo {
 
     @Override
     public void altaPrestamo(DtPrestamo dtPrestamo) throws PrestamoYaExisteExcepcion {
-        Bibliotecario b = ManejadorBibliotecario.getInstance()
-                .buscarBibliotecario(dtPrestamo.getBibliotecario().getNombre());
-
+        Bibliotecario b = null;
+        if (dtPrestamo.getBibliotecario() != null) {
+            b = ManejadorBibliotecario.getInstance()
+                    .buscarBibliotecario(dtPrestamo.getBibliotecario().getNombre());
+        }
+    
         Lector l = ManejadorLector.getInstance()
                 .buscarLector(dtPrestamo.getLector().getNombre());
-
+    
         Material m = ManejadorMaterial.getInstancia()
                 .buscarMaterial(dtPrestamo.getMaterial().getId());
-
-        if (b != null && l != null && m != null) {
-            Prestamo p = new Prestamo(
-                    dtPrestamo.getFechaSolicitud(),
-                    dtPrestamo.getFechaDevolucion(),
-                    m,
-                    b,
-                    l,
-                    dtPrestamo.getEstado()
-            );
-
-            boolean prestamoActivo = ManejadorPrestamo.getInstancia().existePrestamoActivo(p);
-            boolean estadoPendiente = p.getEstado() == EstadoPmo.PENDIENTE;
-
-            if (!prestamoActivo || estadoPendiente) {
-                ManejadorPrestamo.getInstancia().agregarPrestamo(p);
-            } else {
-                throw new PrestamoYaExisteExcepcion("Error: Este material está en un préstamo en curso");
-            }
+    
+        if (l == null || m == null) {
+            throw new IllegalArgumentException("Lector o material no encontrados");
+        }
+    
+        Prestamo p = new Prestamo(
+                dtPrestamo.getFechaSolicitud(),
+                dtPrestamo.getFechaDevolucion(),
+                m,
+                b, // puede ser null
+                l,
+                dtPrestamo.getEstado()
+        );
+    
+        boolean prestamoActivo = ManejadorPrestamo.getInstancia().existePrestamoActivo(p);
+        boolean estadoPendiente = p.getEstado() == EstadoPmo.PENDIENTE;
+    
+        if (!prestamoActivo || estadoPendiente) {
+            ManejadorPrestamo.getInstancia().agregarPrestamo(p);
         } else {
-            // TODO: lanzar excepción por datos faltantes
+            throw new PrestamoYaExisteExcepcion("Error: Este material está en un préstamo en curso");
         }
     }
+    
 
 
 

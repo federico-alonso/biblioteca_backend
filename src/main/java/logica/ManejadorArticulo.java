@@ -56,4 +56,7 @@ public class ManejadorArticulo {
             em.close();
         }
     }
+
+
+    
 }

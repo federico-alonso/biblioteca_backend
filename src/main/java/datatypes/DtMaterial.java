@@ -1,7 +1,12 @@
 package datatypes;
 
 import java.util.Date;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlSeeAlso;
 
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlSeeAlso({DtLibro.class, DtArticuloEspecial.class})
 public class DtMaterial {
     private long id;
     private Date fechaIngreso;
