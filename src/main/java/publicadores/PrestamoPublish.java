@@ -98,4 +98,11 @@ public class PrestamoPublish {
         return lista.toArray(new DtMaterialConPrestamo[0]);
     }
 
+    @WebMethod
+    public DtMaterialConPrestamo[] getMaterialesConPrestamoTodos() {
+        List<DtMaterialConPrestamo> lista = controlador.getMaterialesConPrestamoTodos();
+        return lista.toArray(new DtMaterialConPrestamo[0]);
+    }
+
+
 }

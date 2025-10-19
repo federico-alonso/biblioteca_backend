@@ -76,6 +76,9 @@ public class Principal {
         publicadores.PrestamoPublish publicadorPrestamo = new publicadores.PrestamoPublish();
         publicadorPrestamo.publicar("localhost", "18020");
 
+        publicadores.ModificarEstadoPrestamoPublish publicadorModificarEstadoPrestamo = new publicadores.ModificarEstadoPrestamoPublish();
+        publicadorModificarEstadoPrestamo.publicar("localhost", "18021");
+
         
         Fabrica fabrica = Fabrica.getInstancia();
         IControladorAltaLector controladorAlta = fabrica.getIControladorAltaLector();
