@@ -3,6 +3,7 @@ package logica;
 import excepciones.PrestamoYaExisteExcepcion;
 import interfaces.IControladorPrestamo;
 
+
 import jakarta.persistence.*;
 
 import datatypes.DtPrestamo;
@@ -26,6 +27,9 @@ import persistencia.Conexion;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Date;
+import datatypes.DtMaterialConPrestamo;
+import java.util.Map;
+import java.util.HashMap;
 import excepciones.BibliotecarioNoTienePrestamos;
 
 public class ControladorPrestamo implements IControladorPrestamo {
@@ -52,9 +56,14 @@ public class ControladorPrestamo implements IControladorPrestamo {
             throw new IllegalArgumentException("Lector o material no encontrados");
         }
     
+        // ✅ Solo conservar fechaDevolucion si el estado es DEVUELTO
+        Date fechaDevolucion = dtPrestamo.getEstado() == EstadoPmo.DEVUELTO
+                ? dtPrestamo.getFechaDevolucion()
+                : null;
+    
         Prestamo p = new Prestamo(
                 dtPrestamo.getFechaSolicitud(),
-                dtPrestamo.getFechaDevolucion(),
+                fechaDevolucion,
                 m,
                 b, // puede ser null
                 l,
@@ -70,6 +79,7 @@ public class ControladorPrestamo implements IControladorPrestamo {
             throw new PrestamoYaExisteExcepcion("Error: Este material está en un préstamo en curso");
         }
     }
+    
     
 
 
@@ -158,4 +168,42 @@ public class ControladorPrestamo implements IControladorPrestamo {
     public List<DtMaterial> getListadoMateriales() {
         return ManejadorMaterial.getInstancia().getMateriales();
     }
+
+    @Override
+    public List<DtMaterialConPrestamo> getMaterialesConPrestamo(DtLector lector) {
+        List<Prestamo> todos = ManejadorPrestamo.getInstancia().listarPrestamos();
+    
+        List<DtMaterialConPrestamo> resultado = new ArrayList<>();
+    
+        for (Prestamo p : todos) {
+            if (p.getLector() != null && p.getLector().getNombre().equals(lector.getNombre())) {
+                DtMaterial mat = p.getMaterial().obtenerDt();
+                DtPrestamo dto = p.obtenerDt();
+                resultado.add(new DtMaterialConPrestamo(mat, dto));
+            }
+        }
+    
+        return resultado;
+    }
+
+    @Override
+    public List<DtMaterialConPrestamo> getMaterialesConPrestamoTodos() {
+        List<Prestamo> todos = ManejadorPrestamo.getInstancia().listarPrestamos();
+
+        List<DtMaterialConPrestamo> resultado = new ArrayList<>();
+
+        for (Prestamo p : todos) {
+            if (p.getLector() != null) {
+                DtMaterial mat = p.getMaterial().obtenerDt();
+                DtPrestamo dto = p.obtenerDt();
+                resultado.add(new DtMaterialConPrestamo(mat, dto));
+            }
+        }
+
+    return resultado;
+}
+
+    
+
+
 }

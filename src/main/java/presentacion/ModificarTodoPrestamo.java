@@ -16,7 +16,6 @@ import datatypes.DtLibro;
 import datatypes.DtMaterial;
 import datatypes.DtLector;
 import datatypes.DtBibliotecario;
-import datatypes.DtPrestamo;
 
 public class ModificarTodoPrestamo extends JInternalFrame {
     private IControladorModificarTodoPrestamo controlador;
@@ -37,7 +36,6 @@ public class ModificarTodoPrestamo extends JInternalFrame {
         setMaximizable(false);
         setIconifiable(false);
         setResizable(false);
-
         getContentPane().setLayout(null);
 
         JScrollPane scrollPane = new JScrollPane();
@@ -53,13 +51,11 @@ public class ModificarTodoPrestamo extends JInternalFrame {
         ) {
             @Override
             public boolean isCellEditable(int row, int column) {
-                // La columna 0 (ID) no es editable. El resto sí.
                 return column > 0;
             }
         };
         tablaPrestamos.setModel(tableModel);
 
-        // --- Setup cell editors ---
         materialComboBox = new JComboBox<>();
         TableColumn materialColumn = tablaPrestamos.getColumnModel().getColumn(1);
         materialColumn.setCellEditor(new DefaultCellEditor(materialComboBox));
@@ -101,7 +97,6 @@ public class ModificarTodoPrestamo extends JInternalFrame {
 
     public void cargarDatos() {
         try {
-            // Refresh ComboBox models
             materialComboBox.removeAllItems();
             controlador.getListadoMateriales().forEach(mat -> {
                 if (mat instanceof DtLibro) {
@@ -123,7 +118,7 @@ public class ModificarTodoPrestamo extends JInternalFrame {
             }
 
             List<DtPrestamo> prestamos = controlador.listarPrestamos();
-            tableModel.setRowCount(0); // Limpiar tabla
+            tableModel.setRowCount(0);
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
             for (DtPrestamo p : prestamos) {
@@ -140,7 +135,7 @@ public class ModificarTodoPrestamo extends JInternalFrame {
                     p.getId(),
                     materialDisplay,
                     p.getLector().getNombre(),
-                    p.getBibliotecario().getNombre(),
+                    (p.getBibliotecario() != null) ? p.getBibliotecario().getNombre() : "",
                     sdf.format(p.getFechaSolicitud()),
                     p.getFechaDevolucion() != null ? sdf.format(p.getFechaDevolucion()) : "",
                     p.getEstado().toString()
@@ -161,8 +156,6 @@ public class ModificarTodoPrestamo extends JInternalFrame {
 
         try {
             long id = (long) tableModel.getValueAt(selectedRow, 0);
-
-            // Obtener nuevos valores de la tabla
             String materialDisplay = (String) tableModel.getValueAt(selectedRow, 1);
             String lectorNombre = (String) tableModel.getValueAt(selectedRow, 2);
             String bibliotecarioNombre = (String) tableModel.getValueAt(selectedRow, 3);
@@ -170,17 +163,23 @@ public class ModificarTodoPrestamo extends JInternalFrame {
             String fechaDevolucionStr = (String) tableModel.getValueAt(selectedRow, 5);
             String estadoStr = (String) tableModel.getValueAt(selectedRow, 6);
 
-            // Buscar los DTOs correspondientes
             DtMaterial material = findMaterialByDisplay(materialDisplay);
             DtLector lector = findLectorByName(lectorNombre);
-            DtBibliotecario bibliotecario = findBibliotecarioByName(bibliotecarioNombre);
 
-            if (material == null || lector == null || bibliotecario == null) {
-                JOptionPane.showMessageDialog(this, "Uno de los valores (Material, Lector o Bibliotecario) no es válido.", "Error de validación", JOptionPane.ERROR_MESSAGE);
+            DtBibliotecario bibliotecario = null;
+            if (bibliotecarioNombre != null && !bibliotecarioNombre.trim().isEmpty()) {
+                bibliotecario = findBibliotecarioByName(bibliotecarioNombre);
+                if (bibliotecario == null) {
+                    JOptionPane.showMessageDialog(this, "El bibliotecario '" + bibliotecarioNombre + "' no existe.", "Error de validación", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+            }
+
+            if (material == null || lector == null) {
+                JOptionPane.showMessageDialog(this, "Material o lector inválido.", "Error de validación", JOptionPane.ERROR_MESSAGE);
                 return;
             }
 
-            // Parsear fechas y estado
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
             Date fechaSolicitud = sdf.parse(fechaSolicitudStr);
             Date fechaDevolucion = null;
@@ -189,12 +188,11 @@ public class ModificarTodoPrestamo extends JInternalFrame {
             }
             EstadoPmo estado = EstadoPmo.valueOf(estadoStr.toUpperCase());
 
-            // Crear el DTO de préstamo actualizado y enviarlo al controlador
             DtPrestamo prestamoActualizado = new DtPrestamo(id, material, lector, bibliotecario, fechaSolicitud, fechaDevolucion, estado);
             controlador.modificarPrestamo(prestamoActualizado);
 
             JOptionPane.showMessageDialog(this, "Préstamo modificado con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-            cargarDatos(); // Recargar para ver los cambios
+            cargarDatos();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error al guardar los cambios: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -228,5 +226,4 @@ public class ModificarTodoPrestamo extends JInternalFrame {
                 .findFirst()
                 .orElse(null);
     }
-
 }

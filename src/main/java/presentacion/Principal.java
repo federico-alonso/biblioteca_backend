@@ -84,6 +84,8 @@ public class Principal {
 
         publicadores.ConsultarDonacionPublish publicadorConsultarDonacion = new publicadores.ConsultarDonacionPublish();
         publicadorConsultarDonacion.publicar("localhost", "18023");
+        publicadores.ModificarEstadoPrestamoPublish publicadorModificarEstadoPrestamo = new publicadores.ModificarEstadoPrestamoPublish();
+        publicadorModificarEstadoPrestamo.publicar("localhost", "18021");
 
         
         Fabrica fabrica = Fabrica.getInstancia();

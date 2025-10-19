@@ -10,6 +10,9 @@ import excepciones.BibliotecarioNoTienePrestamos;
 
 
 import java.util.List;
+import datatypes.DtMaterialConPrestamo;
+import java.util.Map;
+import java.util.HashMap;
 
 public interface IControladorPrestamo {
 
@@ -25,5 +28,9 @@ public interface IControladorPrestamo {
     List<DtPrestamoSimple> getPrestamosActivosPorLector(DtLector lector);
 
     List<String> getNombresLectores();
+
+    List<DtMaterialConPrestamo> getMaterialesConPrestamo(DtLector lector);
+
+    List<DtMaterialConPrestamo> getMaterialesConPrestamoTodos();
 
 }

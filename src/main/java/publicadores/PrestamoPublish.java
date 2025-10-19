@@ -6,6 +6,7 @@ import jakarta.jws.soap.SOAPBinding;
 import jakarta.jws.soap.SOAPBinding.Style;
 import jakarta.jws.soap.SOAPBinding.ParameterStyle;
 import jakarta.xml.ws.Endpoint;
+import datatypes.DtMaterialConPrestamo;
 
 import java.util.List;
 
@@ -90,4 +91,18 @@ public class PrestamoPublish {
         List<DtMaterial> lista = controlador.getListadoMateriales();
         return lista.toArray(new DtMaterial[0]);
     }
+
+    @WebMethod
+    public DtMaterialConPrestamo[] getMaterialesConPrestamo(DtLector lector) {
+        List<DtMaterialConPrestamo> lista = controlador.getMaterialesConPrestamo(lector);
+        return lista.toArray(new DtMaterialConPrestamo[0]);
+    }
+
+    @WebMethod
+    public DtMaterialConPrestamo[] getMaterialesConPrestamoTodos() {
+        List<DtMaterialConPrestamo> lista = controlador.getMaterialesConPrestamoTodos();
+        return lista.toArray(new DtMaterialConPrestamo[0]);
+    }
+
+
 }

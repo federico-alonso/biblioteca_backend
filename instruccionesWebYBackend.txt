@@ -26,6 +26,8 @@ disponibles en el navegador.
 & ".\wsimport.bat" -keep -p cliente.modificarZonaLector -d generado http://localhost:18018/modificarZonaLector?wsdl
 & ".\wsimport.bat" -keep -p cliente.donaciones -d generado http://localhost:18019/donaciones?wsdl
 & ".\wsimport.bat" -keep -p cliente.prestamo -d generado http://localhost:18020/prestamo?wsdl
+& ".\wsimport.bat" -keep -p cliente.modificarEstadoPrestamo -d generado http://localhost:18021/modificarEstadoPrestamo?wsdl
+
 
 
     - Este comando va a generar archivos java que van a tener nombres terminados en Publish, Service y Excepcion.

@@ -96,9 +96,17 @@ public class Prestamo {
         return id;
     }
 
-    public DtPrestamo obtenerDt(){
-        return new DtPrestamo(id, material.obtenerDt(), lector.obtenerDt(), bibliotecario.obtenerDt(),
-                fechaSolicitud, fechaDevolucion, estado);
+    public DtPrestamo obtenerDt() {
+        return new DtPrestamo(
+            id,
+            material.obtenerDt(),
+            lector.obtenerDt(),
+            (bibliotecario != null) ? bibliotecario.obtenerDt() : null,
+            fechaSolicitud,
+            fechaDevolucion,
+            estado
+        );
     }
+    
 
 }
