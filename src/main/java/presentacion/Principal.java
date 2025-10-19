@@ -82,6 +82,9 @@ public class Principal {
         publicadores.AltaDonacionEspecialPublish publicadorAltaDonacionEspecial = new publicadores.AltaDonacionEspecialPublish();
         publicadorAltaDonacionEspecial.publicar("localhost", "18022");
 
+        publicadores.ConsultarDonacionPublish publicadorConsultarDonacion = new publicadores.ConsultarDonacionPublish();
+        publicadorConsultarDonacion.publicar("localhost", "18023");
+
         
         Fabrica fabrica = Fabrica.getInstancia();
         IControladorAltaLector controladorAlta = fabrica.getIControladorAltaLector();
