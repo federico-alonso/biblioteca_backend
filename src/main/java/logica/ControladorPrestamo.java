@@ -3,6 +3,7 @@ package logica;
 import excepciones.PrestamoYaExisteExcepcion;
 import interfaces.IControladorPrestamo;
 
+
 import jakarta.persistence.*;
 
 import datatypes.DtPrestamo;
@@ -26,6 +27,9 @@ import persistencia.Conexion;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Date;
+import datatypes.DtMaterialConPrestamo;
+import java.util.Map;
+import java.util.HashMap;
 import excepciones.BibliotecarioNoTienePrestamos;
 
 public class ControladorPrestamo implements IControladorPrestamo {
@@ -158,4 +162,33 @@ public class ControladorPrestamo implements IControladorPrestamo {
     public List<DtMaterial> getListadoMateriales() {
         return ManejadorMaterial.getInstancia().getMateriales();
     }
+
+    @Override
+    public List<DtMaterialConPrestamo> getMaterialesConPrestamo() {
+    List<DtMaterial> materiales = ManejadorMaterial.getInstancia().getMateriales();
+    List<DtPrestamo> prestamos = new ArrayList<>();
+
+    for (Prestamo p : ManejadorPrestamo.getInstancia().listarPrestamos()) {
+        prestamos.add(p.obtenerDt());
+    }
+
+    List<DtMaterialConPrestamo> resultado = new ArrayList<>();
+
+    for (DtMaterial mat : materiales) {
+        DtPrestamo prestamoEncontrado = null;
+
+        for (DtPrestamo p : prestamos) {
+            if (p.getMaterial().getId() == mat.getId()) {
+                prestamoEncontrado = p;
+                break;
+            }
+        }
+
+        resultado.add(new DtMaterialConPrestamo(mat, prestamoEncontrado));
+    }
+
+    return resultado;
+}
+
+
 }
