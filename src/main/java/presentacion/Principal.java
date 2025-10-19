@@ -76,6 +76,14 @@ public class Principal {
         publicadores.PrestamoPublish publicadorPrestamo = new publicadores.PrestamoPublish();
         publicadorPrestamo.publicar("localhost", "18020");
 
+        publicadores.AltaDonacionLibroPublish publicadorAltaDonacionLibro = new publicadores.AltaDonacionLibroPublish();
+        publicadorAltaDonacionLibro.publicar("localhost", "18021");
+
+        publicadores.AltaDonacionEspecialPublish publicadorAltaDonacionEspecial = new publicadores.AltaDonacionEspecialPublish();
+        publicadorAltaDonacionEspecial.publicar("localhost", "18022");
+
+        publicadores.ConsultarDonacionPublish publicadorConsultarDonacion = new publicadores.ConsultarDonacionPublish();
+        publicadorConsultarDonacion.publicar("localhost", "18023");
         publicadores.ModificarEstadoPrestamoPublish publicadorModificarEstadoPrestamo = new publicadores.ModificarEstadoPrestamoPublish();
         publicadorModificarEstadoPrestamo.publicar("localhost", "18021");
 
