@@ -29,6 +29,6 @@ public interface IControladorPrestamo {
 
     List<String> getNombresLectores();
 
-    List<DtMaterialConPrestamo> getMaterialesConPrestamo();
+    List<DtMaterialConPrestamo> getMaterialesConPrestamo(DtLector lector);
 
 }

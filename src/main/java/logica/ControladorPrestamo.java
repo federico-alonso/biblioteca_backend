@@ -162,33 +162,24 @@ public class ControladorPrestamo implements IControladorPrestamo {
     public List<DtMaterial> getListadoMateriales() {
         return ManejadorMaterial.getInstancia().getMateriales();
     }
-
+    
     @Override
-    public List<DtMaterialConPrestamo> getMaterialesConPrestamo() {
-    List<DtMaterial> materiales = ManejadorMaterial.getInstancia().getMateriales();
-    List<DtPrestamo> prestamos = new ArrayList<>();
-
-    for (Prestamo p : ManejadorPrestamo.getInstancia().listarPrestamos()) {
-        prestamos.add(p.obtenerDt());
-    }
-
-    List<DtMaterialConPrestamo> resultado = new ArrayList<>();
-
-    for (DtMaterial mat : materiales) {
-        DtPrestamo prestamoEncontrado = null;
-
-        for (DtPrestamo p : prestamos) {
-            if (p.getMaterial().getId() == mat.getId()) {
-                prestamoEncontrado = p;
-                break;
+    public List<DtMaterialConPrestamo> getMaterialesConPrestamo(DtLector lector) {
+        List<Prestamo> todos = ManejadorPrestamo.getInstancia().listarPrestamos();
+    
+        List<DtMaterialConPrestamo> resultado = new ArrayList<>();
+    
+        for (Prestamo p : todos) {
+            if (p.getLector() != null && p.getLector().getNombre().equals(lector.getNombre())) {
+                DtMaterial mat = p.getMaterial().obtenerDt();
+                DtPrestamo dto = p.obtenerDt();
+                resultado.add(new DtMaterialConPrestamo(mat, dto));
             }
         }
-
-        resultado.add(new DtMaterialConPrestamo(mat, prestamoEncontrado));
+    
+        return resultado;
     }
-
-    return resultado;
-}
+    
 
 
 }
