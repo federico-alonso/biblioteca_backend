@@ -38,7 +38,14 @@ public class ControladorListarPrestamosZona implements IControladorListarPrestam
             for (EstadoPmo e : EstadoPmo.values()) {
                 resumen.putIfAbsent(e, 0);
             }
-            resultado.add(new DtEstadoPorZona(z, resumen));
+            
+            // Convertir el Map a List<ResumenEstado>
+            List<DtEstadoPorZona.ResumenEstado> listaResumen = new ArrayList<>();
+            for (Map.Entry<EstadoPmo, Integer> entry : resumen.entrySet()) {
+                listaResumen.add(new DtEstadoPorZona.ResumenEstado(entry.getKey(), entry.getValue()));
+            }
+            
+            resultado.add(new DtEstadoPorZona(z, listaResumen));
         }
 
         return resultado;

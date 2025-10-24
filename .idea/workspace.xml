@@ -6,13 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="034b03cf-44a8-46ee-83bf-ff852caeff35" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/interfaces/Fabrica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interfaces/Fabrica.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logica/ArticuloEspecial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/ArticuloEspecial.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logica/ControladorAltaDonacionEspecial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/ControladorAltaDonacionEspecial.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logica/ControladorAltaDonacionLibro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/ControladorAltaDonacionLibro.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logica/ManejadorMaterial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/ManejadorMaterial.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/datatypes/DtEstadoPorZona.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datatypes/DtEstadoPorZona.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/logica/ControladorListarPrestamosZona.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/ControladorListarPrestamosZona.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentacion/ConsultarZonaLectorFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentacion/ConsultarZonaLectorFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/presentacion/Principal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentacion/Principal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/publicadores/ConsultaDonacionYFechaPublish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/publicadores/ConsultaDonacionYFechaPublish.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/publicadores/ListarPrestamosZonaPublish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/publicadores/ListarPrestamosZonaPublish.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +76,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "backend__biblioteca",
+    "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/loreg/Desktop/Repo_backend",

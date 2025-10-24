@@ -9,7 +9,6 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.List;
-import java.util.Map;
 
 public class ConsultarZonaLectorFrame extends JInternalFrame {
     private static final long serialVersionUID = 1L;
@@ -72,13 +71,28 @@ public class ConsultarZonaLectorFrame extends JInternalFrame {
 
         List<DtEstadoPorZona> resumen = controlador.getResumenPrestamosPorZona();
         for (DtEstadoPorZona dto : resumen) {
-            Map<EstadoPmo, Integer> estados = dto.getResumen();
+            List<DtEstadoPorZona.ResumenEstado> estados = dto.getResumen();
+            
+            // Buscar los valores para cada estado
+            int pendientes = obtenerCantidad(estados, EstadoPmo.PENDIENTE);
+            int activos = obtenerCantidad(estados, EstadoPmo.ACTIVO);
+            int devueltos = obtenerCantidad(estados, EstadoPmo.DEVUELTO);
+            
             modeloTabla.addRow(new Object[]{
                     dto.getZona().toString(),
-                    estados.get(EstadoPmo.PENDIENTE),
-                    estados.get(EstadoPmo.ACTIVO),
-                    estados.get(EstadoPmo.DEVUELTO)
+                    pendientes,
+                    activos,
+                    devueltos
             });
         }
+    }
+    
+    private int obtenerCantidad(List<DtEstadoPorZona.ResumenEstado> estados, EstadoPmo estadoBuscado) {
+        for (DtEstadoPorZona.ResumenEstado resumen : estados) {
+            if (resumen.getEstado() == estadoBuscado) {
+                return resumen.getCantidad();
+            }
+        }
+        return 0;
     }
 }

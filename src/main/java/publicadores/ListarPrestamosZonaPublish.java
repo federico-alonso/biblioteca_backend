@@ -41,10 +41,6 @@ public class ListarPrestamosZonaPublish {
     @WebMethod
     public DtEstadoPorZona[] getResumenPrestamosPorZona() {
         List<DtEstadoPorZona> lista = controlador.getResumenPrestamosPorZona();
-        DtEstadoPorZona[] resultado = new DtEstadoPorZona[lista.size()];
-        for (int i = 0; i < lista.size(); i++) {
-            resultado[i] = lista.get(i);
-        }
-        return resultado;
+        return lista.toArray(new DtEstadoPorZona[0]);
     }
 }

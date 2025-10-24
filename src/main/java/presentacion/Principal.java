@@ -92,8 +92,13 @@
                     publicadorListarPrestamosLector.publicar("localhost", "18025");
 
                     publicadores.ModificarEstadoPrestamoPublish publicadorModificarEstadoPrestamo = new publicadores.ModificarEstadoPrestamoPublish();
-                    publicadorModificarEstadoPrestamo.publicar("localhost", "18021");
+                    publicadorModificarEstadoPrestamo.publicar("localhost", "18026");
 
+                    publicadores.ListarPrestamosZonaPublish publicadorListarPrestamosZona = new publicadores.ListarPrestamosZonaPublish();
+                    publicadorListarPrestamosZona.publicar("localhost", "18027");
+
+                    publicadores.ModificarTodoPrestamoPublish publicadorModificarTodoPrestamo = new publicadores.ModificarTodoPrestamoPublish();
+                    publicadorModificarTodoPrestamo.publicar("localhost", "18028");
 
                     Fabrica fabrica = Fabrica.getInstancia();
                     IControladorAltaLector controladorAlta = fabrica.getIControladorAltaLector();
