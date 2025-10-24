@@ -3,6 +3,7 @@ package logica;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Column;
 import datatypes.DtArticuloEspecial;
+import java.util.Date;
 
 
 @Entity(name = "articuloespecial")
@@ -25,6 +26,13 @@ public class ArticuloEspecial extends Material {
 
     public ArticuloEspecial(String descripcion, float peso, String dimensiones) {
         super();
+        this.descripcion = descripcion;
+        this.pesoKg = peso;
+        this.dimensiones = dimensiones;
+    }
+
+    public ArticuloEspecial(String descripcion, float peso, String dimensiones, Date fechaIngreso) {
+        super(fechaIngreso);
         this.descripcion = descripcion;
         this.pesoKg = peso;
         this.dimensiones = dimensiones;

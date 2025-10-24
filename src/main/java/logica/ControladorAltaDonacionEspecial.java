@@ -11,7 +11,8 @@ public class ControladorAltaDonacionEspecial implements IControladorAltaDonacion
         ArticuloEspecial articulo = new ArticuloEspecial(
                 dtArticulo.getDescripcion(),
                 dtArticulo.getPesoKg(),
-                dtArticulo.getDimensiones()
+                dtArticulo.getDimensiones(),
+                dtArticulo.getFechaIngreso()
         );
         ma.agregarArticulo(articulo);
     }

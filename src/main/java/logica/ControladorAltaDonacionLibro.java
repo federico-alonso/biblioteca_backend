@@ -8,7 +8,7 @@ public class ControladorAltaDonacionLibro implements IControladorAltaDonacionLib
     @Override
     public void altaDonacionLibro(DtLibro dtLibro) throws Exception {
         ManejadorMaterial mm = ManejadorMaterial.getInstancia();
-        Libro libro = new Libro(dtLibro.getTitulo(), dtLibro.getCantidadPag());
+        Libro libro = new Libro(dtLibro.getTitulo(), dtLibro.getCantidadPag(), dtLibro.getFechaIngreso());
         mm.agregarMaterial(libro);
     }
 }

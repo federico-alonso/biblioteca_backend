@@ -27,6 +27,7 @@ public class ConsultaDonacionYFechaPublish {
         controlador = fabrica.getIControladorConsultaDonacionYFecha();
     }
 
+
     @WebMethod(exclude = true)
     public void publicar(String ip, String port) {
         String url = "http://" + ip + ":" + port + "/consultaDonacionYFecha";
@@ -47,5 +48,10 @@ public class ConsultaDonacionYFechaPublish {
             resultado[i] = lista.get(i);
         }
         return resultado;
+    }
+
+    public static void main(String[] args) {
+        ConsultaDonacionYFechaPublish publicador = new ConsultaDonacionYFechaPublish();
+        publicador.publicar("localhost", "18024");
     }
 }
