@@ -30,6 +30,11 @@ public class LoginPublish {
         return controlador.login(email, contrasena);
     }
 
+    @WebMethod
+    public void logout() {
+        controlador.logout();
+    }
+
     @WebMethod(exclude = true)
     public void publicar(String ip, String port) {
         String url = "http://" + ip + ":" + port + "/login";

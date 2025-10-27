@@ -15,6 +15,7 @@ import logica.ControladorListarPrestamosZona;
 import logica.ControladorDonaciones;
 import logica.ControladorLogin;
 import logica.ControladorListarPrestamosLector;
+import logica.ControladorAutorizarPrestamo;
 
 public class Fabrica {
     private static Fabrica instancia = null;
@@ -95,5 +96,9 @@ public class Fabrica {
 
     public IControladorListarPrestamosLector getIControladorListarPrestamosLector() {
         return new ControladorListarPrestamosLector();
+    }
+
+    public IControladorAutorizarPrestamo getIControladorAutorizarPrestamo() {
+        return new ControladorAutorizarPrestamo();
     }
 }

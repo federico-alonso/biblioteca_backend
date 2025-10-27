@@ -104,5 +104,15 @@ public class PrestamoPublish {
         return lista.toArray(new DtMaterialConPrestamo[0]);
     }
 
+    @WebMethod
+    public void solicitarPrestamo(String nombreLector, long idMaterial) throws PrestamoYaExisteExcepcion {
+        controlador.solicitarPrestamo(nombreLector, idMaterial);
+    }
+
+    @WebMethod
+    public DtPrestamo[] listarPrestamosPendientes() {
+        List<DtPrestamo> lista = controlador.listarPrestamosPendientes();
+        return lista.toArray(new DtPrestamo[0]);
+    }
 
 }

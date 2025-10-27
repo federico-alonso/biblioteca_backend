@@ -25,7 +25,7 @@ public class ControladorListarPrestamosLector implements IControladorListarPrest
                 Prestamo.class
             );
             query.setParameter("nombre", nombreLector);
-            query.setParameter("estado", EstadoPmo.ACTIVO);
+            query.setParameter("estado", EstadoPmo.EN_CURSO);
             
             List<Prestamo> prestamos = query.getResultList();
             List<DtPrestamo> resultado = new ArrayList<>();

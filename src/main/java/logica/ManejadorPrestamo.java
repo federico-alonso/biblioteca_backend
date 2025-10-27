@@ -30,9 +30,25 @@ public class ManejadorPrestamo {
         EntityManager em = Conexion.getInstancia().getEntityManager();
 
         List<Prestamo> p = em.createQuery(
-                "SELECT p FROM Prestamo p WHERE p.material.id = :idMaterial AND p.estado = 'ACTIVO'",
+                "SELECT p FROM Prestamo p WHERE p.material.id = :idMaterial AND p.estado = 'EN_CURSO'",
                 Prestamo.class
         ).setParameter("idMaterial", prestamo.getMaterial().getId())
+         .getResultList();
+
+        em.close();
+        return (!p.isEmpty());
+    }
+
+    /**
+     * Verifica si ya existe un préstamo pendiente para el material
+     */
+    public boolean existePrestamoPendiente(long idMaterial) {
+        EntityManager em = Conexion.getInstancia().getEntityManager();
+
+        List<Prestamo> p = em.createQuery(
+                "SELECT p FROM Prestamo p WHERE p.material.id = :idMaterial AND p.estado = 'PENDIENTE'",
+                Prestamo.class
+        ).setParameter("idMaterial", idMaterial)
          .getResultList();
 
         em.close();
@@ -47,7 +63,7 @@ public class ManejadorPrestamo {
                 Prestamo.class
         );
         query.setParameter("nombre", lectorNombre);
-        query.setParameter("estado", EstadoPmo.ACTIVO);
+        query.setParameter("estado", EstadoPmo.EN_CURSO);
 
         List<Prestamo> prestamos = query.getResultList();
         em.close();
@@ -96,6 +112,18 @@ public class ManejadorPrestamo {
                 "SELECT p FROM Prestamo p ORDER BY p.id ASC",
                 Prestamo.class
         );
+        List<Prestamo> prestamos = query.getResultList();
+        em.close();
+        return prestamos;
+    }
+
+    public List<Prestamo> listarPrestamosPendientes() {
+        EntityManager em = Conexion.getInstancia().getEntityManager();
+        TypedQuery<Prestamo> query = em.createQuery(
+                "SELECT p FROM Prestamo p WHERE p.estado = :estado ORDER BY p.fechaSolicitud ASC",
+                Prestamo.class
+        );
+        query.setParameter("estado", EstadoPmo.PENDIENTE);
         List<Prestamo> prestamos = query.getResultList();
         em.close();
         return prestamos;

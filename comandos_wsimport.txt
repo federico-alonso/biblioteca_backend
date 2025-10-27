@@ -1,0 +1,46 @@
+# Comandos wsimport para generar stubs de cliente de todos los servicios web
+
+# 1. Alta Lector
+wsimport -keep -d src/main/java -p cliente.altaLector http://localhost:18015/altaLector?wsdl
+
+# 2. Login
+wsimport -keep -d src/main/java -p cliente.login http://localhost:18016/login?wsdl
+
+# 3. Modificar Estado Lector
+wsimport -keep -d src/main/java -p cliente.modificarEstadoLector http://localhost:18017/modificarEstadoLector?wsdl
+
+# 4. Modificar Zona Lector
+wsimport -keep -d src/main/java -p cliente.modificarZonaLector http://localhost:18018/modificarZonaLector?wsdl
+
+# 5. Donaciones
+wsimport -keep -d src/main/java -p cliente.donaciones http://localhost:18019/donaciones?wsdl
+
+# 6. Prestamo
+wsimport -keep -d src/main/java -p cliente.prestamo http://localhost:18020/prestamo?wsdl
+
+# 7. Alta Donacion Libro
+wsimport -keep -d src/main/java -p cliente.altaDonacionLibro http://localhost:18021/altaDonacionLibro?wsdl
+
+# 8. Alta Donacion Especial
+wsimport -keep -d src/main/java -p cliente.altaDonacionEspecial http://localhost:18022/altaDonacionEspecial?wsdl
+
+# 9. Consultar Donacion
+wsimport -keep -d src/main/java -p cliente.consultarDonacion http://localhost:18023/consultarDonacion?wsdl
+
+# 10. Consulta Donacion Y Fecha
+wsimport -keep -d src/main/java -p cliente.consultaDonacionYFecha http://localhost:18024/consultaDonacionYFecha?wsdl
+
+# 11. Listar Prestamos Lector
+wsimport -keep -d src/main/java -p cliente.listarPrestamosLector http://localhost:18025/listarPrestamosLector?wsdl
+
+# 12. Modificar Estado Prestamo
+wsimport -keep -d src/main/java -p cliente.modificarEstadoPrestamo http://localhost:18026/modificarEstadoPrestamo?wsdl
+
+# 13. Listar Prestamos Zona
+wsimport -keep -d src/main/java -p cliente.listarPrestamosZona http://localhost:18027/listarPrestamosZona?wsdl
+
+# 14. Modificar Todo Prestamo
+wsimport -keep -d src/main/java -p cliente.modificarTodoPrestamo http://localhost:18028/modificarTodoPrestamo?wsdl
+
+# 15. Autorizar Prestamo
+wsimport -keep -d src/main/java -p cliente.autorizarPrestamo http://localhost:18029/autorizarPrestamo?wsdl

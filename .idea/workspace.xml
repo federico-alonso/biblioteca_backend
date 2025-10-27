@@ -6,11 +6,19 @@
   <component name="ChangeListManager">
     <list default="true" id="034b03cf-44a8-46ee-83bf-ff852caeff35" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/datatypes/DtEstadoPorZona.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datatypes/DtEstadoPorZona.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logica/ControladorListarPrestamosZona.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/ControladorListarPrestamosZona.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/datatypes/EstadoPmo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datatypes/EstadoPmo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/interfaces/Fabrica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interfaces/Fabrica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/interfaces/IControladorLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interfaces/IControladorLogin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/interfaces/IControladorPrestamo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interfaces/IControladorPrestamo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/logica/ControladorListarPrestamosLector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/ControladorListarPrestamosLector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/logica/ControladorLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/ControladorLogin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/logica/ControladorPrestamo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/ControladorPrestamo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/logica/ManejadorPrestamo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/ManejadorPrestamo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/presentacion/ConsultarZonaLectorFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentacion/ConsultarZonaLectorFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentacion/ModificarEstadoPrestamoFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentacion/ModificarEstadoPrestamoFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/presentacion/Principal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentacion/Principal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/publicadores/ListarPrestamosZonaPublish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/publicadores/ListarPrestamosZonaPublish.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/publicadores/LoginPublish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/publicadores/LoginPublish.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/publicadores/PrestamoPublish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/publicadores/PrestamoPublish.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +84,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "opcionales__backend",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/loreg/Desktop/Repo_backend",

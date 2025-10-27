@@ -79,6 +79,64 @@ public class ControladorPrestamo implements IControladorPrestamo {
             throw new PrestamoYaExisteExcepcion("Error: Este material está en un préstamo en curso");
         }
     }
+
+    /**
+     * Método para que un lector solicite un préstamo
+     * Se crea en estado PENDIENTE sin bibliotecario asignado
+     */
+    public void solicitarPrestamo(String nombreLector, long idMaterial) throws PrestamoYaExisteExcepcion {
+        Lector l = ManejadorLector.getInstance().buscarLector(nombreLector);
+        Material m = ManejadorMaterial.getInstancia().buscarMaterial(idMaterial);
+    
+        if (l == null || m == null) {
+            throw new IllegalArgumentException("Lector o material no encontrados");
+        }
+        
+        // Validar que el lector no esté suspendido
+        if (l.getEstado() == datatypes.EstadoLector.SUSPENDIDO) {
+            throw new IllegalStateException("No puede solicitar préstamos: su cuenta de lector está suspendida. Contacte al bibliotecario.");
+        }
+
+        // Verificar que el material no esté activo o en curso
+        boolean prestamoActivo = ManejadorPrestamo.getInstancia().existePrestamoActivo(new Prestamo(null, null, m, null, l, EstadoPmo.EN_CURSO));
+    
+        if (prestamoActivo) {
+            throw new PrestamoYaExisteExcepcion("Error: Este material está en un préstamo en curso o activo");
+        }
+
+        // Verificar que no haya ya un préstamo pendiente para este material
+        boolean prestamoPendiente = ManejadorPrestamo.getInstancia().existePrestamoPendiente(idMaterial);
+    
+        if (prestamoPendiente) {
+            throw new PrestamoYaExisteExcepcion("Error: Ya existe una solicitud pendiente para este material");
+        }
+
+        // Crear préstamo sin bibliotecario en estado PENDIENTE
+        Prestamo p = new Prestamo(
+                new Date(), // fecha solicitud
+                null, // fecha devolución
+                m,
+                null, // bibliotecario = null
+                l,
+                EstadoPmo.PENDIENTE // estado pendiente
+        );
+    
+        ManejadorPrestamo.getInstancia().agregarPrestamo(p);
+    }
+
+    /**
+     * Lista todos los préstamos pendientes de autorización
+     */
+    public List<DtPrestamo> listarPrestamosPendientes() {
+        List<Prestamo> prestamos = ManejadorPrestamo.getInstancia().listarPrestamosPendientes();
+        List<DtPrestamo> resultado = new ArrayList<>();
+        
+        for (Prestamo p : prestamos) {
+            resultado.add(p.obtenerDt());
+        }
+        
+        return resultado;
+    }
     
     
 
@@ -120,7 +178,9 @@ public class ControladorPrestamo implements IControladorPrestamo {
         EntityManager em = Conexion.getInstancia().getEntityManager();
 
         List <Prestamo> prestamos = em.createQuery("SELECT p FROM Prestamo p " +
-                        "WHERE p.bibliotecario.nombre = :nomBibliotecario", Prestamo.class)
+                        "WHERE p.bibliotecario.nombre = :nomBibliotecario " +
+                        "AND p.estado IN ('EN_CURSO', 'DEVUELTO') " +
+                        "ORDER BY p.fechaSolicitud DESC", Prestamo.class)
                 .setParameter("nomBibliotecario", bibliotecario.getNombre())
                 .getResultList();
 

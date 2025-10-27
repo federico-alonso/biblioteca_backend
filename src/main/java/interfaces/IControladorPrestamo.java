@@ -18,6 +18,10 @@ public interface IControladorPrestamo {
 
     void altaPrestamo(DtPrestamo dtPrestamo) throws PrestamoYaExisteExcepcion;
 
+    // Nuevos métodos para solicitar préstamo y listar pendientes
+    void solicitarPrestamo(String nombreLector, long idMaterial) throws PrestamoYaExisteExcepcion;
+    List<DtPrestamo> listarPrestamosPendientes();
+
     List<DtLector> getListadoLectores();
     List<DtBibliotecario> getListadoBibliotecarios();
     List<DtMaterial> getListadoMateriales();

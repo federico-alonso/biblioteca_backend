@@ -100,6 +100,9 @@
                     publicadores.ModificarTodoPrestamoPublish publicadorModificarTodoPrestamo = new publicadores.ModificarTodoPrestamoPublish();
                     publicadorModificarTodoPrestamo.publicar("localhost", "18028");
 
+                    publicadores.AutorizarPrestamoPublish publicadorAutorizarPrestamo = new publicadores.AutorizarPrestamoPublish();
+                    publicadorAutorizarPrestamo.publicar("localhost", "18029");
+
                     Fabrica fabrica = Fabrica.getInstancia();
                     IControladorAltaLector controladorAlta = fabrica.getIControladorAltaLector();
                     IControladorAltaBibliotecario controladorBibliotecario = fabrica.getIControladorAltaBibliotecario();

@@ -75,7 +75,7 @@ public class ConsultarZonaLectorFrame extends JInternalFrame {
             
             // Buscar los valores para cada estado
             int pendientes = obtenerCantidad(estados, EstadoPmo.PENDIENTE);
-            int activos = obtenerCantidad(estados, EstadoPmo.ACTIVO);
+            int activos = obtenerCantidad(estados, EstadoPmo.EN_CURSO);
             int devueltos = obtenerCantidad(estados, EstadoPmo.DEVUELTO);
             
             modeloTabla.addRow(new Object[]{

@@ -47,7 +47,7 @@ public class ModificarEstadoPrestamoFrame extends JInternalFrame {
         gbc.gridy = 1;
         panel.add(new JLabel("Nuevo estado:"), gbc);
 
-        comboEstado = new JComboBox<>(new EstadoPmo[]{EstadoPmo.ACTIVO, EstadoPmo.DEVUELTO});
+        comboEstado = new JComboBox<>(new EstadoPmo[]{EstadoPmo.EN_CURSO, EstadoPmo.DEVUELTO});
         comboEstado.setPreferredSize(new Dimension(150, 25));
         gbc.gridx = 1;
         gbc.gridy = 1;
@@ -115,7 +115,7 @@ public class ModificarEstadoPrestamoFrame extends JInternalFrame {
         }
 
         if (prestamoSeleccionado.getEstado() == nuevoEstado) {
-            String estadoTexto = (nuevoEstado == EstadoPmo.ACTIVO) ? "ACTIVO" : "DEVUELTO";
+            String estadoTexto = (nuevoEstado == EstadoPmo.EN_CURSO) ? "EN_CURSO" : "DEVUELTO";
             JOptionPane.showMessageDialog(this,
                     "El préstamo ya se encuentra en estado: " + estadoTexto,
                     "Información",
@@ -132,7 +132,7 @@ public class ModificarEstadoPrestamoFrame extends JInternalFrame {
                 prestamoSeleccionado.setEstado(nuevoEstado);
 
                 SwingUtilities.invokeLater(() -> {
-                    String estadoTexto = (nuevoEstado == EstadoPmo.ACTIVO) ? "ACTIVO" : "DEVUELTO";
+                    String estadoTexto = (nuevoEstado == EstadoPmo.EN_CURSO) ? "EN_CURSO" : "DEVUELTO";
                     JOptionPane.showMessageDialog(this,
                             "Estado del préstamo modificado exitosamente a: " + estadoTexto,
                             "Éxito",
